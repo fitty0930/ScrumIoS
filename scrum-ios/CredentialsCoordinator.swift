@@ -24,22 +24,25 @@ class CredentialsCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    
-    func register() {
-        let vc = SignUpViewController.instantiate(for: ConstantsHelper.Storyboard.main)
-        vc.coordinator = self
+    func test(){
+        let vc = DraggableTextGameViewController.instantiate(for: ConstantsHelper.Storyboard.tutorial)
         navigationController.pushViewController(vc, animated: true)
     }
-    
-    func login() {
-        let vc = LoginViewController.instantiate(for: ConstantsHelper.Storyboard.main)
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    
+
     func didFinishAuthentication(){
         self.parentCoordinator?.didFinishAuthenticating()
     }
     
+    func register() {
+        let vc = RegisterCredentialsViewController.instantiate(for: ConstantsHelper.Storyboard.main)
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func addPersonalInformation(with credentials: TemporalCredentials) {
+        let vc = RegisterPersonalInfoViewController.instantiate(for: ConstantsHelper.Storyboard.main)
+        vc.coordinator = self
+        vc.credentials = credentials
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

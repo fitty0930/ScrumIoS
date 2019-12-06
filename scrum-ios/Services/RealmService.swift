@@ -26,6 +26,13 @@ class RealmService {
         }
     }
     
+    fileprivate static func saveToRealm(_ data: UserOverallData) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(data, update: true)
+        }
+    }
+    
     
     static func getProgress(for level: Level, completionHandler: @escaping (Progress?, Error?) -> Void) {
     
@@ -36,6 +43,20 @@ class RealmService {
         completionHandler(progress, nil)
     }
     
+    
+    static func getOverallData(completionHandler: @escaping (UserOverallData?, Error?) -> Void) {
+        
+        let realm = try! Realm()
+        
+        let data = realm.objects(UserOverallData.self)
+        if let data = data.last {
+            completionHandler(data, nil)
+        }
+        else {
+            completionHandler(nil, NSError.init(domain: "", code: 0, userInfo: nil))
+        }
+    }
+
     static func saveProgress(with data: [String: Any]) {
         let progress = Progress()
         progress.initFrom(json: JSON.init(data))
@@ -56,14 +77,12 @@ class RealmService {
         user.initFrom(json: JSON.init(data))
         
         saveToRealm(user)
-
     }
     
-    
-    
-    
-    
-    
+    static func saveUserOverallData(with data: [String: Int]) {
+        let userOverallData = UserOverallData()
+        userOverallData.initFrom(data: data)
+        saveToRealm(userOverallData)
+    }
 
-    
 }

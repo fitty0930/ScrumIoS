@@ -9,7 +9,8 @@
 import UIKit
 
 class QuizGameViewController: UIViewController, BaseVMDelegate {
-
+    
+    @IBOutlet weak var answerButton: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var questionTextView: UITextView!
     
@@ -18,8 +19,18 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
     weak var gameDelegate: GameManagerDelegate?
     var correctAnswerSelected = false
     
+    var isFirstAnswer = true
+    
+    var gameTimer: Timer?
+    var secondsSpent = 0
+    
+    var info: GameInfo?
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAnswerTapGestureRecognizer()
         self.viewModel.delegate = self
         self.viewModel.quizVM = true
         tableView?.dataSource = viewModel
@@ -34,12 +45,10 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
         
         if let parentVC = self.parent as? GameViewController {
             
-            if let currentGame = parentVC.games.first {
-                
-                self.game = currentGame
-                self.viewModel.getContentFor(game: currentGame)
-                self.questionTextView.text = currentGame.title
-            }
+            self.game = parentVC.games[parentVC.currentGameIndex]
+            self.viewModel.getContentFor(game: game!)
+            self.questionTextView.attributedText = setAttributedLabelFor(text: game?.title ?? "")
+            
             
         }
         
@@ -51,6 +60,29 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
                 strongSelf.correctAnswerSelected = result
             }
         }
+        startTimer()
+    }
+    
+    
+    func startTimer(){
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        secondsSpent += 1
+        print("Game Timer: ", secondsSpent)
+
+    }
+    
+    func stopTimer(){
+        gameTimer?.invalidate()
+    }
+
+    
+    func setupAnswerTapGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(answerQuiz(_:)))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        answerButton.addGestureRecognizer(tapGestureRecognizer)
     }
     
     @IBAction func answerQuiz(_ sender: Any) {
@@ -59,12 +91,25 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
         
         
         if correctAnswerSelected {
+            
+            
+            if let info = info {
+                if isFirstAnswer {
+                    LogService.gameCorrectInFirstTryAnswer(level: info.level, sublevel: info.sublevel, game: info.game, time: secondsSpent)
+                }
+                else {
+                    LogService.gameCorrectAnswer(level: info.level, sublevel: info.sublevel, game: info.game, time: secondsSpent)
+                }
+            }
+
         
             let alertController = UIAlertController(title: "Excelente!", message: "La respuesta es correcta 🤓", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
                 alert -> Void in
-                    self.gameDelegate?.prepareForNextGame()
+                self.gameDelegate?.prepareForNextGame()
+                self.stopTimer()
+
             })
             
             alertController.addAction(okAction)
@@ -73,6 +118,13 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
 
         }
         else {
+            
+            if let info = info {
+                LogService.gameWrongAnswer(level: info.level, sublevel: info.sublevel, game: info.game, time: secondsSpent)
+            }
+            
+            isFirstAnswer = false
+
             let alertController = UIAlertController(title: "Incorrecto!", message: "La respuesta es incorrecta 💩 Inténtalo de nuevo!", preferredStyle: UIAlertControllerStyle.alert)
 
             alertController.addAction(UIAlertAction.init(title: "Aceptar", style: .default, handler: nil))

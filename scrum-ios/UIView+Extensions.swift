@@ -24,8 +24,14 @@ extension UIView {
         self.layer.borderColor = color
     }
     
-    func makeCircular() {
-        self.layer.cornerRadius = self.frame.size.width / 2
+    
+    func round(to value: CGFloat? = nil){
+        if let value = value {
+            self.layer.cornerRadius = value
+        }
+        else {
+            self.layer.cornerRadius = self.frame.size.width/2
+        }
         self.clipsToBounds = true
     }
 }

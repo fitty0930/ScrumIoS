@@ -2,7 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -54,6 +53,23 @@
 	<array>
 		<string>Montserrat-Bold.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
+		<string>Square.ttf</string>
+		<string>Gotham Rounded Bold Italic.otf</string>
+		<string>Gotham Rounded Bold.otf</string>
+		<string>Gotham Rounded Book Italic.otf</string>
+		<string>Gotham Rounded Book.otf</string>
+		<string>Gotham Rounded Light Italic.otf</string>
+		<string>Gotham Rounded Light.otf</string>
+		<string>Gotham Rounded Medium Italic.otf</string>
+		<string>Gotham Rounded Medium.otf</string>
+		<string>GothamRounded-BoldItalic.otf</string>
+		<string>GothamRounded-BookItalic.otf</string>
+		<string>GothamRounded-Light.otf</string>
+		<string>GothamRounded-LightItalic.otf</string>
+		<string>GothamRounded-MediumItalic.otf</string>
+		<string>GothamRoundedBold.ttf</string>
+		<string>GothamRoundedBook.ttf</string>
+		<string>GothamRoundedMedium.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -64,8 +80,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

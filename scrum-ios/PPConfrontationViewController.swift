@@ -38,7 +38,7 @@ class PPConfrontationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? PPCardSelectionViewController {
             
-            destination.selectionType = .secondRound
+//            destination.selectionType = .secondRound
         }
     }
 

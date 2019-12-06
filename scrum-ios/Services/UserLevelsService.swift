@@ -25,11 +25,13 @@ class UserLevelsService {
     ]
     
 
+    
   
     static func createUserDocument(mail: String, userData: [String: Any], completionHandler: @escaping (Error?) -> Void) {
         
         RealmService.saveProgress(with: initialProgress)
-
+        RealmService.saveUserOverallData(with: ["currentAvailableLevel": 1])
+        
         db.collection("users").document(mail).setData(userData) { (error) in
             if let err = error {
                 print("Error adding document: \(err)")
@@ -97,16 +99,60 @@ class UserLevelsService {
                 completionHandler(error)
             }
             else {
+                
+                var levelValue: Int = 1
+                
                 for doc in (query?.documents)! {
 
                     let progress = Progress()
                     progress.initFrom(json: JSON.init(doc.data()))
                     
                     RealmService.saveProgress(with: progress)
+                    
+                    if progress.status != ConstantsHelper.LevelStatus.notStarted {
+                        levelValue = progress.level_id
+                    }
+                    print("Actual progress level id: ", progress.level_id)
+                    print("Possible new level id: ", levelValue)
+
                 }
+                
+                RealmService.saveUserOverallData(with: ["currentAvailableLevel" : levelValue])
                 completionHandler(nil)
 
             }
         })
+    }
+    
+    static func getUserInfoFor(userMail: String, completionHandler: @escaping (Error?) -> Void) {
+        
+        db.collection("users").document(userMail).collection("levels").getDocuments(completion: { (query, error) in
+            
+            if let error = error {
+                completionHandler(error)
+            }
+            else {
+                for doc in (query?.documents)! {
+                    
+                    let progress = Progress()
+                    progress.initFrom(json: JSON.init(doc.data()))
+                    
+                    RealmService.saveProgress(with: progress)
+                }
+                completionHandler(nil)
+                
+            }
+        })
+    }
+    
+    static func getProgressForNewLevelAfter(_ level: Int) -> [String: Any] {
+    
+        return ["level_number": level + 1,
+                "blocked": false,
+                "status": ConstantsHelper.LevelStatus.notStarted,
+                "tutorial_completed": false,
+                "actual_sublevel": 0,
+                "actual_game": 0
+                ]
     }
 }

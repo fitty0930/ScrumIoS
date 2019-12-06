@@ -13,65 +13,40 @@ class SystemLevelsService {
     
     
     static func getLevels(completionHandler: @escaping (_ levels: [Level], _ error: Error?) -> Void) {
-        if let path = Bundle.main.path(forResource: "db", ofType: "json") {
+        
+        var value = 1
+        var levels = [Level]()
+        
+        while let path = Bundle.main.path(forResource: "level\(value)", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 let jsonObj = try JSON(data: data)
                 
-                let levels = jsonObj["levels"].arrayValue.compactMap { Level(json: $0) }
-                
-                completionHandler(levels, nil)
+                if let level = Level(json: jsonObj) {
+                    levels.append(level)
+                }
+                value = value + 1
                 
             } catch let error {
                 print("parse error: \(error.localizedDescription)")
                 completionHandler([], error)
                 
             }
-        } else {
-            print("Invalid filename/path.")
-            completionHandler([], NSError.init())
         }
-        
+        completionHandler(levels, nil)
     }
     
-    
-    static func getMainLevels(completionHandler: @escaping (Error?) -> Void) {
-        if let path = Bundle.main.path(forResource: "db", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                let jsonObj = try JSON(data: data)
-                
-                ConstantsHelper.levels = jsonObj["levels"].arrayValue.compactMap { Level(json: $0) }
-                
-                
-                
-                completionHandler(nil)
-            } catch let error {
-                print("parse error: \(error.localizedDescription)")
-                completionHandler(error)
-
-            }
-        } else {
-            print("Invalid filename/path.")
-            completionHandler(NSError.init())
-
-        }
-    }
     
     static func getSublevels(for level: Level ,completionHandler: @escaping (_ sublevels: [SubLevel], _ error: Error?) -> Void)  {
-        if let path = Bundle.main.path(forResource: "db", ofType: "json") {
+        if let levelValue = level.id, let path = Bundle.main.path(forResource: "level\(levelValue)", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 let jsonObj = try JSON(data: data)
                 
-                if let levelValue = level.id {
-                    let levelObj = jsonObj["levels"].arrayValue[levelValue - 1]
-                    let sublevels = levelObj["sublevels"].arrayValue.compactMap { SubLevel(json: $0) }
-                    completionHandler(sublevels, nil)
-                }
-                else {
-                    completionHandler([], NSError.init())
-                }
+                
+                let sublevels = jsonObj["sublevels"].arrayValue.compactMap({ SubLevel(json: $0) })
+                
+                completionHandler(sublevels, nil)
                 
             } catch let error {
                 print("parse error: \(error.localizedDescription)")

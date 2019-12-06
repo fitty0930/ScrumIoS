@@ -26,6 +26,8 @@ class Progress: Object {
     @objc dynamic var tutorial_completed: Bool = false
     @objc dynamic var actual_game: Int = 0
     @objc dynamic var total_games: Int = 0
+    @objc dynamic var status: String = ""
+    
     override static func primaryKey() -> String? {
         return "level_id"
     }
@@ -36,7 +38,28 @@ class Progress: Object {
         self.tutorial_completed = json["tutorial_completed"].boolValue
         self.actual_game = json["actual_game"].intValue
         self.total_games = json["total_games"].intValue
+        self.status = json["status"].stringValue
     }
 
     
+}
+
+
+class UserOverallData: Object {
+    @objc dynamic var currentAvailableLevel: Int = 1
+    
+    override static func primaryKey() -> String? {
+        return "currentAvailableLevel"
+    }
+    
+    func initFrom(json: JSON){
+        self.currentAvailableLevel = json["currentAvailableLevel"].intValue
+    }
+    
+    func initFrom(data: [String : Int]) {
+        
+        if let value = data["currentAvailableLevel"] {
+            self.currentAvailableLevel = value
+        }
+    }
 }

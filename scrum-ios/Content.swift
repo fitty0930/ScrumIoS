@@ -21,6 +21,7 @@ enum ContentType: String {
     case video = "video"
     case textAnswer = "textAnswer"
     case imageAnswer = "imageAnswer"
+    case tagAnswer = "tagAnswer"
 }
 
 
@@ -40,7 +41,7 @@ class Content: BaseModel {
         self.data = json["data"].stringValue
         
         switch self.type {
-        case .imageAnswer, .textAnswer:
+        case .imageAnswer, .textAnswer, .tagAnswer:
             self.isCorrect = json["isCorrect"].boolValue
         default:
             break
@@ -127,11 +128,11 @@ class AnswerItemCell: UITableViewCell {
     var items: [Content]? {
         didSet {
             let controlHeight: CGFloat = 17
-            let size: CGSize = CGSize(width: self.controlContainerView.frame.width,
+            let size: CGSize = CGSize(width: self.controlContainerView.frame.width - 7,
                                       height: controlHeight)
             var offsetY: CGFloat = 0
             let initialY: CGFloat = 18
-            var origin: CGPoint = CGPoint(x: 8.0, y: initialY )
+            var origin: CGPoint = CGPoint(x: -15, y: initialY )
             
             var lastSettedRadio: DLRadioButton?
             
@@ -149,6 +150,8 @@ class AnswerItemCell: UITableViewCell {
                 radio.setTitleColor(UIColor.black, for: .normal)
                 radio.contentHorizontalAlignment = .left
                 radio.marginWidth = 10
+
+
                 
                 radio.addTarget(self, action: #selector(tappedOption), for: .touchUpInside)
                 
@@ -161,13 +164,16 @@ class AnswerItemCell: UITableViewCell {
                     self.controlContainerView.addSubview(radio)
                     
                 }
+//                let margins = controlContainerView.layoutMarginsGuide
+//                radio.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
+
                 
                 lastSettedRadio = radio
                 
                 
                 offsetY += 100
                 
-                origin = CGPoint(x: 8,
+                origin = CGPoint(x: -15,
                                  y: offsetY + initialY)
                 
                 self.buttons.append(radio)

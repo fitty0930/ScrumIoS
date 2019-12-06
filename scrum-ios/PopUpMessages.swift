@@ -15,10 +15,71 @@ enum PopUpMessageType {
     case completion
     case completionWithAction
     case taskCompleted
+    case waiting
     
 }
 
 class PopUpMessages {
+    
+    
+    // Bumps a notification structured entry
+//    private func showNotificationMessage(attributes: EKAttributes, title: String, desc: String, textColor: UIColor, imageName: String? = nil) {
+//        let title = EKProperty.LabelContent(text: title, style: .init(font: MainFont.medium.with(size: 16), color: textColor))
+//        let description = EKProperty.LabelContent(text: desc, style: .init(font: MainFont.light.with(size: 14), color: textColor))
+//        var image: EKProperty.ImageContent?
+//        if let imageName = imageName {
+//            image = .init(image: UIImage(named: imageName)!, size: CGSize(width: 35, height: 35))
+//        }
+//
+//        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+//        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+//
+//        let contentView = EKNotificationMessageView(with: notificationMessage)
+//        SwiftEntryKit.display(entry: contentView, using: attributes)
+//    }
+
+    
+    static func showNotificationMessage(with title: String, desc: String, buttonMessage: String, messageType: PopUpMessageType, textColor: UIColor, imageName: String? = nil, didDisappearAction: @escaping () -> ()) {
+        
+        var attributes = EKAttributes()
+        attributes = EKAttributes.bottomToast
+        attributes.entryBackground = .visualEffect(style: .light)
+        attributes.scroll = .edgeCrossingDisabled(swipeable: true)
+        attributes.statusBar = .dark
+        attributes.lifecycleEvents.didDisappear = {
+            didDisappearAction()
+        }
+
+        
+        let title = EKProperty.LabelContent(text: title, style: .init(font: Font.HelveticaNeue.medium.with(size: 16), color: textColor))
+        let description = EKProperty.LabelContent(text: desc, style: .init(font: Font.HelveticaNeue.medium.with(size: 14), color: textColor))
+        var image: EKProperty.ImageContent?
+        if let imageName = imageName {
+            image = .init(image: UIImage(named: imageName)!, size: CGSize(width: 35, height: 35))
+        }
+        
+        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+
+        let contentView = EKNotificationMessageView(with: notificationMessage)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+
+//        let button = EKProperty.ButtonContent(label: .init(text: buttonMessage, style: .init(font: Font.HelveticaNeue.bold.with(size: 16), color: .clear)), backgroundColor: .clear, highlightedBackgroundColor: UIColor.clear)
+//
+//
+//
+//        let message = EKPopUpMessage(themeImage: nil, title: title, description: description, button: button) {
+//            SwiftEntryKit.dismiss()
+//            //            dismissAction()
+//
+//        }
+//
+//        let contentView = EKPopUpMessageView(with: message)
+//        setGradientBackground(to: contentView)
+//        SwiftEntryKit.display(entry: contentView, using: attributes)
+
+        
+    }
     
     
     static func showCompletedTaskWithCompletion(with title: String, description: String, buttonMessage: String, messageType: PopUpMessageType, dismissAction: @escaping () -> ()){
@@ -91,7 +152,7 @@ class PopUpMessages {
             attributes.entryBackground = .color(color: .white)
             attributes.screenBackground = .color(color: UIColor(white: 100.0/255.0, alpha: 0.3))
             attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
-            attributes.screenInteraction = .dismiss
+            attributes.screenInteraction = .absorbTouches
             attributes.entryInteraction = .absorbTouches
             attributes.scroll = .enabled(swipeable: false, pullbackAnimation: .jolt)
             attributes.roundCorners = .all(radius: 25)
@@ -103,6 +164,16 @@ class PopUpMessages {
             attributes.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
             attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.bounds.minEdge), height: .intrinsic)
             attributes.statusBar = .dark
+        case .waiting:
+            attributes = EKAttributes.bottomToast
+            attributes.entryBackground = .visualEffect(style: .light)
+            attributes.scroll = .edgeCrossingDisabled(swipeable: true)
+            attributes.statusBar = .dark
+            attributes.lifecycleEvents.didDisappear = {
+                // Executed after the entry animates outside
+            }
+
+            
         default:
             attributes = EKAttributes.centerFloat
             attributes.hapticFeedbackType = .success

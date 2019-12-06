@@ -19,12 +19,17 @@ class AppCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         self.navigationController = navigationController
     }
     
+    fileprivate func showRealmFileInConsole() {
+        print()
+        print("Realm file location: ", Realm.Configuration.defaultConfiguration.fileURL!)
+        print()
+    }
+    
     func start() {
-        navigationController.delegate = self
         
-        if let user = Auth.auth().currentUser {
-//            UserLevelsService.getProgressesFor(userMail: user.email!) { (error) in }
-
+        navigationController.delegate = self
+        showRealmFileInConsole()
+        if let _ = Auth.auth().currentUser {
             showLevels()
         }
         else {
@@ -34,7 +39,6 @@ class AppCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
             print("Realm Configuration file: ", file)
         }
     }
-
     
     func askForCredentials() {
         let child = CredentialsCoordinator.init(navigationController: navigationController)

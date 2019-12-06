@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import Kingfisher
 
+enum SquaredQuizType {
+    case twoSquares
+    case fourSquares
+}
+
 class SquaredQuizVM: BaseVM, AnswerSelectionDelegate {
     
     typealias OptionSelectedBlock = (_: Content)-> Void
@@ -18,6 +23,7 @@ class SquaredQuizVM: BaseVM, AnswerSelectionDelegate {
     var items = [Content]()
     var question = Content.init()
     
+    var type: SquaredQuizType = .fourSquares
     
     func getContentFor(game: Game) {
         
@@ -97,8 +103,13 @@ extension SquaredQuizVM: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfCells: CGFloat = 2
         let cellWidth = (UIScreen.main.bounds.size.width - (3*10.0)) / numberOfCells
-        return CGSize.init(width: cellWidth, height: cellWidth)
         
+        switch type {
+        case .twoSquares:
+            return CGSize.init(width: cellWidth * 2 , height: cellWidth)
+        case .fourSquares:
+            return CGSize.init(width: cellWidth, height: cellWidth)
+        }
     }
     
 }
@@ -140,10 +151,5 @@ extension SquaredQuizVM: UICollectionViewDelegate {
         default:
             break
         }
-
-        
     }
-    
-    
 }
-

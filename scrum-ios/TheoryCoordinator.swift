@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TheoryCoordinator: Coordinator {
     
@@ -22,6 +23,9 @@ class TheoryCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    var tutorialTimeTimer: Timer?
+    var secondsSpent = 0
+    
     func start() {
         
         let vc = TheoryViewController.instantiate(for: ConstantsHelper.Storyboard.tutorial)
@@ -29,46 +33,34 @@ class TheoryCoordinator: Coordinator {
         vc.sublevel = sublevel
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
+        
+        startTimer()
     }
     
     
+    func startTimer(){
+        tutorialTimeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        secondsSpent += 1
+        print("Tutorial Timer: ", secondsSpent)
+
+    }
+    
+
     func didFinishTurorial(){
-        
-        if let level = level, let sublvl = sublevel {
-            
-            let newProgress: [String : Any] = [
-                "level_number": level.id ?? 0,
-                "actual_sublevel": sublvl.id,
-                "tutorial_completed": true,
-                "actual_game": 0,
-                "total_games": sublvl.games?.count ?? 1
-            ]
-            
-            RealmService.saveProgress(with: newProgress)
-        }
-        
+        stopTimerAndLogTime()
+        addFinishedTutorialProgress()
         finishTutorial()
     }
     
     func didSkippedTutorial(){
-        if let level = level, let sublvl = sublevel {
-            LogService.tutorialSkipped(level: level.id ?? 0 , sublevel: sublvl.id)
-            
-            let newProgress: [String : Any] = [
-                "level_number": level.id ?? 0,
-                "actual_sublevel": sublvl.id,
-                "tutorial_completed": true,
-                "actual_game": 0,
-                "total_games": sublvl.games?.count ?? 1
-
-            ]
-            
-            RealmService.saveProgress(with: newProgress)
-        }
+        stopTimerAndLogTime()
+        addFinishedTutorialProgress()
+        logSkippedTutorial()
         finishTutorial()
-        
     }
-    
     
     func finishTutorial(){
         parentCoordinator?.didFinishTutorial(self)
@@ -78,4 +70,39 @@ class TheoryCoordinator: Coordinator {
         parentCoordinator?.didExitTutorial(self)
     }
     
+    
+    fileprivate func addFinishedTutorialProgress() {
+        if let level = level, let sublvl = sublevel {
+            
+            let newProgress: [String : Any] = [
+                "level_number": level.id ?? 0,
+                "actual_sublevel": sublvl.id,
+                "tutorial_completed": true,
+                "actual_game": 0,
+                "total_games": sublvl.games?.count ?? 1,
+                "status": ConstantsHelper.LevelStatus.started
+            ]
+            
+            RealmService.saveProgress(with: newProgress)
+            UserLevelsService.updateLevel(level: "level_\(level.id ?? 0)", for: Auth.auth().currentUser?.email ?? "", with: newProgress)
+        }
+    }
+    
+    fileprivate func stopTimerAndLogTime(){
+        tutorialTimeTimer?.invalidate()
+        logTutorialTimeSpent()
+    }
+    
+    
+    fileprivate func logTutorialTimeSpent(){
+        if let level = level, let sublvl = sublevel {
+            LogService.tutorialTimeSpent(level: level.id ?? 0 , sublevel: sublvl.id, time: secondsSpent)
+        }
+    }
+    
+    fileprivate func logSkippedTutorial() {
+        if let level = level, let sublvl = sublevel {
+            LogService.tutorialSkipped(level: level.id ?? 0 , sublevel: sublvl.id)
+        }
+    }
 }

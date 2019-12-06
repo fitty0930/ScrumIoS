@@ -18,6 +18,8 @@ class SubLevelCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var circularProgressView: MBCircularProgressBarView!
     
+    var status: LevelStatus?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backView.layer.cornerRadius = 5
@@ -27,13 +29,29 @@ class SubLevelCollectionViewCell: UICollectionViewCell {
     
     func setData(for sublevel: SubLevel, with progress: Progress?){
         self.sublevelTitleLabel.text = sublevel.name
-        self.sublevelStatusLabel.text = sublevel.status
+        
         if let progress = progress {
-            self.circularProgressView.value = CGFloat(sublevel.percentage(from: progress))
+            
+            let progressStatus = sublevel.getStatus(for: progress, and: progress.sublevel_id)
+            sublevel.status = progressStatus.status
+            
+            self.circularProgressView.value = CGFloat(progressStatus.progress)
+            
+            self.sublevelStatusLabel.text = progressStatus.status.asString()
+            if progressStatus.status == .locked {
+                self.backView.backgroundColor = .gray
+                self.circularProgressView.backgroundColor = .gray
+            }
+            else {
+                self.backView.backgroundColor = .white
+                self.circularProgressView.backgroundColor = .white
+            }   
         }
         else {
             self.circularProgressView.value = 0.0
+            self.sublevelStatusLabel.text = "NO INICIADO"
         }
     }
-    
 }
+
+

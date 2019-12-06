@@ -19,9 +19,6 @@ class LevelsCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         self.navigationController = navigationController
     }
     
-    func fetchProgresses() {
-        
-    }
     
     func start() {
         let vc = LevelsViewController.instantiate(for: ConstantsHelper.Storyboard.levels)
@@ -34,12 +31,13 @@ class LevelsCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         self.parentCoordinator?.didFinishDeauthenticating()
     }
     
-    func openLevel(level: Level, color: UIColor){
+    func openLevel(level: Level, color: UIColor, progress: Progress?){
 
-        let vc = SubLevelViewController.instantiate(for: ConstantsHelper.Storyboard.sublevels)
+        let vc = SubLevelViewController.instantiate(for: ConstantsHelper.Storyboard.levels)
         vc.coordinator = self
         vc.view.backgroundColor = color
         vc.currentLevel = level
+        vc.progress = progress
         navigationController.pushViewController(vc, animated: true)
     }
     
@@ -64,16 +62,16 @@ class LevelsCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         
         // We’re still here – it means we’re popping the view controller, so we can check whether it’s a initial or levels
         
-        
-        if let signUpViewController = fromViewController as? SignUpViewController {
-            childDidFinish(signUpViewController.coordinator)
-            print("Removing CredentialsCoordinator for SignUpVC")
-        }
-        
-        if let loginViewController = fromViewController as? LoginViewController {
-            childDidFinish(loginViewController.coordinator)
-            print("Removing CredentialsCoordinator for LoginVC")
-        }
+//        
+//        if let signUpViewController = fromViewController as? SignUpViewController {
+//            childDidFinish(signUpViewController.coordinator)
+//            print("Removing CredentialsCoordinator for SignUpVC")
+//        }
+//        
+//        if let loginViewController = fromViewController as? LoginViewController {
+//            childDidFinish(loginViewController.coordinator)
+//            print("Removing CredentialsCoordinator for LoginVC")
+//        }
         
         
         if let levelsViewController = fromViewController as? LevelsViewController {

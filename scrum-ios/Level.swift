@@ -44,7 +44,10 @@ class Level: BaseModel {
     }
     
    
-    
+    func status() -> LevelStatus{
+        return .available
+        
+    }
     
     
     func percentage(from progress: Progress) -> Int {
@@ -59,6 +62,8 @@ class Level: BaseModel {
         
         let doneSoFar = 100 * sublevelsCompleted + actualSublevelPercentage
         
+        if total == 0 { return 0 }
+        
         return Int(floor(CGFloat(doneSoFar * 100) / CGFloat(total)))
         
     }
@@ -67,7 +72,7 @@ class Level: BaseModel {
         
         if progress.sublevel_id == 0 { return 0 }
         
-        return self.sublevels[progress.sublevel_id].percentage(from: progress)
+        return self.sublevels[progress.sublevel_id - 1].percentage(from: progress, forPrevious: false)
     }
 
     

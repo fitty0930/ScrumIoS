@@ -101,8 +101,10 @@ extension ContentVM: UITableViewDataSource {
                 cell.delegate = self
                 return cell
             }
+            
+        default:
+            return UITableViewCell()
         }
-
         
         return UITableViewCell()
     }

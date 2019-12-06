@@ -1,6 +1,5 @@
 use_frameworks!
 def shared_pods
-    pod 'SkyFloatingLabelTextField', '~> 3.0'
     pod 'MBCircularProgressBar'
     pod 'UPCarouselFlowLayout'
     pod 'MaterialTextField', '~> 0.2'
@@ -18,6 +17,9 @@ def shared_pods
     pod 'GoogleSignIn'
     pod 'SwiftyJSON', '4.0'
     pod 'RealmSwift'
+    pod 'IQKeyboardManagerSwift', '6.0.4'
+    pod 'Amplitude-iOS', '~> 4.0.4'
+
 
 end
 

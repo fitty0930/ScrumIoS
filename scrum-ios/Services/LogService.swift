@@ -10,25 +10,24 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 import Firebase
+import Amplitude_iOS
 
 class LogService {
 
     static let db = Firestore.firestore()
-    
-
 
     static func gameCorrectInFirstTryAnswer(level: Int, sublevel: Int, game: Int, time: Int) {
         
         let eventData: [String: Any] = [
             "uuid": Auth.auth().currentUser?.uid ?? "-",
-            "type": "gameCorrectInFirstTryAnswer",
+            "type": "game_correct_answer_in_first_try",
             "value": "\(time)",
-            "level": level,
-            "sublevel": sublevel,
-            "game": game
+            "level": "\(level).\(sublevel).\(game)"
         ]
         
-        Analytics.logEvent("gameCorrectInFirstTryAnswer", parameters: eventData)
+//        Analytics.logEvent("game_correct_answer_in_first_try", parameters: eventData)
+        Amplitude.instance()?.logEvent("game_correct_answer_in_first_try", withEventProperties: eventData, outOfSession: false)
+
         
     }
     
@@ -37,14 +36,14 @@ class LogService {
         
         let eventData: [String: Any] = [
             "uuid": Auth.auth().currentUser?.uid ?? "-",
-            "type": "gameCorrectAnswer",
+            "type": "game_correct_answerr",
             "value": "\(time)",
-            "level": level,
-            "sublevel": sublevel,
-            "game": game
+            "level": "\(level).\(sublevel).\(game)"
         ]
         
-        Analytics.logEvent("gameCorrectAnswer", parameters: eventData)
+//        Analytics.logEvent("game_correct_answerr", parameters: eventData)
+        Amplitude.instance()?.logEvent("game_correct_answer", withEventProperties: eventData, outOfSession: false)
+
         
     }
 
@@ -53,14 +52,14 @@ class LogService {
         
         let eventData: [String: Any] = [
             "uuid": Auth.auth().currentUser?.uid ?? "-",
-            "type": "gameWrongAnswer",
+            "type": "game_wrong_answer",
             "value": "\(time)",
-            "level": level,
-            "sublevel": sublevel,
-            "game": game
+            "level": "\(level).\(sublevel).\(game)"
         ]
         
-        Analytics.logEvent("gameWrongAnswer", parameters: eventData)
+//        Analytics.logEvent("game_wrong_answer", parameters: eventData)
+        Amplitude.instance()?.logEvent("game_wrong_answer", withEventProperties: eventData, outOfSession: false)
+
 
     }
     
@@ -68,14 +67,14 @@ class LogService {
         
         let eventData: [String: Any] = [
             "uuid": Auth.auth().currentUser?.uid ?? "-",
-            "type": "gameTimeSpent",
+            "type": "game_time_spent",
             "value": "\(time)",
-            "level": level,
-            "sublevel": sublevel,
-            "game": game
+            "level": "\(level).\(sublevel).\(game)",
         ]
         
-        Analytics.logEvent("gameTimeSpent", parameters: eventData)
+//        Analytics.logEvent("game_time_spent", parameters: eventData)
+        Amplitude.instance()?.logEvent("game_time_spent", withEventProperties: eventData, outOfSession: false)
+
 
     }
     
@@ -83,14 +82,14 @@ class LogService {
         
         let eventData: [String: Any] = [
             "uuid": Auth.auth().currentUser?.uid ?? "-",
-            "type": "tutorialTimeSpent",
+            "type": "tutorial_time_spent",
             "value": "\(time)",
-            "level": level,
-            "sublevel": sublevel,
-            "game": 0
+            "level": "\(level).\(sublevel)",
         ]
 
-        Analytics.logEvent("tutorialTimeSpent", parameters: eventData)
+//        Analytics.logEvent("tutorial_time_spent", parameters: eventData)
+        Amplitude.instance()?.logEvent("tutorial_time_spent", withEventProperties: eventData, outOfSession: false)
+
         
     }
     
@@ -98,15 +97,16 @@ class LogService {
         
         let eventData: [String: Any] = [
             "uuid": Auth.auth().currentUser?.uid ?? "-",
-            "type": "tutorialSkipped",
-            "value": "true",
-            "level": level,
-            "sublevel": sublevel,
-            "game": 0
+            "type": "tutorial_skipped",
+            "level": "\(level).\(sublevel)",
         ]
         
-        Analytics.logEvent("tutorialSkipped", parameters: eventData)
-
+//        Analytics.logEvent("tutorial_skipped", parameters: eventData)
+        Amplitude.instance()?.logEvent("tutorial_skipped", withEventProperties: eventData, outOfSession: false)
+        
+//        Amplitude.instance()?.printEventsCount()
+//
+//        Amplitude.instance()?.uploadEvents()
     }
     
 }

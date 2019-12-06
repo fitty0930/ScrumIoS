@@ -16,6 +16,14 @@ class User: Object {
     @objc dynamic var mail: String = ""
     @objc dynamic var age: Int = 0
     @objc dynamic var profession: String = ""
+    @objc dynamic var gender: String = ""
+    @objc dynamic var city: String = ""
+    @objc dynamic var state: String = ""
+    @objc dynamic var country: String = ""
+    @objc dynamic var gameTasteLevel: String = ""
+    @objc dynamic var gameTimeLevel: String = ""
+
+    
     @objc dynamic var uid: String = ""
     
     
@@ -24,7 +32,15 @@ class User: Object {
         self.mail = json["mail"].stringValue
         self.age = json["age"].intValue
         self.profession = json["profession"].stringValue
+        self.gender = json["gender"].stringValue
+        self.city = json["city"].stringValue
+        self.state = json["state"].stringValue
+        self.country = json["country"].stringValue
+        self.gameTasteLevel = json["gameTasteLevel"].stringValue
+        self.gameTimeLevel = json["gameTimeLevel"].stringValue
+
         self.uid = json["uid"].stringValue
+            
     }
     
     override static func primaryKey() -> String? {

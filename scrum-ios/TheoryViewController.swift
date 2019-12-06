@@ -13,6 +13,7 @@ class TheoryViewController: UIViewController, Storyboarded {
 
     weak var coordinator: TheoryCoordinator?
     
+    @IBOutlet weak var sublevelTitle: UILabel!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var pageNextButton: UIButton!
     @IBOutlet weak var pageBackButton: UIButton!
@@ -37,6 +38,11 @@ class TheoryViewController: UIViewController, Storyboarded {
         self.letsPlayButton.hide()
         updatesStatusBarAppearanceAutomatically = true
         pageControl.addTarget(self, action: #selector(TheoryViewController.didChangePageControlValue), for: .valueChanged)
+        guard let sublevel = sublevel else {
+            sublevelTitle.hide()
+            return
+        }
+        sublevelTitle.text = sublevel.name
     }
 
     override func viewWillAppear(_ animated: Bool) {

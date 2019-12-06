@@ -23,6 +23,12 @@ class SublevelCoordinator: Coordinator {
     }
     
     
+    fileprivate func showTutorial() {
+        if let steps = self.sublevel?.theoricalSteps {
+            self.showTutorial(steps: steps)
+        }
+    }
+    
     func start() {
         
         guard let level = level else {
@@ -34,15 +40,17 @@ class SublevelCoordinator: Coordinator {
             if let prog = progress {
                 self.progress = prog
                 
-                if prog.tutorial_completed {
-                    self.showGame()
+                if prog.sublevel_id < (self.sublevel?.id)! {
+                    self.showTutorial()
                 }
                 else {
-                    if let steps = self.sublevel?.theoricalSteps {
-                        self.showTutorial(steps: steps)
+                    if prog.tutorial_completed {
+                        self.showGame()
+                    }
+                    else {
+                        self.showTutorial()
                     }
                 }
-                
             }
         }
     }
@@ -69,10 +77,13 @@ class SublevelCoordinator: Coordinator {
             child.levelValue = level.id
             child.sublevelValue = sublevel.id
             child.gamesLeftToPlay = sublevel.games ?? []
+            child.fromGame = currentGame()
             childCoordinators.append(child)
             child.start()
         }
     }
+    
+    
     
     
     func didFinishTutorial(_ coordinator: TheoryCoordinator) {
@@ -90,13 +101,20 @@ class SublevelCoordinator: Coordinator {
         childDidFinish(coordinator)
         backToSublevel()
     }
-
-    func didFinishSublevel(){
+    
+    func didFinishSublevel(value: Int){
         
-        // TODO: Complete sublevel flow.
+        if value == level?.sublevels.count {
+            if let level = level, let id = level.id {
+                NotificationCenter.default.post(name: .didFinishAllSublevels, object: nil)
+                RealmService.saveUserOverallData(with: ["currentAvailableLevel": id+1])
+            }
+        }
+        
+        
+        
         backToSublevel()
     }
-    
     
     func backToSublevel(){
         
@@ -106,9 +124,18 @@ class SublevelCoordinator: Coordinator {
                 break
             }
         }
-        
     }
 
-
     
+    private func currentGame() -> Int {
+        let currentSublevelID = sublevel?.id
+        let progressSublevelID = progress?.sublevel_id
+        
+        if currentSublevelID == progressSublevelID {
+            return progress?.actual_game ?? 0
+        }
+        else {
+            return 0
+        }
+    }
 }

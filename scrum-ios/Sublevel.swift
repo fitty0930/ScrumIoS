@@ -9,6 +9,19 @@
 import Foundation
 import SwiftyJSON
 
+public enum LevelStatus: String {
+    
+    case locked = "BLOQUEADO"
+    case available = "INICIAR"
+    case started = "EN CURSO"
+    case finished = "COMPLETO"
+    
+    public func asString() -> String {
+        return self.rawValue
+    }
+}
+
+
 class SubLevel: BaseModel {
     
     var percentage: Int?
@@ -17,21 +30,14 @@ class SubLevel: BaseModel {
     var theoryWatched: Bool = false
     var theoricalSteps: [Step]?
     var games: [Game]?
+    
+    
+    
     var id: Int {
         return getId()
     }
-    var status: String {
-        
-        switch percentage {
-        case 0?:
-            return "INICIAR"
-        case 100?:
-            return "FINALIZADO"
-        default:
-            return "EN CURSO"
-        }
-        
-    }
+    
+    var status: LevelStatus?
     
     override init() {}
     
@@ -43,14 +49,65 @@ class SubLevel: BaseModel {
         self.games = json["info_games"].arrayValue.compactMap { Game(json: $0) }
     }
     
+    fileprivate func hasNeverPlayedBefore(_ current: Int) -> Bool {
+        return current == 0
+    }
     
-    func percentage(from progress: Progress) -> Int {
+    fileprivate func isFirstSublevel() -> Bool {
+        return id == 1
+    }
+    
+    func getStatus(for progress: Progress, and current: Int) -> ProgressStatus {
+        
+        let completion = self.percentage(from: progress, forPrevious: false)
+        
+        if hasNeverPlayedBefore(current) { // NO ARRANCO NADA AUN
+            if isFirstSublevel() { return ProgressStatus.init(status: .available, progress: completion) }
+            else {
+                return ProgressStatus.init(status: .locked, progress: completion)
+            }
+        }
+        else if current < id { // ACTUAL ES ALGUN SUBLEVEL ANTERIOR
+            
+            if current == id - 1 {
+               
+                let lastSublevelProgress = self.percentage(from: progress, forPrevious: true)
+                
+                if lastSublevelProgress == 100 {
+                    return ProgressStatus.init(status: .available, progress: completion)
+                }
+                else {
+                    return ProgressStatus.init(status: .locked, progress: completion)
+                }
+                
+            }
+            else {
+              return ProgressStatus.init(status: .locked, progress: completion)
+            }
+        }
+        else {
+            switch completion {
+            case 0:
+                return ProgressStatus.init(status: .available, progress: completion)
+            case 100:
+                return ProgressStatus.init(status: .finished, progress: completion)
+            default:
+                return ProgressStatus.init(status: .started, progress: completion)
+            }
+        }
+    }
+    
+    
+    
+    func percentage(from progress: Progress, forPrevious: Bool) -> Int {
+
+        let id = forPrevious ? self.id - 1 : self.id
         
         if progress.sublevel_id < id {
-            return 100
+            return 0
         }
         else if progress.sublevel_id > id {
-            return 0
+            return 100
         }
         else {
             let total = progress.total_games + 1
@@ -59,6 +116,8 @@ class SubLevel: BaseModel {
             return Int(floor(CGFloat(doneSoFar * 100) / CGFloat(total)))
         }
     }
+    
+    
     
     fileprivate func getId() -> Int{
         
@@ -71,4 +130,11 @@ class SubLevel: BaseModel {
         }
         return 0
     }
+}
+
+struct ProgressStatus {
+    
+    var status: LevelStatus
+    var progress: Int
+    
 }

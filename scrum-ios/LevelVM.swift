@@ -13,6 +13,7 @@ import FirebaseAuth
 class LevelVM: BaseVM {
     
     var progresses: [Progress] = []
+    var overallData: UserOverallData?
     var levels: [Level] = []
     
     let levelColors: [UIColor] = [UIColor(red:1.00, green:0.65, blue:0.10, alpha:1.0), UIColor(red:0.37, green:0.55, blue:0.38, alpha:1.0), UIColor(red:0.94, green:0.44, blue:0.42, alpha:1.0), UIColor(red:0.62, green:0.68, blue:0.78, alpha:1.0), UIColor(red:0.09, green:0.47, blue:0.58, alpha:1.0), UIColor(red:0.56, green:0.18, blue:0.34, alpha:1.0), UIColor(red:0.47, green:0.71, blue:0.45, alpha:1.0)]
@@ -32,7 +33,10 @@ class LevelVM: BaseVM {
                     UserLevelsService.getProgressesFor(userMail: user.email!) { (error) in
                         if error == nil {
                             self.progresses = self.getProgresses()
-                            self.delegate?.didFinishTask(sender: self, errorMessage: nil, dataArray: [])
+                            RealmService.getOverallData(completionHandler: { (data, error) in
+                                self.overallData = data
+                                 self.delegate?.didFinishTask(sender: self, errorMessage: nil, dataArray: [])
+                            })
                         }
                     }
                 }

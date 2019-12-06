@@ -16,6 +16,7 @@ class GameCoordinator: Coordinator {
     var gamesLeftToPlay = [Game]()
     var levelValue: Int?
     var sublevelValue: Int?
+    var fromGame: Int = 0
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -26,15 +27,15 @@ class GameCoordinator: Coordinator {
         
         let vc = GameViewController.instantiate(for: ConstantsHelper.Storyboard.tutorial)
         vc.games = gamesLeftToPlay
-        vc.currentGameIndex = 0 // currentGameIndex
+        vc.currentGameIndex = fromGame // currentGameIndex
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     
     
-    func didFinishAllGames(){
-        parentCoordinator?.didFinishSublevel()
+    func didFinishAllGames(forSublevel: Int){
+        parentCoordinator?.didFinishSublevel(value: forSublevel)
 
     }
     

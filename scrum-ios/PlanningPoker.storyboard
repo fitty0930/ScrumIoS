@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -120,7 +120,7 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="296-nw-NH0">
-                                        <rect key="frame" x="149" y="567" width="78" height="30"/>
+                                        <rect key="frame" x="148.5" y="567" width="78" height="30"/>
                                         <state key="normal" title="Elegir carta"/>
                                         <connections>
                                             <segue destination="mMu-tJ-iwd" kind="show" id="TZF-rW-osa"/>
@@ -256,7 +256,7 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKY-63-oiL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="327"/>
+            <point key="canvasLocation" x="2793" y="322"/>
         </scene>
         <!--Card Selected View Controller-->
         <scene sceneID="Ym0-nM-HxZ">
@@ -376,14 +376,14 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="111.5" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGP-Op-Ie0">
-                                                        <rect key="frame" x="10" y="79" width="91.5" height="121"/>
+                                                        <rect key="frame" x="10" y="78.5" width="91.5" height="121.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J3K-EW-bl1">
-                                                                <rect key="frame" x="-0.5" y="0.0" width="91.5" height="121"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="121.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcf-1J-yvc">
-                                                                <rect key="frame" x="35.5" y="42" width="21" height="37"/>
+                                                                <rect key="frame" x="35.5" y="42.5" width="21" height="37"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -400,7 +400,7 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Jugador 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTh-ms-w8k">
-                                                        <rect key="frame" x="20" y="40" width="72.5" height="18.5"/>
+                                                        <rect key="frame" x="19.5" y="40" width="72.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -419,14 +419,14 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                 <rect key="frame" x="121.5" y="0.0" width="112" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1R-kM-n4l">
-                                                        <rect key="frame" x="10" y="39" width="92" height="121"/>
+                                                        <rect key="frame" x="10" y="38.5" width="92" height="121.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iND-HD-C9r">
-                                                                <rect key="frame" x="-0.5" y="0.0" width="92" height="121"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="92" height="121.5"/>
                                                                 <color key="backgroundColor" red="0.135315556" green="0.626911789" blue="0.32054430020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-6n-nwN">
-                                                                <rect key="frame" x="35.5" y="42" width="21" height="37"/>
+                                                                <rect key="frame" x="35.5" y="42.5" width="21" height="37"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -462,14 +462,14 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                 <rect key="frame" x="243.5" y="0.0" width="111.5" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0m-Lu-S6w">
-                                                        <rect key="frame" x="10" y="79" width="91.5" height="121"/>
+                                                        <rect key="frame" x="10" y="78.5" width="91.5" height="121.5"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAH-Ul-MN9">
-                                                                <rect key="frame" x="-0.5" y="0.0" width="91.5" height="121"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="121.5"/>
                                                                 <color key="backgroundColor" red="0.135315556" green="0.626911789" blue="0.32054430020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xki-nW-1jU">
-                                                                <rect key="frame" x="35" y="42" width="21" height="37"/>
+                                                                <rect key="frame" x="35" y="42.5" width="21" height="37"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -516,11 +516,11 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                 <rect key="frame" x="10" y="78.5" width="92" height="121.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8W-CW-Ag7">
-                                                        <rect key="frame" x="-0.5" y="0.0" width="92" height="121.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="92" height="121.5"/>
                                                         <color key="backgroundColor" red="0.135315556" green="0.626911789" blue="0.32054430020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdb-rf-hdN">
-                                                        <rect key="frame" x="36" y="42.5" width="21" height="37"/>
+                                                        <rect key="frame" x="35.5" y="42.5" width="21" height="37"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -537,7 +537,7 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Vos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDd-L0-z3M">
-                                                <rect key="frame" x="43" y="40" width="27.5" height="18.5"/>
+                                                <rect key="frame" x="42.5" y="40" width="27.5" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -633,11 +633,11 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                         <rect key="frame" x="10" y="0.0" width="80" height="95"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kaC-I6-Ir7">
-                                                                <rect key="frame" x="-0.5" y="0.0" width="80.5" height="95"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="95"/>
                                                                 <color key="backgroundColor" red="0.135315556" green="0.626911789" blue="0.32054430020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uge-Sp-MKj">
-                                                                <rect key="frame" x="29.5" y="29.5" width="21" height="37"/>
+                                                                <rect key="frame" x="29.5" y="29" width="21" height="37"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -669,11 +669,11 @@ En esta simulacion veremos como se realiza una iteracion simple.</string>
                                                         <rect key="frame" x="10" y="0.0" width="80" height="95"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cVZ-am-w8K">
-                                                                <rect key="frame" x="-0.5" y="0.0" width="80.5" height="95"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="95"/>
                                                                 <color key="backgroundColor" red="0.135315556" green="0.626911789" blue="0.32054430020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQT-Ut-Jc0">
-                                                                <rect key="frame" x="29.5" y="29.5" width="21" height="37"/>
+                                                                <rect key="frame" x="29.5" y="29" width="21" height="37"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -782,7 +782,7 @@ Una vez explicadas las razones se vuelven a elegir cartas para la misma funciona
                                         <state key="normal" title="X"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Se decidio:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufi-Of-S3o">
-                                        <rect key="frame" x="20" y="60" width="335" height="19"/>
+                                        <rect key="frame" x="20" y="60" width="335" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -801,7 +801,7 @@ Una vez explicadas las razones se vuelven a elegir cartas para la misma funciona
                                                 <color key="backgroundColor" red="0.135315556" green="0.626911789" blue="0.32054430020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en0-Ux-7Dd">
-                                                <rect key="frame" x="27.5" y="43.5" width="36" height="63.5"/>
+                                                <rect key="frame" x="27" y="43.5" width="36" height="63.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="52"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>

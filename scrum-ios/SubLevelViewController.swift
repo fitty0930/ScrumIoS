@@ -19,12 +19,13 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
 
     var progress: Progress?
-   
     
     var sublevelCompletedInfo: SublevelCompletedInfo?
     var cellSize: CGSize = CGSize.init()
     var viewModel = SubLevelVM()
     var currentLevel: Level?
+    
+    var allSublevelsFinished = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,9 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         collectionView.collectionViewLayout = layout
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinishAllSublevels(_:)), name: .didFinishAllSublevels, object: nil)
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +69,7 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
         if let current = currentLevel {
             self.subLevelsTitle.text = self.viewModel.getDescription()
             if let levelId = current.id {
-                self.progress = self.viewModel.progressFor(level: levelId)
+                self.progress = self.viewModel.progressFor(level: levelId - 1)
             }
         }
     }
@@ -86,13 +90,27 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
             
             sublevelCompletedInfo = nil
         }
-
+        
+        if allSublevelsFinished {
+            allSublevelsFinished = false
+            let alertController = UIAlertController(title: "Felicitaciones!", message: "Completaste el nivel! 🤓", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
+                alert -> Void in
+                self.coordinator?.back()
+            })
+            
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
     }
     
     
     func setCellSize()
     {
-        let scaledWidth = UIScreen.main.bounds.size.width * (455/UIScreen.main.bounds.size.height)
+//        let scaledWidth = UIScreen.main.bounds.size.width * (455/UIScreen.main.bounds.size.height)
         self.cellSize = CGSize(width: 455, height: 455)
     }
     
@@ -111,21 +129,20 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let current = currentLevel {
-            coordinator?.openSublevel(level: current, sublevel: self.viewModel.sublevels[indexPath.row])
+        let sublevel = self.viewModel.sublevels[indexPath.row]
+        
+        guard let current = currentLevel else { return }
+        
+        if let status = sublevel.status {
+            
+            switch status {
+            case .available, .started:
+                coordinator?.openSublevel(level: current, sublevel: self.viewModel.sublevels[indexPath.row])
+            default:
+                print("NOT AVAILABLE!")
+            }
 
         }
-        
-        
-        
-//        let levelStoryboard = UIStoryboard.init(name: "Tutorial", bundle: nil)
-//        let sublevelViewController = levelStoryboard.instantiateViewController(withIdentifier: "SubLevelLogicViewController") as! SubLevelLogicViewController
-//
-//        sublevelViewController.sublevel = self.viewModel.sublevels[indexPath.row]
-//        self.navigationController?.pushViewController(sublevelViewController, animated: true)
-        
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -140,26 +157,17 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
         self.coordinator?.back()
     }
 
-    func chooseOnboardForLevel1(index: IndexPath){
-        
-        let sublevel = index.row + 1
-        
-        switch sublevel {
-        
-        case 1:
-            let levelStoryboard = UIStoryboard.init(name: "Level1", bundle: nil)
-            let sublevelViewController = levelStoryboard.instantiateViewController(withIdentifier: "L1S1") as! L1S1ViewController
-            self.navigationController?.pushViewController(sublevelViewController, animated: true)
 
-        default:
-            break
-        }
-    }
     
     func didFinishTask(sender: BaseVM, errorMessage: String?, dataArray: [NSObject]?) {
         self.updateUI()
         self.collectionView.reloadData()
         
+    }
+    
+    @objc func didFinishAllSublevels(_ notification:Notification) {
+        print("AllSublevelsFinished")
+        allSublevelsFinished = true
     }
     
 

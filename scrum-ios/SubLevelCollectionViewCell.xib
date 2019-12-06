@@ -43,15 +43,12 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bie-fQ-xbM" customClass="MBCircularProgressBarView">
                                         <rect key="frame" x="42.5" y="142.5" width="150" height="150"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="TeP-9h-hfy"/>
                                             <constraint firstAttribute="width" constant="150" id="YwA-Ez-feR"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                                <real key="value" value="70"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                 <real key="value" value="100"/>
                                             </userDefinedRuntimeAttribute>

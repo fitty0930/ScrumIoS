@@ -16,12 +16,10 @@ class ConstantsHelper {
         static let started = "EN CURSO"
         static let blocked = "BLOQUEADO"
     }
-    
 
     enum Storyboard {
         static let main = "Main"
         static let levels = "Levels"
-        static let sublevels = "SubLevel"
         static let tutorial = "Tutorial"
     }
 
@@ -33,128 +31,23 @@ class ConstantsHelper {
     
     static let SublevelCompletedInfo = "com.matiasglessi.scrum.sublevelCompletedInfo"
 
-    //Level 1
-    static func getShippingIncrementOriginalPoint() -> CGPoint {
-        
-        
-        let device = Device()
-        
-        if device == .iPhone5 || device == .iPhone5s || device == .iPhone5c
-        {
-            return CGPoint.init(x: 281, y: 255)
-        }
-        else {
-            return CGPoint.init(x: 369, y: 255)
-
-        }
-//
-//        else if  device == .iPhone6 || device == .iPhone6s || device == .iPhone7
-//        {
-//            return CGPoint.init(x: 355, y: 255)
-//        }
-//        else if  device == .iPhone6Plus || device == .iPhone6sPlus || device == .iPhone7Plus
-//        {
-//            return CGPoint.init(x: 369, y: 255)
-//        }
-//        return CGPoint.init()
-    }
-    
-    static func getProductBacklogOriginalPoint() -> CGPoint {
-        
-        let device = Device()
-        
-        if device == .iPhone5 || device == .iPhone5s || device == .iPhone5c
-        {
-            return CGPoint.init(x: 30, y: 263)
-        }
-        else {
-            return CGPoint.init(x: 36, y: 269)
-        }
-//        else if  device == .iPhone6 || device == .iPhone6s || device == .iPhone7
-//        {
-//            return CGPoint.init(x: 36, y: 267)
-//        }
-//        else if  device == .iPhone6Plus || device == .iPhone6sPlus || device == .iPhone7Plus
-//        {
-//            return CGPoint.init(x: 36, y: 269)
-//        }
-//        return CGPoint.init()
-    }
-    
-    static func getSprintBacklogOriginalPoint() -> CGPoint {
-        
-        let device = Device()
-        
-        if device == .iPhone5 || device == .iPhone5s || device == .iPhone5c
-        {
-            return CGPoint.init(x: 111, y: 265)
-        }
-        else {
-            return CGPoint.init(x: 143, y: 270)
-        }
-//        else if  device == .iPhone6 || device == .iPhone6s || device == .iPhone7
-//        {
-//            return CGPoint.init(x: 131, y: 272)
-//        }
-//        else if  device == .iPhone6Plus || device == .iPhone6sPlus || device == .iPhone7Plus
-//        {
-//            return CGPoint.init(x: 143, y: 270)
-//        }
-//        return CGPoint.init()
-        
-//        return CGPoint.init(x: 131, y: 272)
-    }
-    
-    static func getSprintOriginalPoint() -> CGPoint {
-        
-        let device = Device()
-        
-        if device == .iPhone5 || device == .iPhone5s || device == .iPhone5c
-        {
-            return CGPoint.init(x: 207, y: 212)
-        }
-        else {
-            return CGPoint.init(x: 268, y: 213)
-        }
-//        else if  device == .iPhone6 || device == .iPhone6s || device == .iPhone7
-//        {
-//            return CGPoint.init(x: 243, y: 212)
-//        }
-//        else if  device == .iPhone6Plus || device == .iPhone6sPlus || device == .iPhone7Plus
-//        {
-//            return CGPoint.init(x: 268, y: 213)
-//        }
-//        return CGPoint.init()
-    }
-    
-    static func getDailyOriginalPoint() -> CGPoint {
-        
-        let device = Device()
-        
-        if device == .iPhone5 || device == .iPhone5s || device == .iPhone5c
-        {
-            return CGPoint.init(x: 109, y: 105)
-        }
-        else {
-            return CGPoint.init(x: 149, y: 105)
-        }
-//        else if  device == .iPhone6 || device == .iPhone6s || device == .iPhone7
-//        {
-//            return CGPoint.init(x: 129, y: 114)
-//        }
-//        else if  device == .iPhone6Plus || device == .iPhone6sPlus || device == .iPhone7Plus
-//        {
-//            return CGPoint.init(x: 149, y: 105)
-//        }
-//        return CGPoint.init()
-    }
-    
 }
 
 
 extension Notification.Name {
     public static let SublevelCompleted = Notification.Name.init("com.matiasglessi.scrum.SublevelCompleted")
     public static let UserLoggedIn = Notification.Name.init("com.matiasglessi.scrum.UserLoggedIn")
+    public static let didFinishAllSublevels = Notification.Name("didFinishAllSublevels")
 
+
+}
+
+extension UIColor {
+    
+    static let sgOrange = #colorLiteral(red: 0.9725490196, green: 0.6941176471, blue: 0.5843137255, alpha: 1)
+    static let sgPink = #colorLiteral(red: 0.9647058824, green: 0.4470588235, blue: 0.5019607843, alpha: 1)
+    static let sgDarkPink = #colorLiteral(red: 0.7529411765, green: 0.4235294118, blue: 0.5176470588, alpha: 1)
+    static let sgPurple = #colorLiteral(red: 0.4235294118, green: 0.3568627451, blue: 0.4823529412, alpha: 1)
+    static let sgDarkBlue = #colorLiteral(red: 0.2078431373, green: 0.3607843137, blue: 0.4901960784, alpha: 1)
 }
 

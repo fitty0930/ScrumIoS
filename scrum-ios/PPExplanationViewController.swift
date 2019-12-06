@@ -29,7 +29,7 @@ class PPExplanationViewController: UIViewController {
 
         if let destination = segue.destination as? PPCardSelectionViewController {
             
-            destination.selectionType = .firstOne
+//            destination.selectionType = .firstOne
         }
     }
 

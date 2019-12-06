@@ -45,9 +45,17 @@ class Game: BaseModel {
 enum GameType: String {
     
     case quiz = "quiz"
-    case draggable = "draggable"
-    case imageQuiz = "imageQuiz"
-    case textQuiz = "textQuiz"
+
     case buttonsQuiz = "buttonsQuiz"
     
+    case twoSquaresImageQuiz = "twoSquaresImageQuiz"
+    case fourSquaresImageQuiz = "fourSquaresImageQuiz"
+    case twoSquaresTextQuiz = "twoSquaresTextQuiz"
+    case fourSquaresTextQuiz = "fourSquaresTextQuiz"
+
+    case draggableScrumFlow = "draggableScrumFlow"
+
+    case selectableTags = "selectableTags"
+    case velocityGame = "velocityGame"
+    case planningPoker = "planningPoker"
 }
