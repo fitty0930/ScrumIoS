@@ -25,8 +25,8 @@ class LogService {
             "level": "\(level).\(sublevel).\(game)"
         ]
         
-//        Analytics.logEvent("game_correct_answer_in_first_try", parameters: eventData)
-        Amplitude.instance()?.logEvent("game_correct_answer_in_first_try", withEventProperties: eventData, outOfSession: false)
+        Analytics.logEvent("game_correct_answer_in_first_try", parameters: eventData)
+//        Amplitude.instance()?.logEvent("game_correct_answer_in_first_try", withEventProperties: eventData, outOfSession: false)
 
         
     }
@@ -41,8 +41,8 @@ class LogService {
             "level": "\(level).\(sublevel).\(game)"
         ]
         
-//        Analytics.logEvent("game_correct_answerr", parameters: eventData)
-        Amplitude.instance()?.logEvent("game_correct_answer", withEventProperties: eventData, outOfSession: false)
+        Analytics.logEvent("game_correct_answerr", parameters: eventData)
+//        Amplitude.instance()?.logEvent("game_correct_answer", withEventProperties: eventData, outOfSession: false)
 
         
     }
@@ -57,8 +57,8 @@ class LogService {
             "level": "\(level).\(sublevel).\(game)"
         ]
         
-//        Analytics.logEvent("game_wrong_answer", parameters: eventData)
-        Amplitude.instance()?.logEvent("game_wrong_answer", withEventProperties: eventData, outOfSession: false)
+        Analytics.logEvent("game_wrong_answer", parameters: eventData)
+//        Amplitude.instance()?./logEvent("game_wrong_answer", withEventProperties: eventData, outOfSession: false)
 
 
     }
@@ -72,8 +72,8 @@ class LogService {
             "level": "\(level).\(sublevel).\(game)",
         ]
         
-//        Analytics.logEvent("game_time_spent", parameters: eventData)
-        Amplitude.instance()?.logEvent("game_time_spent", withEventProperties: eventData, outOfSession: false)
+        Analytics.logEvent("game_time_spent", parameters: eventData)
+//        Amplitude.instance()?.logEvent("game_time_spent", withEventProperties: eventData, outOfSession: false)
 
 
     }
@@ -87,8 +87,8 @@ class LogService {
             "level": "\(level).\(sublevel)",
         ]
 
-//        Analytics.logEvent("tutorial_time_spent", parameters: eventData)
-        Amplitude.instance()?.logEvent("tutorial_time_spent", withEventProperties: eventData, outOfSession: false)
+        Analytics.logEvent("tutorial_time_spent", parameters: eventData)
+//        Amplitude.instance()?.logEvent("tutorial_time_spent", withEventProperties: eventData, outOfSession: false)
 
         
     }
@@ -101,8 +101,8 @@ class LogService {
             "level": "\(level).\(sublevel)",
         ]
         
-//        Analytics.logEvent("tutorial_skipped", parameters: eventData)
-        Amplitude.instance()?.logEvent("tutorial_skipped", withEventProperties: eventData, outOfSession: false)
+        Analytics.logEvent("tutorial_skipped", parameters: eventData)
+//        Amplitude.instance()?.logEvent("tutorial_skipped", withEventProperties: eventData, outOfSession: false)
         
 //        Amplitude.instance()?.printEventsCount()
 //

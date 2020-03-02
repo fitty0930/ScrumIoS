@@ -142,14 +142,14 @@ class AnswerItemCell: UITableViewCell {
                 
                 
                 let radio: DLRadioButton = DLRadioButton(frame: CGRect(origin: origin, size: size))
-                let title: NSAttributedString = NSAttributedString.init(string: item.data, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
+                let title: NSAttributedString = NSAttributedString.init(string: item.data, attributes: [NSAttributedStringKey.font: UIFont(name: "GothamRounded-Light", size: 15.0)!])
                 radio.iconColor = UIColor.black
                 radio.setAttributedTitle(title, for: .normal)
                 radio.titleLabel?.numberOfLines = 0
                 radio.titleLabel?.textAlignment = NSTextAlignment.left
                 radio.setTitleColor(UIColor.black, for: .normal)
                 radio.contentHorizontalAlignment = .left
-                radio.marginWidth = 10
+                radio.marginWidth = 15
 
 
                 

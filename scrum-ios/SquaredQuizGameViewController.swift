@@ -10,9 +10,10 @@ import UIKit
 
 class SquaredQuizGameViewController: UIViewController, BaseVMDelegate {
 
-    @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var questionLabel: UILabel!
+//    @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var answerButton: UIView!
+//    @IBOutlet weak var answerButton: UIView!
 
     let viewModel = SquaredQuizVM()
     var game: Game?
@@ -29,7 +30,7 @@ class SquaredQuizGameViewController: UIViewController, BaseVMDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAnswerTapGestureRecognizer()
+//        setupAnswerTapGestureRecognizer()
 
         self.viewModel.delegate = self
         self.viewModel.type = squaresType!
@@ -42,7 +43,7 @@ class SquaredQuizGameViewController: UIViewController, BaseVMDelegate {
 
             self.game = parentVC.games[parentVC.currentGameIndex]
             self.viewModel.getContentFor(game: game!)
-            self.questionTextView.attributedText = setAttributedLabelFor(text: game?.title ?? "")
+            self.questionLabel.text = game?.title ?? ""
         }
 
         if let dataSource = self.collectionView.dataSource as? SquaredQuizVM {
@@ -74,11 +75,11 @@ class SquaredQuizGameViewController: UIViewController, BaseVMDelegate {
     
 
     
-    func setupAnswerTapGestureRecognizer() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(answerQuiz(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        answerButton.addGestureRecognizer(tapGestureRecognizer)
-    }
+//    func setupAnswerTapGestureRecognizer() {
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(answerQuiz(_:)))
+//        tapGestureRecognizer.numberOfTapsRequired = 1
+//        answerButton.addGestureRecognizer(tapGestureRecognizer)
+//    }
     
     @IBAction func answerQuiz(_ sender: Any) {
         
@@ -134,7 +135,7 @@ class SquaredQuizGameViewController: UIViewController, BaseVMDelegate {
     
     
     func didFinishTask(sender: BaseVM, errorMessage: String?, dataArray: [NSObject]?) {
-        self.questionTextView.text = self.viewModel.question.data
+//        self.questionTextView.text = self.viewModel.question.data
         self.collectionView.reloadData()
 
     }
@@ -146,8 +147,6 @@ import Kingfisher
 
 class QuizTextCell: UICollectionViewCell {
     
-    @IBOutlet weak var selectorOutsideView: UIView!
-    @IBOutlet weak var selectorInsideView: UIView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var backView: UIView!
     
@@ -161,20 +160,20 @@ class QuizTextCell: UICollectionViewCell {
             guard let item = item else { return }
             
             textLabel.text = item.data
-            textLabel.textColor = UIColor.white
+            textLabel.textColor = #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1)
+            
         }
     }
     
     override func awakeFromNib() {
-        selectorInsideView.round()
-        selectorOutsideView.round()
-        selectorInsideView.hide()
-        backView.backgroundColor = UIColor.clear
-        let backgroundLayer = Colors.init(type: .random).gl
-        backgroundLayer.frame = backView.frame
-        backView.layer.insertSublayer(backgroundLayer, at: 0)
+        backView.backgroundColor = UIColor.white
+//        let backgroundLayer = Colors.init(type: .random).gl
+//        backgroundLayer.frame = backView.frame
+//        backView.layer.insertSublayer(backgroundLayer, at: 0)
         backView.layer.cornerRadius = 20
-        backView.clipsToBounds = true    
+        backView.clipsToBounds = true
+        backView.setBorder(width: 2, color: #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1).cgColor)
+
     }
     
     
@@ -182,14 +181,22 @@ class QuizTextCell: UICollectionViewCell {
         
         didSet {
             if self.isSelected {
-                self.backView.setBorder(width: 1, color: UIColor.darkGray.cgColor)
-                self.selectorInsideView.show()
+//                self.backView.setBorder(width: 1, color: UIColor.darkGray.cgColor)
+                backView.backgroundColor = #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1)
                 self.delegate?.selectedOption(answer: self.item)
+                self.backView.setBorder(width: 0)
+                textLabel.textColor = .white
+
 
             }
             else {
-                self.backView.setBorder(width: 0)
-                self.selectorInsideView.hide()
+//                self.backView.setBorder(width: 0)
+                backView.backgroundColor = UIColor.white
+                backView.setBorder(width: 2, color: #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1).cgColor)
+                textLabel.textColor = #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1)
+
+
+
             }
         }
         
@@ -200,8 +207,8 @@ class QuizTextCell: UICollectionViewCell {
 
 class QuizImageCell: UICollectionViewCell {
     
-    @IBOutlet weak var selectorOutsideView: UIView!
-    @IBOutlet weak var selectorInsideView: UIView!
+//    @IBOutlet weak var selectorOutsideView: UIView!
+//    @IBOutlet weak var selectorInsideView: UIView!
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var backView: UIView!
@@ -221,15 +228,14 @@ class QuizImageCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        selectorInsideView.round()
-        selectorOutsideView.round()
-        selectorInsideView.hide()
-        backView.backgroundColor = UIColor.clear
-        let backgroundLayer = Colors.init(type: .random).gl
-        backgroundLayer.frame = backView.frame
-        backView.layer.insertSublayer(backgroundLayer, at: 0)
+        backView.backgroundColor = UIColor.white
+        //        let backgroundLayer = Colors.init(type: .random).gl
+        //        backgroundLayer.frame = backView.frame
+        //        backView.layer.insertSublayer(backgroundLayer, at: 0)
         backView.layer.cornerRadius = 20
         backView.clipsToBounds = true
+        backView.setBorder(width: 2, color: #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1).cgColor)
+
     }
     
     
@@ -237,14 +243,22 @@ class QuizImageCell: UICollectionViewCell {
         
         didSet {
             if self.isSelected {
-                self.backView.setBorder(width: 1, color: UIColor.darkGray.cgColor)
-                self.selectorInsideView.show()
+                //                self.backView.setBorder(width: 1, color: UIColor.darkGray.cgColor)
+                backView.backgroundColor = #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1)
                 self.delegate?.selectedOption(answer: self.item)
+                self.backView.setBorder(width: 0)
+//                textLabel.textColor = .white
+                
                 
             }
             else {
-                self.backView.setBorder(width: 0)
-                self.selectorInsideView.hide()
+                //                self.backView.setBorder(width: 0)
+                backView.backgroundColor = UIColor.white
+                backView.setBorder(width: 2, color: #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1).cgColor)
+//                textLabel.textColor = #colorLiteral(red: 0.6723263264, green: 0.1939805448, blue: 0.8309673667, alpha: 1)
+                
+                
+                
             }
         }
         

@@ -38,7 +38,8 @@ class DraggableScrumFlowViewController: UIViewController, DraggableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         updatesStatusBarAppearanceAutomatically = true
-        titleLabel.attributedText = setAttributedLabelFor(text: "Completa el flujo de Scrum!", and: "\nArrastra los elementos\na su lugar correspondiente")
+//        titleLabel.attributedText = setAttributedLabelFor(text: "Completa el flujo de Scrum!", and: "\nArrastra los elementos\na su lugar correspondiente")
+//        titleLabel.text =
         var x: CGFloat = 15
         var point: CGPoint = CGPoint.init()
         var size: CGSize = CGSize.init()

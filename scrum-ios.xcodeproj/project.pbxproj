@@ -59,7 +59,6 @@
 		60576FFE229AF030003B9C43 /* RegisterCredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60576FFD229AF030003B9C43 /* RegisterCredentialsViewController.swift */; };
 		60577000229AF044003B9C43 /* RegisterPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60576FFF229AF044003B9C43 /* RegisterPersonalInfoViewController.swift */; };
 		6059084422B86C3C00EF3BAF /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = 6059084222B86C3C00EF3BAF /* level1.json */; };
-		6059084522B86C3C00EF3BAF /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6059084322B86C3C00EF3BAF /* level2.json */; };
 		6076355D23493626007DC08B /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076355C23493626007DC08B /* FloatLabelTextField.swift */; };
 		6076355F23494736007DC08B /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6076355E23494736007DC08B /* GradientButton.swift */; };
 		607E7D722262BFC90092B6BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E7D712262BFC90092B6BA /* UIView+Extensions.swift */; };
@@ -73,6 +72,8 @@
 		608D2ADB235238370072B10F /* PivoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608D2ADA235238370072B10F /* PivoteViewController.swift */; };
 		608D2ADD23523E440072B10F /* PBIEstimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608D2ADC23523E440072B10F /* PBIEstimationViewController.swift */; };
 		60DAC319235E9652002EE207 /* FinalExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DAC318235E9652002EE207 /* FinalExplanationViewController.swift */; };
+		60DB69EF23DC7FD100EBDBB8 /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DB69EC23DC7FD100EBDBB8 /* level2.json */; };
+		60DB69F023DC7FD100EBDBB8 /* level3.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DB69ED23DC7FD100EBDBB8 /* level3.json */; };
 		60E3971323535BD900167B5C /* CardSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E3971223535BD900167B5C /* CardSelectionViewController.swift */; };
 		60E39715235360FE00167B5C /* ConfrontationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E39714235360FE00167B5C /* ConfrontationViewController.swift */; };
 		60E397172353684400167B5C /* ConclusionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E397162353684400167B5C /* ConclusionViewController.swift */; };
@@ -191,7 +192,6 @@
 		60576FFD229AF030003B9C43 /* RegisterCredentialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCredentialsViewController.swift; sourceTree = "<group>"; };
 		60576FFF229AF044003B9C43 /* RegisterPersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPersonalInfoViewController.swift; sourceTree = "<group>"; };
 		6059084222B86C3C00EF3BAF /* level1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
-		6059084322B86C3C00EF3BAF /* level2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
 		6076355C23493626007DC08B /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		6076355E23494736007DC08B /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		607E7D712262BFC90092B6BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -205,6 +205,8 @@
 		608D2ADA235238370072B10F /* PivoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PivoteViewController.swift; sourceTree = "<group>"; };
 		608D2ADC23523E440072B10F /* PBIEstimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBIEstimationViewController.swift; sourceTree = "<group>"; };
 		60DAC318235E9652002EE207 /* FinalExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalExplanationViewController.swift; sourceTree = "<group>"; };
+		60DB69EC23DC7FD100EBDBB8 /* level2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
+		60DB69ED23DC7FD100EBDBB8 /* level3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level3.json; sourceTree = "<group>"; };
 		60E3971223535BD900167B5C /* CardSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionViewController.swift; sourceTree = "<group>"; };
 		60E39714235360FE00167B5C /* ConfrontationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfrontationViewController.swift; sourceTree = "<group>"; };
 		60E397162353684400167B5C /* ConclusionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusionViewController.swift; sourceTree = "<group>"; };
@@ -361,7 +363,8 @@
 			children = (
 				6020D0FB224850EC0007B9B1 /* scrum-ios.entitlements */,
 				6059084222B86C3C00EF3BAF /* level1.json */,
-				6059084322B86C3C00EF3BAF /* level2.json */,
+				60DB69EC23DC7FD100EBDBB8 /* level2.json */,
+				60DB69ED23DC7FD100EBDBB8 /* level3.json */,
 				B36D0B3B1E78C3480096E634 /* Storyboards */,
 				B371F1EE1E82C13500F1990A /* ViewControllers */,
 				B33A65B91E4A8F3B00EED41A /* AppDelegate.swift */,
@@ -619,6 +622,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -648,12 +652,12 @@
 				6002B6C8234583AC00DCD6E8 /* GothamRounded-Light.otf in Resources */,
 				B354D652212621C20095CFB1 /* ImageItemCell.xib in Resources */,
 				B3451F902140828E0047C3E9 /* QuizTextCell.xib in Resources */,
-				6059084522B86C3C00EF3BAF /* level2.json in Resources */,
 				6002B6CB234583AC00DCD6E8 /* Gotham Rounded Light.otf in Resources */,
 				B371F1F71E831C7200F1990A /* Montserrat-Regular.ttf in Resources */,
 				6045E77823385D510069CD4E /* Square.ttf in Resources */,
 				6002B6C6234583AC00DCD6E8 /* GothamRounded-BoldItalic.otf in Resources */,
 				6002B6C1234583AC00DCD6E8 /* Gotham Rounded Medium Italic.otf in Resources */,
+				60DB69EF23DC7FD100EBDBB8 /* level2.json in Resources */,
 				6002B6C4234583AC00DCD6E8 /* Gotham Rounded Book.otf in Resources */,
 				6045E776233818F20069CD4E /* torpedo.mp3 in Resources */,
 				6045E775233818EF0069CD4E /* Actions.sks in Resources */,
@@ -680,6 +684,7 @@
 				6002B6C2234583AC00DCD6E8 /* GothamRoundedBook.ttf in Resources */,
 				B35E32721EAC08B70083A1C3 /* Level1.storyboard in Resources */,
 				B3DF58F81EAAB7E300D28F3B /* Tutorial.storyboard in Resources */,
+				60DB69F023DC7FD100EBDBB8 /* level3.json in Resources */,
 				601EEFFE21EB6B97004195D0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,6 +738,7 @@
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
 				"${BUILT_PRODUCTS_DIR}/Bartinter/Bartinter.framework",
+				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework",
@@ -761,6 +767,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Amplitude_iOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bartinter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyTipView.framework",

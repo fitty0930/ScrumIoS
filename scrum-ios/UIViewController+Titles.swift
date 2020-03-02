@@ -17,15 +17,20 @@ extension UIViewController {
         let fullTitle = text + description
         
         let attributedString = NSMutableAttributedString(string: fullTitle, attributes: [
-            .font: UIFont(name:"verdana", size: 17.0)!,
-            .foregroundColor: UIColor.green
+            .font: UIFont(name:"GothamRounded-Light", size: 17.0)!,
+            .foregroundColor: UIColor.black
             ])
         attributedString.addAttributes([
-            .font: getFont(named: "verdana", sized: 17.0),
-            .foregroundColor: UIColor.red
+            .font: getFont(named: "GothamRounded-Bold", sized: 16.0),
+            .foregroundColor: UIColor.black
             ], range: NSRange(location: 0, length: count))
         return attributedString
     }
+    
+    
+    
+    //    Family: Gotham Rounded Font names: ["GothamRounded-BoldItalic", "GothamRounded-MediumItalic", "GothamRounded-BookItalic", "GothamRounded-Book", "GothamRounded-Light", "GothamRounded-LightItalic", "GothamRounded-Bold", "GothamRounded-Medium"]
+
     
     func getFont(named name: String, sized size: CGFloat) -> UIFont {
         if let font = UIFont.init(name: name, size: size) {

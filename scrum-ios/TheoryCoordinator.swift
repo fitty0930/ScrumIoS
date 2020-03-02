@@ -67,6 +67,7 @@ class TheoryCoordinator: Coordinator {
     }
     
     func didExitTutorial(){
+        tutorialTimeTimer?.invalidate()
         parentCoordinator?.didExitTutorial(self)
     }
     

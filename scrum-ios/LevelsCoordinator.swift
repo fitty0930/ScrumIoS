@@ -31,6 +31,14 @@ class LevelsCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         self.parentCoordinator?.didFinishDeauthenticating()
     }
     
+    func profile(){
+        let vc = ProfileViewController.instantiate(for: ConstantsHelper.Storyboard.levels)
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+
+    }
+    
+    
     func openLevel(level: Level, color: UIColor, progress: Progress?){
 
         let vc = SubLevelViewController.instantiate(for: ConstantsHelper.Storyboard.levels)

@@ -32,10 +32,10 @@ class ExplanationViewController: UIViewController {
             return "Excelente estimación! Lograste resolver en el tiempo acordado lo que te propusiste!"
         }
         else if finalResult > estimation{
-            return "Muy bien! Pudiste hacer mas de lo que te propusiste. Significa que te resultó más fácil de lo que creías."
+            return "Muy bien! Pudiste hacer más de lo que estimaste. Significa que te resultó más fácil de lo que creías."
         }
         else {
-            return "Bien igual! No llegaste a completar lo que estimaste, significa que era una tarea mas compleja de lo que creías."
+            return "Bien igual! No llegaste a completar lo que estimaste, significa que era una tarea mas compleja de lo que creías, o te falto más información al momento de estimar."
         }
     }
     

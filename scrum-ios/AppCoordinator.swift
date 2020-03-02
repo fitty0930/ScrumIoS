@@ -29,6 +29,22 @@ class AppCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         
         navigationController.delegate = self
         showRealmFileInConsole()
+//        if Auth.auth().currentUser != nil {
+//            
+//            
+//            do {
+//                try Auth.auth().signOut()
+//                //                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController")
+//                UserDefaults.standard.set(nil, forKey: "userLoggedIn")
+//                
+//                
+//                //                self.navigationController?.popToRootViewController(animated: true)
+//                
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        return
         if let _ = Auth.auth().currentUser {
             showLevels()
         }

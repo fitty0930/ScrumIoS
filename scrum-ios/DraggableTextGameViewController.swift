@@ -10,7 +10,6 @@ import UIKit
 
 class DraggableTextGameViewController: UIViewController, Storyboarded {
     
-    @IBOutlet weak var answerButton: UIView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var possibleAnswersView: UIView!
     var game: Game?
@@ -31,13 +30,17 @@ class DraggableTextGameViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAnswerTapGestureRecognizer()
+        startTimer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let parentVC = self.parent as? GameViewController {
             game = parentVC.games[parentVC.currentGameIndex]
-            questionLabel.attributedText = setAttributedLabelFor(text: game?.title ?? "", and: "\nSelecciona los elementos\ncorrespondientes")
-            createTagCloud(OnView: possibleAnswersView)
+            questionLabel.text = game?.title ?? ""
+            //            questionLabel.attributedText = setAttributedLabelFor(text: game?.title ?? "", and: "\nSelecciona los elementos\ncorrespondientes")
+            createCenteredTagCloud(OnView: possibleAnswersView)
         }
-        startTimer()
+
     }
     
     
@@ -56,11 +59,32 @@ class DraggableTextGameViewController: UIViewController, Storyboarded {
     }
 
     
-    func setupAnswerTapGestureRecognizer() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sendAnswer(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        answerButton.addGestureRecognizer(tapGestureRecognizer)
+    
+    func createCenteredTagCloud(OnView view: UIView){
+        guard let game = game else { return }
+        
+        
+        for tempView in possibleAnswersView.subviews {
+            if tempView.tag != 0 {
+                tempView.removeFromSuperview()
+            }
+        }
+        let font = UIFont(name:"GothamRounded-Bold", size: 17.0)
+        let tagHeight: CGFloat = 35.0
+        let addedSpaceExternal: CGFloat = 20.0
+        var tag: Int = 1
+        var ypos: CGFloat = 30.0
+        for contentItem in game.content  {
+            let width = contentItem.data.widthOfString(usingFont: font!)
+            let tagView = Tag.init(with: contentItem, xPos: 15.0, yPos: ypos, width: width, tag: tag)
+            tagView.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: ypos)
+            possibleAnswersView.addSubview(tagView)
+            tag = tag  + 1
+            allTags.append(tagView)
+            ypos = ypos + tagHeight + addedSpaceExternal
+        }
     }
+    
     
     func createTagCloud(OnView view: UIView) {
         
@@ -161,7 +185,7 @@ class DraggableTextGameViewController: UIViewController, Storyboarded {
 class Tag: UIView {
     
     var textLabel = UILabel()
-    let font = UIFont(name:"verdana", size: 17.0)
+    let font = UIFont(name:"GothamRounded-Bold", size: 17.0)
     let addedSpaceInternal: CGFloat = 17.0
     let addedSpaceExternal: CGFloat = 10.0
     var isSelected: Bool = false

@@ -42,7 +42,7 @@ class SubLevelViewController: UIViewController, UICollectionViewDataSource, UICo
         let scaledWidth = UIScreen.main.bounds.size.width * (455/UIScreen.main.bounds.size.height)
          */
 
-        layout.itemSize = CGSize.init(width: 250, height: 400)
+        layout.itemSize = CGSize.init(width: 300, height: 470)
 
         
         //layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: collectionView.frame.height)

@@ -19,7 +19,7 @@ def shared_pods
     pod 'RealmSwift'
     pod 'IQKeyboardManagerSwift', '6.0.4'
     pod 'Amplitude-iOS', '~> 4.0.4'
-
+    pod 'BetterSegmentedControl', '1.0'
 
 end
 

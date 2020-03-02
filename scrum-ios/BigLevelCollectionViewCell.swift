@@ -10,6 +10,7 @@ import UIKit
 
 class BigLevelCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var playNowLabel: UILabel!
     @IBOutlet weak var gradientView: MultipleColorsGradientView!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var levelTitleLabel: UILabel!
@@ -17,6 +18,7 @@ class BigLevelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subLevelsNumberLabel: UILabel!
     @IBOutlet weak var lockedView: UIView!
     @IBOutlet weak var levelNumber: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,20 +34,23 @@ class BigLevelCollectionViewCell: UICollectionViewCell {
     
     func setLevelData(with level: Level, and progress: Progress?, currentAvailableLevel: Int){
         
+        var percentage: Int?
+        
         self.levelTitleLabel.text = level.title
         self.subLevelsNumberLabel.text = getSublevelsText(value: level.sublevels.count)
         self.levelNumber.text = "\(level.level_number)"
         
         if let progress = progress {
             self.percentageLabel.show()
-            self.percentageLabel.text = "\(level.percentage(from: progress))%"
+            percentage = level.percentage(from: progress)
+            if let per = percentage { self.percentageLabel.text = "\(per)%" }
         }
         else {
             self.percentageLabel.hide()
         }
         
-        level.id ?? 1 <= currentAvailableLevel ? lockedView.hide() : lockedView.show()
-        
+        level.id ?? 1 <= currentAvailableLevel ? showUnLocked() : showLocked()
+        if let per = percentage { checkCompletion(for: per) }
     }
     
     
@@ -66,4 +71,33 @@ class BigLevelCollectionViewCell: UICollectionViewCell {
     func isLocked() -> Bool {
         return !self.lockedView.isHidden
     }
+    
+    
+    func showLocked(){
+        lockedView.show()
+        statusImage.image = UIImage.init(named: "blocked")
+        statusImage.isHidden = false
+        playNowLabel.text = "No disponible"
+    }
+    
+    func showUnLocked(){
+        lockedView.hide()
+        statusImage.isHidden = true
+        playNowLabel.text = "Jugar ahora"
+    }
+
+    
+    func checkCompletion(for value: Int) {
+        if value == 100 {
+            statusImage.image = UIImage.init(named: "completed")
+            statusImage.isHidden = false
+            playNowLabel.text = "Completo! 🤘"
+        }
+        else {
+            statusImage.isHidden = true
+            playNowLabel.text = "Jugar ahora"
+
+        }
+    }
+    
 }

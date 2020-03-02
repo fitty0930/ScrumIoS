@@ -28,7 +28,18 @@ class ConstantsHelper {
     static var levels: [Level] = []
     static var sublevels: [SubLevel] = []
     
-    
+    static var usersDataCSVHeaders: String =  ["name",
+                                            "mail",
+                                            "age",
+                                            "profession",
+                                            "gender",
+                                            "city",
+                                            "state",
+                                            "country",
+                                            "gameTasteLevel",
+                                            "gameTimeLevel",
+                                            "uid"].joined(separator: ",") + "\n"
+
     static let SublevelCompletedInfo = "com.matiasglessi.scrum.sublevelCompletedInfo"
 
 }

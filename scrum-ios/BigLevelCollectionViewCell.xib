@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -15,7 +15,7 @@
         <array key="Gotham Rounded Light.otf">
             <string>GothamRounded-Light</string>
         </array>
-        <array key="Gotham Rounded Medium.otf">
+        <array key="GothamRoundedMedium.ttf">
             <string>GothamRounded-Medium</string>
         </array>
     </customFonts>
@@ -90,6 +90,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="150"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blocked" translatesAutoresizingMaskIntoConstraints="NO" id="Aa6-kp-ane">
+                                <rect key="frame" x="314" y="74" width="83" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="D41-1k-hYY"/>
+                                    <constraint firstAttribute="width" constant="83" id="klZ-f4-aqa"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -97,12 +104,14 @@
                             <constraint firstAttribute="trailing" secondItem="lLA-4A-3op" secondAttribute="trailing" id="5OH-Q3-VlT"/>
                             <constraint firstItem="M0F-eY-tUr" firstAttribute="top" secondItem="lT8-cK-SHb" secondAttribute="top" id="EpJ-Od-xiv"/>
                             <constraint firstAttribute="bottom" secondItem="MXF-5Y-kWJ" secondAttribute="bottom" id="FLD-at-qVj"/>
+                            <constraint firstAttribute="bottom" secondItem="Aa6-kp-ane" secondAttribute="bottom" constant="5" id="KSo-rh-GcO"/>
                             <constraint firstAttribute="bottom" secondItem="lLA-4A-3op" secondAttribute="bottom" id="M6G-Nq-3uS"/>
                             <constraint firstItem="MXF-5Y-kWJ" firstAttribute="leading" secondItem="lT8-cK-SHb" secondAttribute="leading" id="OMW-x5-BS1"/>
                             <constraint firstItem="lLA-4A-3op" firstAttribute="leading" secondItem="lT8-cK-SHb" secondAttribute="leading" id="Swd-F3-ODG"/>
                             <constraint firstItem="lLA-4A-3op" firstAttribute="top" secondItem="M0F-eY-tUr" secondAttribute="bottom" id="Xet-O3-OWK"/>
                             <constraint firstAttribute="trailing" secondItem="MXF-5Y-kWJ" secondAttribute="trailing" id="fBi-ig-Czn"/>
                             <constraint firstItem="M0F-eY-tUr" firstAttribute="leading" secondItem="lT8-cK-SHb" secondAttribute="leading" id="uwy-sR-xHg"/>
+                            <constraint firstAttribute="trailing" secondItem="Aa6-kp-ane" secondAttribute="trailing" constant="5" id="voh-TD-adI"/>
                             <constraint firstAttribute="trailing" secondItem="M0F-eY-tUr" secondAttribute="trailing" id="ztO-qG-ZqW"/>
                         </constraints>
                     </view>
@@ -123,9 +132,14 @@
                 <outlet property="levelTitleLabel" destination="Xk7-4z-dsp" id="AZJ-FR-fk7"/>
                 <outlet property="lockedView" destination="MXF-5Y-kWJ" id="2xG-1P-dMP"/>
                 <outlet property="percentageLabel" destination="u3T-Fh-yer" id="3nF-aU-B9e"/>
+                <outlet property="playNowLabel" destination="eiA-Ys-uwv" id="CCc-DP-dh8"/>
+                <outlet property="statusImage" destination="Aa6-kp-ane" id="sCi-vT-YPd"/>
                 <outlet property="subLevelsNumberLabel" destination="i03-40-vIc" id="oLM-YL-H5d"/>
             </connections>
             <point key="canvasLocation" x="238.40000000000001" y="134.93253373313345"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="blocked" width="128" height="128"/>
+    </resources>
 </document>

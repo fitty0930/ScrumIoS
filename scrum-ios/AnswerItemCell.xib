@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMs-ct-yOx">
-                    <rect key="frame" x="30" y="10" width="310" height="48"/>
+                    <rect key="frame" x="30" y="10" width="340" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="0zH-LG-yuQ"/>
@@ -26,7 +26,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mMs-ct-yOx" secondAttribute="trailing" constant="30" id="HUl-Cd-rAd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mMs-ct-yOx" secondAttribute="trailing" id="HUl-Cd-rAd"/>
                 <constraint firstItem="mMs-ct-yOx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="LiY-W0-Yc0"/>
                 <constraint firstItem="mMs-ct-yOx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="dIM-s9-Wew"/>
                 <constraint firstAttribute="bottom" secondItem="mMs-ct-yOx" secondAttribute="bottom" priority="250" constant="10" id="y9s-f4-7zT"/>

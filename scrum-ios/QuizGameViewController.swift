@@ -10,9 +10,8 @@ import UIKit
 
 class QuizGameViewController: UIViewController, BaseVMDelegate {
     
-    @IBOutlet weak var answerButton: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var questionLabel: UILabel!
     
     let viewModel = ContentVM()
     var game: Game?
@@ -30,7 +29,6 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAnswerTapGestureRecognizer()
         self.viewModel.delegate = self
         self.viewModel.quizVM = true
         tableView?.dataSource = viewModel
@@ -47,7 +45,7 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
             
             self.game = parentVC.games[parentVC.currentGameIndex]
             self.viewModel.getContentFor(game: game!)
-            self.questionTextView.attributedText = setAttributedLabelFor(text: game?.title ?? "")
+            self.questionLabel.text = game?.title ?? ""
             
             
         }
@@ -78,12 +76,6 @@ class QuizGameViewController: UIViewController, BaseVMDelegate {
         gameTimer?.invalidate()
     }
 
-    
-    func setupAnswerTapGestureRecognizer() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(answerQuiz(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        answerButton.addGestureRecognizer(tapGestureRecognizer)
-    }
     
     @IBAction func answerQuiz(_ sender: Any) {
         

@@ -169,9 +169,9 @@ class GameViewController: UIViewController, GameManagerDelegate, Storyboarded {
 //    }
     
     private func configureProgressBar() {
-        progressBar.gradientColors = [UIColor(red:0.00, green:1.00, blue:1.00, alpha:1.0).cgColor, UIColor(red:0.58, green:0.15, blue:0.56, alpha:1.0).cgColor]
+        progressBar.gradientColors = [#colorLiteral(red: 0.022597095, green: 0.2410290837, blue: 0.795529604, alpha: 1).cgColor,#colorLiteral(red: 0, green: 0.9040735364, blue: 1, alpha: 1).cgColor]
         progressBar.setProgress(getCurrentProgress(), animated: false)
-        progressBar.trackTintColor = UIColor.lightGray
+        progressBar.trackTintColor = #colorLiteral(red: 0.9170284867, green: 0.9170284867, blue: 0.9170284867, alpha: 1)
     }
     
     fileprivate func stopCurrentGameTimer() {

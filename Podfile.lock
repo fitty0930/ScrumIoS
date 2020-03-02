@@ -2,6 +2,7 @@ PODS:
   - Amplitude-iOS (4.0.4)
   - AMPopTip (3.4.0)
   - Bartinter (0.0.4)
+  - BetterSegmentedControl (1.0)
   - BoringSSL-GRPC (0.0.2):
     - BoringSSL-GRPC/Implementation (= 0.0.2)
     - BoringSSL-GRPC/Interface (= 0.0.2)
@@ -145,6 +146,7 @@ DEPENDENCIES:
   - Amplitude-iOS (~> 4.0.4)
   - AMPopTip (~> 3.4.0)
   - Bartinter
+  - BetterSegmentedControl (= 1.0)
   - DLRadioButton (~> 1.4)
   - EasyTipView (~> 2.0.0)
   - Firebase/Auth
@@ -167,6 +169,7 @@ SPEC REPOS:
     - Amplitude-iOS
     - AMPopTip
     - Bartinter
+    - BetterSegmentedControl
     - BoringSSL-GRPC
     - DLRadioButton
     - EasyTipView
@@ -204,6 +207,7 @@ SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
   AMPopTip: 6065dbf52392662b4d958e8035f5f86da05d9b3a
   Bartinter: cfc2ebf2fb8560a7d878dcbdc7d3c667c79090c9
+  BetterSegmentedControl: 92555f980e4273ec414d6187acc5b811659a9abf
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   EasyTipView: 1515544456d6e943240012e9be5d25d1bb766603
@@ -237,6 +241,6 @@ SPEC CHECKSUMS:
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: e5bbcae0297bfbe0ee1dbfa2b7a8a15b6e8c2734
+PODFILE CHECKSUM: 37ea699519a71045e5e1684a59437390cfb60467
 
 COCOAPODS: 1.5.3

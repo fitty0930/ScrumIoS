@@ -24,12 +24,12 @@ class LevelsViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     let viewModel = LevelVM()
     
-    @IBOutlet weak var userLabel: UILabel!
+//    @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var userProfessionLabel: UILabel!
-    @IBOutlet weak var gameProgress: GradientProgressBar!
-    @IBOutlet weak var gameProgressLabel: UILabel!
     @IBOutlet weak var userAvatarImageView: UIImageView!
+    @IBOutlet weak var userAvatarPlaceholder: UIButton!
+    
+    
     
     
     var cellSize: CGSize = CGSize.init()
@@ -41,53 +41,24 @@ class LevelsViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.collectionView.register(UINib(nibName: "BigLevelCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BigLevel")
         self.setCellSize()
         self.collectionView.delegate = self
-        self.configureProgressBar()
-        self.configureUserInfo()
+//        self.configureUserInfo()
         self.configureUserAvatar()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToProfile))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        userAvatarPlaceholder.addGestureRecognizer(tapGestureRecognizer)
     }
     
     
-    private func configureUserInfo() {
-        userLabel.text = "Matute"
+    @objc func goToProfile(){
+        coordinator?.profile()
     }
     
     private func configureUserAvatar(){
-        let userEmail = Auth.auth().currentUser?.email ?? "1234"
-        userAvatarImageView.contentMode = .scaleAspectFit
-        userAvatarImageView.kf.indicatorType = .activity
-        let url = URL(string: "https://api.adorable.io/avatars/100/\(userEmail)@adorable.io.png")
-        userAvatarImageView.kf.setImage(with: url)
         userAvatarImageView.round()
+        userAvatarPlaceholder.round()
     }
     
-    private func configureProgressBar() {
-        gameProgress.gradientColors = [UIColor(red:0.00, green:1.00, blue:1.00, alpha:1.0).cgColor, UIColor(red:0.58, green:0.15, blue:0.56, alpha:1.0).cgColor]
-        gameProgress.trackTintColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
-        updateProgress(with: 0.3)
-    }
 
-    
-    private func updateProgress(with value: CGFloat) {
-        gameProgress.setProgress(Float(value), animated: false)
-        gameProgressLabel.text = "\(Int(value*100))%"
-        
-        switch value {
-        case 0.0:
-            userProfessionLabel.text = "Aprendiz"
-        case 0.1..<0.3:
-            userProfessionLabel.text = "Algo sabe"
-        case 0.3..<0.5:
-            userProfessionLabel.text = "Bueno"
-        case 0.7..<1.0:
-            userProfessionLabel.text = "Capo"
-        case 1.0:
-            userProfessionLabel.text = "Experto"
-        default:
-            break
-            
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel.getLevels()
@@ -103,6 +74,12 @@ class LevelsViewController: UIViewController, UICollectionViewDelegate, UICollec
         let screenWidth = UIScreen.main.bounds.size.width
         cellSize = CGSize(width: screenWidth, height: 160)
     }
+    
+    @IBAction func profile(_ sender: Any) {
+        coordinator?.profile()
+    }
+    
+    
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt sizeForItemAtIndexPath: IndexPath) -> CGSize {
@@ -155,6 +132,8 @@ class LevelsViewController: UIViewController, UICollectionViewDelegate, UICollec
         print("Tryin to log out user: \(Auth.auth().currentUser?.email ?? "No hay user :(")")
         
         if Auth.auth().currentUser != nil {
+
+            
             do {
                 try Auth.auth().signOut()
 //                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController")

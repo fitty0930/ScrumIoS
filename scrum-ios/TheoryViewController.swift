@@ -32,10 +32,16 @@ class TheoryViewController: UIViewController, Storyboarded {
         }
     }
 
+    var shakeTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.letsPlayButton.hide()
+        self.letsPlayButton.round(to: 10)
+        self.letsPlayButton.setBorder(width: 1, color: UIColor.white.cgColor)
+        self.skipButton.round(to: 10)
+        self.skipButton.setBorder(width: 1, color: UIColor.white.cgColor)
+
         updatesStatusBarAppearanceAutomatically = true
         pageControl.addTarget(self, action: #selector(TheoryViewController.didChangePageControlValue), for: .valueChanged)
         guard let sublevel = sublevel else {
@@ -43,6 +49,26 @@ class TheoryViewController: UIViewController, Storyboarded {
             return
         }
         sublevelTitle.text = sublevel.name
+        startTimer()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopTimer()
+    }
+    
+    
+    func startTimer(){
+        shakeTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        letsPlayButton.shake()
+    }
+    
+    func stopTimer(){
+        shakeTimer?.invalidate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,12 +89,15 @@ class TheoryViewController: UIViewController, Storyboarded {
     @IBAction func skipTheory(_ sender: Any) {
         
         coordinator?.didSkippedTutorial()
+        stopTimer()
         
     }
     
     @IBAction func goBackToSublevels(_ sender: Any) {
         
         coordinator?.didExitTutorial()
+        stopTimer()
+
     }
     
     @IBAction func next(_ sender: Any) {
