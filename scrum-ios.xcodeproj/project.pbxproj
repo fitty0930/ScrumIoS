@@ -698,7 +698,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -707,7 +707,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7191088AC3931F07F381E6A3 /* [CP] Check Pods Manifest.lock */ = {
@@ -734,7 +734,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/Amplitude-iOS/Amplitude_iOS.framework",
 				"${BUILT_PRODUCTS_DIR}/Bartinter/Bartinter.framework",
@@ -793,7 +793,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-scrum-ios/Pods-scrum-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

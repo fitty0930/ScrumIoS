@@ -16,7 +16,7 @@ def shared_pods
     pod 'Firebase/Auth'
     pod 'GoogleSignIn'
     pod 'SwiftyJSON', '4.0'
-    pod 'RealmSwift'
+    pod 'RealmSwift', '~> 3.20.0'
     pod 'IQKeyboardManagerSwift', '6.0.4'
     pod 'Amplitude-iOS', '~> 4.0.4'
     pod 'BetterSegmentedControl', '1.0'

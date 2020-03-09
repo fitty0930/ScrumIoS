@@ -57,7 +57,21 @@ class LogService {
             "level": "\(level).\(sublevel).\(game)"
         ]
         
-        Analytics.logEvent("game_wrong_answer", parameters: eventData)
+        let currentUserUID = ""
+        
+        
+        
+        Analytics.logEvent("game_wrong_answer",
+                           parameters: ["uuid": currentUserUID,
+                                        "time_spent": time,
+                                        "level": level]
+        )
+        
+        
+        
+        
+        
+        
 //        Amplitude.instance()?./logEvent("game_wrong_answer", withEventProperties: eventData, outOfSession: false)
 
 

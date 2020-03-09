@@ -131,11 +131,11 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
   - QuickLayout (2.0.2)
-  - Realm (3.14.1):
-    - Realm/Headers (= 3.14.1)
-  - Realm/Headers (3.14.1)
-  - RealmSwift (3.14.1):
-    - Realm (= 3.14.1)
+  - Realm (3.20.0):
+    - Realm/Headers (= 3.20.0)
+  - Realm/Headers (3.20.0)
+  - RealmSwift (3.20.0):
+    - Realm (= 3.20.0)
   - SwiftEntryKit (0.7.2):
     - QuickLayout (= 2.0.2)
   - SwiftyJSON (4.0.0)
@@ -158,14 +158,14 @@ DEPENDENCIES:
   - Kingfisher (~> 4.0)
   - MaterialTextField (~> 0.2)
   - MBCircularProgressBar
-  - RealmSwift
+  - RealmSwift (~> 3.20.0)
   - SwiftEntryKit (~> 0.7.2)
   - SwiftyJSON (= 4.0)
   - UPCarouselFlowLayout
   - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Amplitude-iOS
     - AMPopTip
     - Bartinter
@@ -196,12 +196,13 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - QuickLayout
-    - Realm
-    - RealmSwift
     - SwiftEntryKit
     - SwiftyJSON
     - UPCarouselFlowLayout
     - youtube-ios-player-helper
+  trunk:
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
@@ -234,13 +235,13 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   QuickLayout: a730730b646b231fd4ef7cffaeb1e81fe0e1ca92
-  Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
-  RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
+  Realm: 8b2ca5bc6479a91f379b6b42b5922e396cd5ba5a
+  RealmSwift: 1949ef26a279e1845bd51d591b9103adfcd121df
   SwiftEntryKit: 83d312243af7397e38a222b17b7a744b9a7d2145
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 37ea699519a71045e5e1684a59437390cfb60467
+PODFILE CHECKSUM: 20f6d06fd526415e73992854d0461f2f6a7de940
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

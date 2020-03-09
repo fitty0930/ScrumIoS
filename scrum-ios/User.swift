@@ -38,7 +38,6 @@ class User: Object {
         self.country = json["country"].stringValue
         self.gameTasteLevel = json["gameTasteLevel"].stringValue
         self.gameTimeLevel = json["gameTimeLevel"].stringValue
-
         self.uid = json["uid"].stringValue
     }
     
