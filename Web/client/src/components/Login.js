@@ -32,10 +32,10 @@ class Login extends React.Component{
             
             login(user).then(
                 res=>{
-                    if(!res.err){
+                    if(!res.error){
                         this.props.history.push('/admin')
                     }else{
-                        alert('ayuda error,con base de datos')
+                        alert(res.error)
                     }
 
                 }
