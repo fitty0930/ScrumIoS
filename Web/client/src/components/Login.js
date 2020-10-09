@@ -1,10 +1,7 @@
 import React from 'react'
 import Logo from '../assets/images/Scrum game.JPG'
+import {login} from './Adminfunctions'
 
-
- 
-
- 
 class Login extends React.Component{
 
     constructor(props){
@@ -27,12 +24,24 @@ class Login extends React.Component{
                 error0:this.state.verificando   //podria ser cualquier cosa es para setear el mensaje a ""
                 
             })
-            /* let usuario=document.getElementById('usuario').value;
-            let password=document.getElementById('password').value;
-    
-            console.log(usuario)
-            console.log(password) */
-            alert('enviando..')                 
+
+            let user={
+                email:document.getElementById('usuario').value,
+                password:document.getElementById('password').value
+            }
+            
+            login(user).then(
+                res=>{
+                    if(!res.err){
+                        this.props.history.push('/admin')
+                    }else{
+                        alert('ayuda error,con base de datos')
+                    }
+
+                }
+            ).catch(err=>{
+                console.log(err)
+            })          
         }
         
       }
@@ -40,8 +49,7 @@ class Login extends React.Component{
        camposVacios=()=>{
         let usuario=document.getElementById('usuario').value;
         let password=document.getElementById('password').value;
-        console.log(usuario)
-        console.log(password)
+        
         if((usuario==="")||(password==="")){
             return true
         }
