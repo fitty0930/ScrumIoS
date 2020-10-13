@@ -52,48 +52,6 @@ class Progress extends Component {
         }
     }
     loadLevels = () => {
-        this.state.levels = [
-            {
-                'level': 1,
-                'percent': 100
-            },
-            {
-                'level': 2,
-                'percent': 100
-            },
-            {
-                'level': 3,
-                'percent': 80,
-            },
-            {
-                'level': 4,
-                'percent': 0
-            },
-            {
-                'level': 5,
-                'percent': 0
-            },
-            {
-                'level': 6,
-                'percent': 0
-            },
-            {
-                'level': 7,
-                'percent': 0
-            },
-            {
-                'level': 8,
-                'percent': 0
-            },
-            {
-                'level': 9,
-                'percent': 0
-            },
-            {
-                'level': 10,
-                'percent': 0
-            },
-        ]
         this.state.levelsFilter = this.state.levels;  
     };
     render() {
