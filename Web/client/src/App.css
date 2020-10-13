@@ -1,7 +1,44 @@
 .App {
   text-align: center;
 }
+.list-levels{
+  background-color:#FFFFEE;
+  width: 80%;
+  height: 70%;
+}
+.list-levels ul {
+  height: 700px;
+  overflow-y:scroll;
+}
+.cardLevel{
+  border-radius: 70px;
+}
+.contenedorListaUser::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
 
+.contenedorListaUser::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.contenedorListaUser::-webkit-scrollbar-button:increment,
+.contenedorListaUser::-webkit-scrollbar-button {
+    display: none;
+}
+
+.contenedorListaUser::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedorListaUser::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.contenedorListaUser::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
