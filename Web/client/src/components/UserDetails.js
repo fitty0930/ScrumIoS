@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/main.css";
-import logo from "../assets/Scrumgame.JPG";
-import profilePicture from "../assets/user-example.jpg";
+import logo from "../assets/images/Scrumgame.JPG";
+import profilePicture from "../assets/images/user-example.jpg";
 class UserDetails extends Component {
   constructor(){
     super();
@@ -61,7 +61,7 @@ class UserDetails extends Component {
               <div class="col-sm my-4">
                 <a class="buttonsUser btn btn-primary" href="#" role="button">
                   Ver Progreso
-                </a>
+                </a> {/* Enviar id de usuario como param al progreso*/}
               </div>
             </div>
           </div>
