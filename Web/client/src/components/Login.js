@@ -33,15 +33,18 @@ class Login extends React.Component{
             
             login(user).then(
                 res=>{
-                    console.log(res)
-                    if(!res.err){
-                        this.props.history.push('/admin')
+                   /*  console.log(res) */
+                    if(!res.error){
+                        
+                        this.props.history.push('/home')
                     }else{
                         /* alert('ayuda error,con base de datos') */
                         this.setState({
                             error0:this.state.ups   //no encontro el usuario
-                            
                         })
+                        /* localStorage.setItem('token', JSON.stringify("si ves esto,entraste al else")); */
+                        console.log(res.err)
+                        
                     }
 
                 }
@@ -73,8 +76,10 @@ class Login extends React.Component{
                 
                 <input type="text" name="username" className="input" placeholder="Usuario" id="usuario"/>
                 <input type="password" name="password" className="input" placeholder="*******" id="password"/>
-                <button type="submit"  className="input" className="boton-ingresar" >Ingresar</button>
+                <button type="submit"   className="boton-ingresar" >Ingresar</button>
                 <label>{this.state.error0}</label>  
+
+               {/*  className="input" */}
             </form>
         </div>
         );
