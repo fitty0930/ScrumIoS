@@ -1,0 +1,43 @@
+.btn-color {
+    background-color: #00D1FF;
+}
+
+.input-color {
+    background-color: #AD5AFF;
+}
+
+.contenedorListaUser {
+    background-color: #E5E5E5;
+    min-height: 10px;
+    max-height: 90vh;
+    border-radius: 25px;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+.contenedorListaUser::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedorListaUser::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.contenedorListaUser::-webkit-scrollbar-button:increment,
+.contenedorListaUser::-webkit-scrollbar-button {
+    display: none;
+}
+
+.contenedorListaUser::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedorListaUser::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.contenedorListaUser::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
