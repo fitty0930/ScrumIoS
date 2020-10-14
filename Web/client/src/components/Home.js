@@ -13,18 +13,22 @@ class Home extends React.Component{
     }
     render(){
         return(
-            <div className="consola">
-                {/* <div>
-                    <img src={Logo} alt="" className="logoConsola"/>  
-                </div> */}
-                <div>
-                    <Link to="/nico"> 
-                        <button type="submit"   className="boton-ingresar" >Administrar usuarios</button>
-                    </Link>
-                    <Link to="/benja"> 
-                    <button type="submit"   className="boton-ingresar" >Administrar Niveles</button>
-                    </Link>
-                </div>
+            <div className="consola"  >
+                    <div className="logoConsola">
+                        <img src={Logo} alt="" className="logoConsola"/>  
+                    </div>
+               
+                    <div className="botones">
+                        <Link to="/adminUsers"> 
+                            <button type="submit" className="boton-administrar" >Administrar Usuarios</button>
+                        </Link>
+                    
+                        <Link to='/admin-levels'> 
+                            {/* proximo sprint */}
+                            <button type="submit"   className="boton-administrar" >Administrar Niveles</button>
+                        </Link>
+                    </div>
+                
 
             </div>
         );

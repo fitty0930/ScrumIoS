@@ -1,8 +1,11 @@
-Se creo el back-end que se conecta a la base de datos mongodb
+Se creo el back-end que se conecta a la base de datos mongodb.
+Se creo el back-end que verificara que un administrador este correctamente registrado y este devuelve un token con su email encryptado.
+Para des-encriptar este token usar la libreria "jwt-decode" npm i jwt-decode --save.
 Dependencias instaladas:
-"body-parser" npm i --save body-parser
-"cors" npm i --save cors
-"express" npm i --save express
-"jsonwebtoken" npm i --save jsonwebtoken
-"mongoose" npm i --save mongoose
-"mongodb" npm i --save mongodb
+"body-parser"
+"cors"
+"express"
+"jsonwebtoken"
+"mongoose"
+"mongodb"
+"bcrypt" 
