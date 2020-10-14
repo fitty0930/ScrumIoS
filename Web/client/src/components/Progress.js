@@ -12,8 +12,8 @@ class Progress extends Component {
     constructor() {
         super();
         this.state = {
-            levels: [],
-            levelsFilter: [],
+            levels: [{}],
+            levelsFilter: [{}],
             filtro: "Nivel",
             mail: "eljuancruu22@gmail.com"
         }
@@ -22,61 +22,44 @@ class Progress extends Component {
         // this.getUsers();
     }
 
-
-    // getUsers() {
-    //     // const firebaseConfig = {
-    //     //     apiKey: "AIzaSyBqdvaUqNByD_R0zIhLMRPDQ677iwSetMc",
-    //     //     authDomain: "scrum-game-uade.firebaseapp.com",
-    //     //     databaseURL: "https://scrum-game-uade.firebaseio.com",
-    //     //     projectId: "scrum-game-uade",
-    //     //     storageBucket: "scrum-game-uade.appspot.com",
-    //     //     messagingSenderId: "919500917072",
-    //     //     appId: "1:919500917072:web:0018ded1ca394039a70455",
-    //     //     measurementId: "G-ES5W27SK2R"
-    //     // }
-
-
-    //     // Initialize Firebase
-    //     // firebase.initializeApp(firebaseConfig);
-    //     //   firebase.analytics(); // por alguna razon no es necesario
-    //     // console.log(db);
-    //     let db = firebase.firestore();
-        
-    //     function searchByMail(mail) {
-    //         let array = [];
-    //         db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
-    //             querySnapshot.forEach((docu) => {
-    //                 array.push(docu.data());
-    //             });
-    //         })
-
-    //         return array;
-    //     }
-    //     let arrayUsers= [];
-    //     db.collection("users").get().then((querySnapshot) => { // busca en la db, coleccion users y hace un get
-    //         querySnapshot.forEach((doc) => {
-    //             let data = doc.data();
-    //             console.log(doc.id)
-    //             arrayUsers.push({           
-    //                 user: data,
-    //                 levels: searchByMail(doc.id)
-    //             }); // con el id de la colecc users que es un mail busco en la coleccion siguiente
-    //         });
-    //         console.log(arrayUsers);
-    //     });
-    // }
     componentDidMount (){
         this.loadLevels();
     }
     setFiltro = (e) => {
-        if (e.target.value === 'percent') {
-            this.setState({
-                filtro: "Porcentaje"
-            });
-        }
         if (e.target.value === 'level') {
             this.setState({
                 filtro: "Nivel"
+            });
+            this.setState({
+                levelsFilter: this.state.levels
+            });
+        }
+        if (e.target.value === 'EN CURSO') {
+            let array = [];
+            this.setState({
+                filtro: "En Curso"
+            });
+            for (let item of this.state.levels) {
+                if (item.status === "EN CURSO") {
+                    array.push(item);
+                }
+            }
+            this.setState({
+                levelsFilter: array
+            });
+        }
+        if (e.target.value === 'NO INICIADO') {
+            let array = [];
+            this.setState({
+                filtro: "No Iniciado"
+            });
+            for (let item of this.state.levels) {
+                if (item.status === "NO INICIADO") {
+                    array.push(item);
+                }
+            }
+            this.setState({
+                levelsFilter: array
             });
         }
     }
@@ -90,17 +73,7 @@ class Progress extends Component {
         }
         if (e.target.value != '' && this.state.filtro === "Nivel") {
             for (let item of this.state.levels) {
-                if (item.level == e.target.value) {
-                    array.push(item);
-                }
-            }
-            this.setState({
-                levelsFilter: array
-            });
-        }
-        if (e.target.value != '' && this.state.filtro == "Porcentaje") {
-            for (let item of this.state.levels) {
-                if (item.percent == e.target.value) {
+                if (item.levelId == parseInt(e.target.value, 10)) {
                     array.push(item);
                 }
             }
@@ -115,21 +88,16 @@ class Progress extends Component {
             let array = [];
             db.collection('users').doc(this.state.mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
                 querySnapshot.forEach((docu) => {
-                    array.push(docu.data().status);
+                    array.push(docu.data());
+                });
+                this.setState({
+                    levelsFilter: array,
+                    levels: array
                 });
             });
-            this.setState({
-                levelsFilter: array
-            });
-            this.setState({
-                levels: array
-            });
-            console.log(this.state.levels);
-            console.log(array);
         // }
     };
     render() {
-        console.log(this.state.levels);
         return (
             <>
                 <div className="row col-10 mx-auto">
@@ -138,12 +106,16 @@ class Progress extends Component {
                     </div>
                     <form className="form-inline mx-auto">
                         <div className="form-group padding-auto mx-5">
-                            <select className="custom-select rounded-pill" id="inputGroupSelect01" >
+                            <select className="custom-select rounded-pill" id="inputGroupSelect01" onChange={this.setFiltro} >
                                 <option defaultValue>Filtrar Por</option>
                                 <option value="level">Nivel</option>
-                                <option value="percent">Porcentaje</option>
+                                <option value="EN CURSO">En Curso</option>
+                                <option value="NO INICIADO">No Iniciado</option>
                             </select>
-                            <input type="number"  className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
+                            {   this.state.filtro === "Nivel" ? 
+                                <input type="text"  onChange={this.getFiltro} className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
+                            : ""
+                            }
                         </div>
                     </form>
                     <div>
@@ -151,77 +123,20 @@ class Progress extends Component {
                     </div>
                 </div>
                 <div className="col-10 mx-auto contenedorListaUser overflow-auto list-levels">
-                    <p>{this.state.levels[0]}</p>
                     <ul className="list-group">
                         {
-                            this.state.levels.map((item, index) =>
-                                // item.status == "HECHO" ?
-                                //     <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                //         <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <button className="btn btn-primary text-left collapsed" type="button" data-toggle="collapse" data-target={"#collapseExample" + item.level} aria-expanded="false" aria-controls="collapseExample" >SubNiveles</button>
-
-                                //         <div className="collapse cardLevel" id={"collapseExample" + item.level}>
-                                //             <div className="card card-body cardLevel">
-                                //                 <ol>
-                                //                     <li>
-                                //                         <p>SubLevel : 1, sarasa sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                //                     </li>
-                                //                     <li>
-                                //                         <p>SubLevel : 2 sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                //                     </li>
-                                //                     <li>
-                                //                         <p>SubLevel : 3 sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                //                     </li>
-                                //                     <li>
-                                //                         <p>SubLevel : 4 sarasa sarasa sarasa sarasa sarasa</p>
-                                //                     </li>
-                                //                 </ol>
-                                //             </div>
-                                //         </div>
-                                //     </li>
-                                //     : item.status == "EN CURSO" ?
-                                //         <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                //             <p>{"nivel: " + item.level + " " + item.percent + "%" + " " + " EN CURSO"}</p> <button className="btn btn-primary text-left collapsed" type="button" data-toggle="collapse" data-target={"#collapseExample" + item.level} aria-expanded="false" aria-controls="collapseExample" >SubNiveles</button>
-                                //             <div className="collapse cardLevel" id={"collapseExample" + item.level}>
-                                //                 <div className="card card-body cardLevel">
-                                //                     <ol>
-                                //                         <li>
-                                //                             <p>SubLevel : 1, sarasa sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                //                         </li>
-                                //                         <li>
-                                //                             <p>SubLevel : 2 sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                //                         </li>
-                                //                         <li>
-                                //                             <p>SubLevel : 3 sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                //                         </li>
-                                //                         <li>
-                                //                             <p>SubLevel : 4 sarasa sarasa sarasa sarasa sarasa</p>
-                                //                         </li>
-                                //                     </ol>
-                                //                 </div>
-                                //             </div>
-                                //         </li>
-                                //         :
+                            this.state.levelsFilter.map((item, index) =>
+                                item.status == "HECHO" ?
+                                    <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
+                                        <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <p>SubLevelID: {item.sublevelID}</p>
+                                    </li>
+                                    : item.status == "EN CURSO" ?
+                                        <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
+                                            <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <p>SubLevelID: {item.sublevelID}</p>
+                                        </li>
+                                        :
                                         <li className="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <button className="btn btn-primary text-left collapsed" type="button" data-toggle="collapse" data-target={"#collapseExample" + item.levelId} aria-expanded="false" aria-controls="collapseExample" >SubNiveles</button>
-
-                                            <div className="collapse cardLevel" id={"collapseExample" + item.levelId}>
-                                                <div className="card card-body cardLevel">
-                                                    <ol>
-                                                        <li>
-                                                            <p>SubLevel : 1, sarasa sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                                        </li>
-                                                        <li>
-                                                            <p>SubLevel : 2 sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                                        </li>
-                                                        <li>
-                                                            <p>SubLevel : 3 sarasa sarasa sarasa sarasa sarasa sarasa</p>
-                                                        </li>
-                                                        <li>
-                                                            <p>SubLevel : 4 sarasa sarasa sarasa sarasa sarasa</p>
-                                                        </li>
-                                                    </ol>
-                                                </div>
-                                            </div>
+                                            <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <p>SubLevelID: {item.sublevelID}</p>
                                             
                                         </li>
                             )
