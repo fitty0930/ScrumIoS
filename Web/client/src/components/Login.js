@@ -9,7 +9,8 @@ class Login extends React.Component{
         this.state={
             error0:"",
             error1:"*Por favor, rellene todos los campos*",
-            verificando:""
+            verificando:"",
+            ups:"*Usuario no encontrado*"
         }
     }
     verificar=(e)=>{
@@ -32,10 +33,15 @@ class Login extends React.Component{
             
             login(user).then(
                 res=>{
+                    console.log(res)
                     if(!res.err){
                         this.props.history.push('/admin')
                     }else{
-                        alert('ayuda error,con base de datos')
+                        /* alert('ayuda error,con base de datos') */
+                        this.setState({
+                            error0:this.state.ups   //no encontro el usuario
+                            
+                        })
                     }
 
                 }
