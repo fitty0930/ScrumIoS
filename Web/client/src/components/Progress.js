@@ -10,6 +10,45 @@ class Progress extends Component {
         }
         this.loadLevels();
     }
+    getUsers  (){
+        var firebaseConfig = {
+            apiKey: "AIzaSyBqdvaUqNByD_R0zIhLMRPDQ677iwSetMc",
+            authDomain: "scrum-game-uade.firebaseapp.com",
+            databaseURL: "https://scrum-game-uade.firebaseio.com",
+            projectId: "scrum-game-uade",
+            storageBucket: "scrum-game-uade.appspot.com",
+            messagingSenderId: "919500917072",
+            appId: "1:919500917072:web:0018ded1ca394039a70455",
+            measurementId: "G-ES5W27SK2R"
+          }
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics(); // por alguna razon no es necesario
+          var db = firebase.firestore();
+
+          function searchByMail(mail) {
+            let array= [];
+            db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
+              querySnapshot.forEach((docu) => {
+                array.push(docu);
+                });
+            })
+            return array;
+          }
+          
+          let arrayUsers = [];
+
+          db.collection("users").get().then((querySnapshot) => { // busca en la db, coleccion users y hace un get
+            querySnapshot.forEach((doc) => {
+                arrayUsers.push({
+                    userName: doc.name,
+                    levels: searchByMail(doc.id)
+                }); // con el id de la colecc users que es un mail busco en la coleccion siguiente
+            });  
+            console.log(arrayUsers);    
+        });
+    }
+
     setFiltro = (e) =>{
         if(e.target.value === 'percent'){
             this.setState({
