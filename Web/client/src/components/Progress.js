@@ -23,7 +23,7 @@ class Progress extends Component {
           }
           // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
-          firebase.analytics(); // por alguna razon no es necesario
+        //   firebase.analytics(); // por alguna razon no es necesario
           var db = firebase.firestore();
 
           function searchByMail(mail) {
