@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export function ListaUsers({users, filterValue}){
     const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase()))
@@ -16,7 +17,9 @@ export function ListaUsers({users, filterValue}){
                                 <div className="position-left align-items-left">
                                     {user.puntos}  
                                 </div>
-                                <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.id}>Administrar</button>
+                                <Link to={"/user/"+user.id}>
+                                    <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.id}>Administrar</button>
+                                </Link>
                             </li>
                         </div>
                     ))}
