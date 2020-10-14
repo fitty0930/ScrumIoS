@@ -1,15 +1,20 @@
-body, html {
-    height: 100%;
-  }
-  .bg {
-    /* The image used */
-    background-image: url("../assets/wallpaper-login2.jpg");
-  
-    /* Full height */
-    height: 100%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.contenedorListaUser {
+    background-color: #E5E5E5;
+    max-height: 90vh;
+    border-radius: 25px;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+.buttonsUser{
+    background-color: #00D1FF !important;
+}
+.inputUser{
+    background-color: #C4C4C4 !important;
+}
+.user-details{
+    background-color: #AD5AFF !important;
+}
+.img-profile{
+    height: 20px;
+    width: 20px;
+}
