@@ -1,17 +1,25 @@
 import React, { Component } from "react";
-import "../styles/main.css";
 import logo from "../assets/images/Scrumgame.JPG";
 import profilePicture from "../assets/images/user-example.jpg";
 class UserDetails extends Component {
   constructor(){
     super();
     this.state =  {
-      user : {}
+      user : {
+        username: "Nico_erasun",
+        score: 14555,
+        id: 4,
+        name : "Nicolas",
+        email: "nico_erasun@gmail.com",
+        country: "Argentina",
+        hours: 800,
+        levels: 28
+      }
     }
   }
-  componentDidMount(){
+/*   componentDidMount(){
     this.setState({user :  localStorage.getItem('user')});
-  };
+  }; */
   render() {
 
     return (
@@ -59,7 +67,7 @@ class UserDetails extends Component {
                 </a>
               </div>
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" href="#" role="button">
+                <a class="buttonsUser btn btn-primary" href="/progress" role="button">
                   Ver Progreso
                 </a> {/* Enviar id de usuario como param al progreso*/}
               </div>
