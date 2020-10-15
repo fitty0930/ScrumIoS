@@ -22,6 +22,8 @@ class UserDetails extends Component {
   }; */
   render() {
 
+    // En este componente se muestran los datos del usuario que van a ser traidos del localStorage, por 
+    // ahora esta fijo pero cuando se avance en java se van a traer los datos de forma correcta (ver en proximo sprint)
     return (
       <>
       <div className="d-flex justify-content-around">
