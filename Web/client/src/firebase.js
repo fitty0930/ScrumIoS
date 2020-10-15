@@ -5,7 +5,7 @@ import 'firebase/firestore';
 
 
 
-//firebase.js
+// Esto representa todos los datos de nuestra base de datos en Firestore
 const firebaseConfig = {
 	apiKey: "AIzaSyBqdvaUqNByD_R0zIhLMRPDQ677iwSetMc",
     authDomain: "scrum-game-uade.firebaseapp.com",
@@ -17,6 +17,6 @@ const firebaseConfig = {
     measurementId: "G-ES5W27SK2R"
 }
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); // inicializamos la DB
 
 export default firebase;
