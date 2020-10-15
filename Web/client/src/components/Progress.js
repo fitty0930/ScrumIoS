@@ -1,9 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-// import firebase from "firebase/app"; // ESTO PARECIERA QUE SIRVE PARA IMPORTAR
 import firebase from "../firebase"
-// USATE UN npm install --save firebase y te descarga las dependencias de la toronja esta que usan de db 
-// SOLUCIONAMOS QUE YA NO TIENE ERRORES, LO MALO ES QUE NO MUESTRA NADA 
-// DICE JUAN CRUZ QUE TIENE QUE VER CON EL MATETE QUE HAS HECHO AHI ABAJO
 // ...
 
 
