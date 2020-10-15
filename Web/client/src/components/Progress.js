@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import firebase from "../firebase"
+import firebase from "../firebase" //importamos el archivo firebase que configuro el db, para conectarnos a la misma
 // ...
 
 
@@ -17,10 +17,11 @@ class Progress extends Component {
         // this.loadLevels();
         // this.getUsers();
     }
-
+    //componentDidMount se ejecuta despues de que se monto el componente en el browsser
     componentDidMount (){
         this.loadLevels();
     }
+    //setFiltro su funcion es cambiar el tipo de filtrado que se va a realizar
     setFiltro = (e) => {
         if (e.target.value === 'level') {
             this.setState({
@@ -59,6 +60,7 @@ class Progress extends Component {
             });
         }
     }
+    //getFiltro su funcion es traer todos los niveles a funcion del tipo de filtrado seleccionado
     getFiltro = (e) => {
         let array = [];
         if (e.target.value === '') {
@@ -78,6 +80,8 @@ class Progress extends Component {
             });
         }
     }
+    //loadlevels es para cargar de forma incial todos los niveles del usuarios con el mail del mismo traidos de la base de datos firestore,
+    //esta funcion se ejecuta cuando el componente se monto en el browsser
     loadLevels = () => {
         // if(this.state.mail != ""){
             let db = firebase.firestore();
