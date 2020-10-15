@@ -15,7 +15,7 @@ app.use(
 )
 const mongoURI = 'mongodb+srv://scrumuser123:scrum123@cluster0.vtmxc.mongodb.net/scrumGame?retryWrites=true&w=majority';
 mongoose.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true }) // Conexion con la base de datos
-    .then(() => console.log('MongoDB Conectado: ' + mongoURI.substr(0, 7)))
+    .then(() => console.log('Base de datos conectada: ' + mongoURI.substr(0, 7)))
     .catch(err => console.log(err));
 app.use('/admins', Admins);
 app.listen(port, () => {
