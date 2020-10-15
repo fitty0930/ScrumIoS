@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
+import './AdminStyles.css';
 export function ListaUsers({users, filterValue}){
-    const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase()))
-    //|| entry.mail.toLowerCase().includes(filterValue.toLowerCase())
+    const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase())
+    || entry.mail.toLowerCase().includes(filterValue.toLowerCase()))
 
     return(
         <div>

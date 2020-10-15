@@ -11,7 +11,7 @@ class Progress extends Component {
             levels: [{}],
             levelsFilter: [{}],
             filtro: "Nivel",
-            mail: "eljuancruu22@gmail.com"
+            mail: "anmartinez@uade.edu.ar"
         }
 
         // this.loadLevels();
@@ -51,7 +51,7 @@ class Progress extends Component {
                 filtro: "No Iniciado"
             });
             for (let item of this.state.levels) {
-                if (item.status === "NO INICIADO") {
+                if (item.status === '"NO INICIADO"') {
                     array.push(item);
                 }
             }
@@ -98,6 +98,7 @@ class Progress extends Component {
         // }
     };
     render() {
+        console.log(this.state.levelsFilter)
         return (
             <>
                 <div className="row col-10 mx-auto">
@@ -128,15 +129,15 @@ class Progress extends Component {
                             this.state.levelsFilter.map((item, index) =>
                                 item.status == "HECHO" ?
                                     <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                        <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <p>SubLevelID: {item.sublevelID}</p>
+                                        <p>{"nivel: " + item.levelId + " " + item.status }</p> <p>SubLevelID: {item.sublevelID}</p>
                                     </li>
                                     : item.status == "EN CURSO" ?
                                         <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <p>SubLevelID: {item.sublevelID}</p>
+                                            <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
                                         </li>
                                         :
                                         <li className="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status + "%"}</p> <p>SubLevelID: {item.sublevelID}</p>
+                                            <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
                                             
                                         </li>
                             )

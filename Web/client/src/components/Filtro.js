@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-
+import './AdminStyles.css';
 export function Filtrar({filterValue, setFilterValue}){
 
 

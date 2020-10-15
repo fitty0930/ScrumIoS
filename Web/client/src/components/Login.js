@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../assets/images/Scrum game.JPG'
+import Logo from '../assets/images/Scrumgame.JPG'
 import {login} from './Adminfunctions'
 
 class Login extends React.Component{
@@ -33,6 +33,7 @@ class Login extends React.Component{
             
             login(user).then(
                 res=>{
+                    console.log(res);
                     if(!res.error){
                         this.props.history.push('/home')
                     }else{

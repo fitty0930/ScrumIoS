@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom' 
-import Logo from '../assets/images/Scrum game.JPG'
+import Logo from '../assets/images/Scrumgame.JPG'
 //do something...
 
 class Home extends React.Component{
