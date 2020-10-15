@@ -9,7 +9,8 @@ class Login extends React.Component{
         this.state={
             error0:"",
             error1:"*Por favor, rellene todos los campos*",
-            verificando:""
+            verificando:"",
+            ups:"*Usuario no encontrado*"
         }
     }
     verificar=(e)=>{
@@ -33,7 +34,7 @@ class Login extends React.Component{
             login(user).then(
                 res=>{
                     if(!res.error){
-                        this.props.history.push('/admin')
+                        this.props.history.push('/home')
                     }else{
                         alert(res.error)
                     }
@@ -67,8 +68,10 @@ class Login extends React.Component{
                 
                 <input type="text" name="username" className="input" placeholder="Usuario" id="usuario"/>
                 <input type="password" name="password" className="input" placeholder="*******" id="password"/>
-                <button type="submit"  className="input" className="boton-ingresar" >Ingresar</button>
+                <button type="submit"   className="boton-ingresar" >Ingresar</button>
                 <label>{this.state.error0}</label>  
+
+               {/*  className="input" */}
             </form>
         </div>
         );

@@ -5,6 +5,7 @@ import './assets/css/index.css';
 import {Filtrar} from './components/Filtro';
 import {ListaUsers} from './components/ListaUser';
 import Login from './components/Login'
+import Home from './components/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom' 
 import ResultCategory from './components/Progress';
 
@@ -27,9 +28,11 @@ function App() {
               <div>
                 <Filtrar filterValue={filterValue} setFilterValue={setFilterValue}/>
                 <ListaUsers users={users} filterValue={filterValue}/>
+                
               </div>
         )}/>
        <Route exact path='/login' component={Login} />
+       <Route exact path='/home' component={Home} />
        <Route exact path='/progress' component={ResultCategory} />
      </Router>
     
