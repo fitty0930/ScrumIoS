@@ -2,10 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 export function ListaUsers({users, filterValue}){
-    const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase() || entry.mail.toLowerCase().includes(filterValue.toLowerCase())))
+    const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase()))
+    //|| entry.mail.toLowerCase().includes(filterValue.toLowerCase())
 
     return(
         <div>
+        {console.log(users)}
             <div className="col-10 mx-auto contenedorListaUser overflow-auto">
                 <ul className="list-group" id="lista-usuarios">
                     {filteredUsers.map((user) => (
