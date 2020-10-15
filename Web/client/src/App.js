@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import AdminUsers from './components/AdminUsers';
 import {Filtrar} from './components/Filtro';
 import {ListaUsers} from './components/ListaUser';
 import './App.css';
