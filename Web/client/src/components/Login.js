@@ -1,15 +1,16 @@
 import React from 'react'
-import Logo from '../assets/images/Scrum game.JPG'
+import Logo from '../assets/images/Scrumgame.JPG'
 import {login} from './Adminfunctions'
 
 class Login extends React.Component{
 
     constructor(props){
         super(props)
-        this.state={
+        this.state={                        //el state se utiliza para mostrar errores a la hora de logearse
             error0:"",
             error1:"*Por favor, rellene todos los campos*",
-            verificando:""
+            verificando:"",
+            ups:"*Usuario no encontrado*"
         }
     }
     verificar=(e)=>{
@@ -30,10 +31,11 @@ class Login extends React.Component{
                 password:document.getElementById('password').value
             }
             
-            login(user).then(
-                res=>{
+            login(user).then(           //funcion inportada desde Adminfunctions
+                res=>{                  //comprueba los datos retornados de la base de datos y si el usuario Admin existe te redirige
+                    console.log(res);   //hacia la template home, si no es el caso saltara una alerta proviniente de la base de datos 
                     if(!res.error){
-                        this.props.history.push('/admin')
+                        this.props.history.push('/home')
                     }else{
                         alert(res.error)
                     }
@@ -67,8 +69,10 @@ class Login extends React.Component{
                 
                 <input type="text" name="username" className="input" placeholder="Usuario" id="usuario"/>
                 <input type="password" name="password" className="input" placeholder="*******" id="password"/>
-                <button type="submit"  className="input" className="boton-ingresar" >Ingresar</button>
+                <button type="submit"   className="boton-ingresar" >Ingresar</button>
                 <label>{this.state.error0}</label>  
+
+               {/*  className="input" */}
             </form>
         </div>
         );
