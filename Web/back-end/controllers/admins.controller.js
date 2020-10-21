@@ -32,3 +32,31 @@ exports.login = (req, res) => {
             res.send('error: ' + err)
         })
 }
+exports.register = (req, res) => {
+    const userData = {
+        password: req.body.password,
+        email: req.body.email
+    }
+    Admin.findOne({
+            email: req.body.email
+        })
+        .then(user => {
+            if (!user) {
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    userData.password = hash;
+                    Admin.create(userData)
+                        .then(user => {
+                            res.json({ status: user.email + 'se ha registrado correctamente' })
+                        })
+                        .catch(err => {
+                            res.send('error: ' + err)
+                        })
+                })
+            } else {
+                res.json({ error: 'Este mail ha sido registrado con anterioridad' })
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+}
