@@ -5,7 +5,7 @@
     <string name="btn_text_retry">Reintentar</string>
     <string name="login_sign_up">Crear una cuenta</string>
     <string name="login_description">Aprende Scrum jugando!</string>
-    <string name="login_not_yet_registered">¿No estás registrado?</string>
+    <string name="login_not_yet_registered"></string>
     <string name="login_login">Ingresar</string>
     <string name="menu_level_row_sublevels">%d subniveles</string>
     <string name="info_theory_skip">SALTAR TUTORIAL</string>
