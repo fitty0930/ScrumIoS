@@ -8,6 +8,7 @@ import Home from './components/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom' 
 import ResultCategory from './components/Progress';
 import UserDetails from './components/UserDetails'
+import Register from './components/Register';
 
 function App() {
   const [filterValue, setFilterValue] = useState('')  
@@ -31,6 +32,7 @@ function App() {
               </div>
         )}/>
        <Route exact path='/login' component={Login} />
+       <Route exact path='/register' component={Register} />
        <Route exact path='/home' component={Home} />
        <Route exact path='/user/:id' component={UserDetails}/>
        <Route exact path='/progress' component={ResultCategory} />
