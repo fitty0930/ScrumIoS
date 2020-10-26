@@ -1,0 +1,281 @@
+
+.formulario{
+  width: 434px;
+  margin: auto;
+  height: 677px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%); */
+
+
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+.consola{
+    
+    box-sizing: border-box;
+    width: 800px;
+    margin-top: 45px !important;
+    margin: auto;
+    height: 677px;
+    
+   
+  
+  
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+   /* display: flex;
+    flex-direction: column; */
+  /*   text-align: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px; */
+    
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+}
+.botones{
+  display: flex;
+  
+  justify-content:space-around;
+ 
+  
+}
+.sombreado{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: chocolate; */
+  /* background: linear-gradient(180deg, rgba(21, 20, 20, 0.192) -4.54%, rgba(67, 65, 65, 0.559333) 35.75%, rgba(3, 0, 0, 0.8) 100%); */
+}
+
+body,html{
+  
+  margin: 0;
+  padding: 0;
+  
+  
+  background-size: 100vw 100vh;
+  background-image: url("../images/wallpaper-login2.jpg");
+  background-attachment: fixed;
+  
+  
+}
+.boton-ingresar{
+  position: relative;
+  left: 129.18px;
+  margin-top: 400px;
+  width: 173.85px;
+  height: 50px;
+  background: #00D1FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+ 
+}
+.boton-ingresar:hover{
+  background:#177fa8;
+}
+.input{
+  position: relative;
+  width: 342.03px;
+  height: 53.41px;
+  left: 45.09px;
+  top: 368.52px;
+  margin-top:10px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  box-shadow: 5px 4px 4px rgba(9, 15, 174, 0.25);
+  border-radius: 8px;
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+.logo{
+  position: relative;
+  width: 100%;
+  margin-bottom:-90%;
+  
+}
+.logoConsola{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  margin-left: 2%;
+  width: 93%;
+  /* margin-bottom:-90%; */
+  
+}
+.boton-administrar{
+  
+  
+  height: 70px;
+  width: 200px;
+  color: #000000;
+  align-items:center;
+  font-family: Ropa Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  
+background: linear-gradient(180deg, #9543e7 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #096fce 0%, rgba(255, 255, 255, 0) 100%), #00D1FF;
+border-radius: 150px;
+}
+
+
+
+
+@media(max-with:480px){
+
+  .formulario{
+    width: 100%;
+    height: auto;
+  }
+  body{
+    overflow: hidden;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+ */
+ .btn-color {
+  background-color: #00D1FF;
+}
+
+.input-color {
+  background-color: #AD5AFF;
+}
+
+.contenedorListaUser {
+  background-color: #E5E5E5;
+  min-height: 10px;
+  max-height: 90vh;
+  border-radius: 25px;
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+}
+
+.contenedorListaUser::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.contenedorListaUser::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.contenedorListaUser::-webkit-scrollbar-button:increment,
+.contenedorListaUser::-webkit-scrollbar-button {
+  display: none;
+}
+
+.contenedorListaUser::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.contenedorListaUser::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.contenedorListaUser::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.contenedorListaUser {
+  background-color: #E5E5E5;
+  max-height: 90vh;
+  border-radius: 25px;
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+}
+.buttonsUser{
+  background-color: #00D1FF !important;
+}
+.inputUser{
+  background-color: #C4C4C4 !important;
+}
+.user-details{
+  background-color: #AD5AFF !important;
+}
+.img-profile{
+  height: 20px;
+  width: 20px;
+}
