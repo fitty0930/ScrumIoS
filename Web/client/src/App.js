@@ -3,6 +3,7 @@ import './assets/css/App.css';
 import './assets/css/index.css';
 import {Filtrar} from './components/Filtro';
 import {ListaUsers} from './components/ListaUser';
+import {ListaUserWait} from './components/ListaUserWait';
 import Login from './components/Login'
 import Home from './components/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom' 
@@ -36,7 +37,13 @@ function App() {
         <Route exact path='/adminUsers' render={() => (
               <div>
                 <Filtrar filterValue={filterValue} setFilterValue={setFilterValue}/>
-                <ListaUsers users={users} waitingUsers={waitingUsers} filterValue={filterValue}/>
+                <ListaUsers users={users} filterValue={filterValue}/>
+              </div>
+        )}/>
+        <Route exact path='/adminWaitingUsers' render={() => (
+              <div>
+                <Filtrar filterValue={filterValue} setFilterValue={setFilterValue}/>
+                <ListaUserWait  waitingUsers={waitingUsers} filterValue={filterValue}/>
               </div>
         )}/>
        <Route exact path='/login' component={Login} />
