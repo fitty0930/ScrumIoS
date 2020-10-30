@@ -25,8 +25,9 @@ exports.Register_user = (req, res) => {
         name: req.body.name,
         profession: req.body.profession,
         state: req.body.state,
-        password: req.body.password,
+        password: req.body.name+ req.body.age,
     }
+    console.log(userData);
     User_wait.findOne({
             mail: req.body.mail
         })

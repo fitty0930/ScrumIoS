@@ -17,21 +17,20 @@ const Register =(props)=> {
     const handleSubmit = (event) => {
       notification();
       const user = {
-        body: {
-          edad: edad,
-          pais: pais,
-          interes: interes,
-          tiempo: tiempo,
-          genero: genero,
-          ciudad: ciudad,
-          provincia: provincia,
+          age: edad,
+          country: pais,
+          gameTasteLevel: interes,
+          gameTimeLevel: tiempo,
+          gender: genero,
+          city: ciudad,
+          state: provincia,
           mail: mail,
-          nombre: nombre,
-        },
+          name: nombre,
+          profession: "albañil"
       };
       register(user)
       .then(res => 
-        console.log(res.data)
+        console.log(res)
       )
      .catch(err => console.log(err))
     };
