@@ -103,7 +103,15 @@ class UserDetails extends Component {
       }
     });
   }
-  
+  deleteUser = () => {
+    let mail= this.state.user.email;
+    let db = firebase.firestore();
+    db.collection("users").doc(mail).delete().then(function() {
+      alert("Usuario borrado con satisfacion dea!");
+    }).catch(function(error) {
+      alert("Error al matar a ese hijo de puta", error);
+    });
+  }
   enviarDatos = () => {
     let user= this.state.user;
     let db = firebase.firestore();
