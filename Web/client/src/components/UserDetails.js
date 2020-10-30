@@ -63,7 +63,6 @@ class UserDetails extends Component {
       let valueUrl= window.location.pathname.split("/");
       mail= valueUrl[2];
     }
-    console.log(mail);
 
     let db = firebase.firestore();
     let array = [];
