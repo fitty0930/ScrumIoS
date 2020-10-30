@@ -25,7 +25,6 @@ const  options = [
 class UserDetails extends Component {
   constructor(props) {
     super(props);
-    console.log(props.location);
     this.state = {
       user: {
         username: "Nico_erasun",
@@ -43,7 +42,6 @@ class UserDetails extends Component {
         genero: "Otro",
         ciudad: "Bolivar",
         Provincia: "Buenos Aires"
-
       },
       BotonEditar: "Editar",
       precionado: false,
@@ -55,13 +53,52 @@ class UserDetails extends Component {
       pais: "Argentina",
       interesEnelJuego: "Fantastico"
     }
-    this.getDatauser("anmartinez@uade.edu.ar");
+    this.getDatauser();
   }
-  getDatauser(mail){
+  getDatauser(){
+    let mail = "";
+    if(this.props.location.query != undefined){
+      mail= this.props.location.query;
+    }else{
+      let valueUrl= window.location.pathname.split("/");
+      mail= valueUrl[2];
+    }
+    console.log(mail);
+
     let db = firebase.firestore();
     let array = [];
     db.collection('users').doc(mail).get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
-        console.log(querySnapshot)
+      let user= querySnapshot.data();
+      if(user !== undefined){
+          this.setState({
+            user: {
+              username: "este no va",
+              score: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+              id: user.uid,
+              name: user.name,
+              email: mail,
+              country: user.country,
+              hours: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+              levels: "traer niveles",//hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+              edad: user.age,                                     ////estos datos son de ejemplo
+              pais: "ESTE NI VA WEY",                            //se van a cargar con la informacion de la base de datos
+              interesEnelJuego: user.gameTasteLevel,
+              tiempoDedicadAjugar: user.gameTimeLevel,
+              genero: user.gender,
+              ciudad: user.city,
+              Provincia: user.state
+            },
+            Provincia: user.state,
+            Ciudad: user.city,
+            email: mail,
+            name: user.name,
+            edad: user.age,
+            pais: user.country,
+            interesEnelJuego: user.gameTasteLevel,
+        });
+      }else{
+        alert("viejo pasame bien el mail, no se encontro nada");
+      }
     });
   }
   
