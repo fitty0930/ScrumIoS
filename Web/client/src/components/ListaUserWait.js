@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './AdminStyles.css';
-export function ListaUsers({waitingUsers, filterValue}){
+export function ListaUserWait({waitingUsers, filterValue}){
     //Funcion que retorna los usuarios filtrados
     const filteredWaitingUsers = waitingUsers.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase())
     || entry.mail.toLowerCase().includes(filterValue.toLowerCase()))
@@ -12,7 +12,7 @@ export function ListaUsers({waitingUsers, filterValue}){
         <div>
         {console.log(waitingUsers)}
         <div>
-                <div className="col-10 mx-auto my-2 contenedorListaUser overflow-auto" id="listaUserEspera" hidden>
+                <div className="col-10 mx-auto my-2 contenedorListaUser overflow-auto" id="listaUserEspera">
                     <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
                         <h1 className="text-black p-1">Lista de Usuarios <span className="font-weight-bold">en espera</span>:</h1>
                     </div>
