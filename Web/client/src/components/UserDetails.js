@@ -1,12 +1,33 @@
 import React, { Component } from "react";
 import logo from "../assets/images/Scrumgame.JPG";
 import profilePicture from "../assets/images/user-example.jpg";
+import firebase from "../firebase"
+
+const  options = [
+  {
+    label: "Poco",
+    value: "poco"
+  },
+  {
+    label: "Le da igual",
+    value: "le-da-igual"
+  },
+  {
+    label: "Mucho",
+    value: "Mucho"
+  },
+  {
+    label: "fantastico",
+    value: "Fantástico"
+  }
+];
+
 class UserDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log(props.location);
     this.state = {
       user: {
-        visible:true,
         username: "Nico_erasun",
         score: 14555,
         id: 4,
@@ -15,29 +36,58 @@ class UserDetails extends Component {
         country: "Argentina",
         hours: 800,
         levels: 28,
-        edad: 14,
-        pais: "Argentina",
+        edad: 14,                                     ////estos datos son de ejemplo
+        pais: "Argentina",                            //se van a cargar con la informacion de la base de datos
         interesEnelJuego: "le da igual",
         tiempoDedicadAjugar: "Mucho",
         genero: "Otro",
         ciudad: "Bolivar",
         Provincia: "Buenos Aires"
 
-      }
+      },
+      BotonEditar: "Editar",
+      precionado: false,
+      Provincia: "Buenos Aires",
+      Ciudad: "Bolivar",
+      email: "nico_erasun@gmail.com",
+      name: "Nicolas",
+      edad: 22,
+      pais: "Argentina",
+      interesEnelJuego: "Fantastico"
     }
+    this.getDatauser("anmartinez@uade.edu.ar");
   }
-  /*   componentDidMount(){
-      this.setState({user :  localStorage.getItem('user')});
-    }; */
-    enviarDatos(){
+  getDatauser(mail){
+    let db = firebase.firestore();
+    let array = [];
+    db.collection('users').doc(mail).get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
+        console.log(querySnapshot)
+    });
+  }
+  
+  enviarDatos() {
+    //a
+    alert("matalo a ese hijo de puta")
+  }
 
-      //a
-      alert("por favor llene todos los campos")
-    }
+  handleChange = (key) => {              //permite que los imputs puedan ser modificados
+    return function (e) {             //estos imputs estan leyendo el state,por lo que no se puden modificar
+      var state = {}                  //la funcion permite capurar los valores que estas escribiendo y setearlos dentro del state en tiempo real
+      state[key] = e.target.value     //lo bueno es que no vas a perder los datos, ya que al actualizar la pagina los datos se vuelven
+      this.setState(state)            //a cargar desde la base de datos
+    }.bind(this)
+  }
+  CambiarSelect(e) {
+    this.setState({ user: e.target.value });
+  }
+  desplegarFormulario() {
 
-   desplegarFormulario(){
     document.querySelector("#formulario").toggleAttribute("hidden");
-   }
+  }
+
+
+  
+
 
   render() {
 
@@ -84,7 +134,7 @@ class UserDetails extends Component {
               </div>
               <div class="col-sm my-4">
                 <a class="buttonsUser btn btn-primary" href="#" role="button" onClick={this.desplegarFormulario}>
-                  Editar
+                  {this.state.BotonEditar}
                 </a>
               </div>
               <div class="col-sm my-4">
@@ -94,71 +144,80 @@ class UserDetails extends Component {
               </div>
             </div>
             <div className="awdawd-col-8 m-auto h-100" id="formulario" hidden>
-              
+
               <div className="form-row">
-               <div className="form-group col-md-6">
-                 <label for="inputEdad">Edad</label>
-                 <input type="number" className="form-control" id="inputEdad" placeholder={this.state.user.edad} />
-               </div>
-               <div className="form-group col-md-6">
-                 <label for="inputCountry">País</label>
-                 <input type="input" className="form-control" id="inputCountry" placeholder={this.state.user.pais} />
-               </div>
-             </div>
-             <div className="form-group row">
-               <div className="col-4">
-                 <label for="inputInteres">Interes en el Juego</label>
-                 <select id="inputInteres" className="form-control">
-                   <option value="nada">Nada</option>
-                   <option value="poco">Poco</option>
-                   <option value="le-da-igual" defaultValue>Le da igual</option>
-                   <option value="mucho">Mucho</option>
-                   <option value="fantástico">Fantástico</option>
-                 </select>
-               </div>
-               <div className="col-4">
-                 <label for="inputInteres">Tiempo dedicado a Jugar</label>
-                 <select id="inputTiempo" className="form-control">
-                   <option value="nada">Nada</option>
-                   <option value="poco">Poco</option>
-                   <option value="le-da-igual" defaultValue>Le da igual</option>
-                   <option value="mucho">Mucho</option>
-                   <option value="fantástico">Fantástico</option>
-                 </select>
-               </div>
-               <div className="col-4">
-                 <label for="inputGenero">Género</label>
-                 <select id="inputTiempo" className="form-control">
-                   <option value="masculino" defaultValue>Masculino</option>
-                   <option value="otro">Otro</option>
-                   <option value="femenino">Femenino</option>
-                 </select>
-               </div>
-             </div>
-             <div className="form-row">
-               <div className="form-group col-md-6">
-                 <label for="inputCity">Ciudad</label>
-                 <input type="text" className="form-control" id="inputCity" placeholder={this.state.user.ciudad} />
-               </div>
-               <div className="form-group col-md-6">
-                 <label for="inputProvince">Provincia</label>
-                 <input type="text" className="form-control" id="inputProvince" placeholder={this.state.user.Provincia} />
-               </div>
-               <div className="form-group col-md-6">
-                 <label for="inputMail">Mail</label>
-                 <input type="email" className="form-control" id="inputMail" placeholder={this.state.user.email} />
-               </div>
-               <div className="form-group col-md-6">
-                 <label for="inputName">Nombre</label>
-                 <input type="text" className="form-control" id="inputName" placeholder={this.state.user.name} />
-               </div>
-             </div>
-             <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
-               Guardar Cambios
+                <div className="form-group col-md-6">
+                  <label for="inputEdad">Edad</label>
+                  <input type="number" className="form-control" id="inputEdad" value={this.state.edad} onChange={this.handleChange('edad')} />
+                </div>
+                <div className="form-group col-md-6">
+                  <label for="inputCountry">País</label>
+                  <input type="input" className="form-control" id="inputCountry" value={this.state.pais} onChange={this.handleChange('pais')} />
+                </div>
+              </div>
+              <div className="form-group row">
+                <div className="col-4">
+                  <label for="inputInteres">Interes en el Juego</label>
+                  <select id="inputInteres" className="form-control">
+                    defaultValue{this.setState.interesEnelJuego}////////////////////aca flaco 
+                    <option value="nada">Nada</option>
+                    <option value="poco">Poco</option>
+                    <option value="le-da-igual" >Le da igual</option>
+                    <option value="mucho">Mucho</option>
+                    <option value="fantástico">Fantástico</option>
+                  </select>
+                </div>
+                <div className="col-4">
+                  <label for="inputInteres">Tiempo dedicado a Jugar</label>
+                 {/*  <select id="inputTiempo" className="form-control">
+                    <option value="nada">Nada</option>
+                    <option value="poco">Poco</option>
+                    <option value="le-da-igual" defaultValue>Le da igual</option>
+                    <option value="mucho">Mucho</option>
+                    <option value="fantástico">Fantástico</option>
+                  </select> */}
+                  <div className="select-container">
+                    <select value={this.state.user.tiempoDedicadAjugar} className="form-control">    
+                      {options.map((option) => (
+                        <option value={option.value}>{option.label} </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                </div>
+                <div className="col-4">
+                  <label for="inputGenero">Género</label>
+                  <select id="inputTiempo" className="form-control">
+                    <option value="masculino" defaultValue>Masculino</option>
+                    <option value="otro">Otro</option>
+                    <option value="femenino">Femenino</option>
+                  </select>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group col-md-6">
+                  <label for="inputCity">Ciudad</label>
+                  <input type="text" className="form-control" id="inputCity" value={this.state.Ciudad} onChange={this.handleChange('Ciudad')} />
+                </div>
+                <div className="form-group col-md-6">
+                  <label for="inputProvince">Provincia</label>
+                  <input type="text" className="form-control" id="inputProvince" value={this.state.Provincia} onChange={this.handleChange('Provincia')} />
+                </div>
+                <div className="form-group col-md-6">
+                  <label for="inputMail">Mail</label>
+                  <input type="email" className="form-control" id="inputMail" value={this.state.email} onChange={this.handleChange('email')} />
+                </div>
+                <div className="form-group col-md-6">
+                  <label for="inputName">Nombre</label>
+                  <input type="text" className="form-control" id="inputName" value={this.state.name} onChange={this.handleChange('name')} />
+                </div>
+              </div>
+              <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
+                Guardar Cambios
            </button>
-     
-       
-           </div>
+
+
+            </div>
           </div>
         </div>
       </>

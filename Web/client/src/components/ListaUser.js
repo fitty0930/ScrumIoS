@@ -19,7 +19,12 @@ export function ListaUsers({users, filterValue}){
                                 <div className="position-left align-items-left">
                                     {user.mail}  
                                 </div>
-                                <Link to={"/user/"+user.uid}>
+
+                                const backUrl = '/some/other/value'
+                                // this.props.testvalue === "hello"
+                                {/* <Link to={{pathname: /${this.props.testvalue}, query: {backUrl}}} /> */}
+
+                                <Link to={{pathname:"/user/"+user.mail, query:user.mail}}>
                                     <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.uid}>Administrar</button>
                                 </Link>
                             </li>
