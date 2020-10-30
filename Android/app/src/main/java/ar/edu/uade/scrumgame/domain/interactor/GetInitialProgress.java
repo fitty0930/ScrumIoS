@@ -15,7 +15,6 @@ public class GetInitialProgress extends UseCase<Progress,Void> {
                      PostExecutionThread postExecutionThread) {
     super(threadExecutor, postExecutionThread);
   }
-
   @Override Observable<Progress> buildUseCaseObservable(Void unused) {
     return Observable.create(emitter -> {
       Progress progress = new Progress();

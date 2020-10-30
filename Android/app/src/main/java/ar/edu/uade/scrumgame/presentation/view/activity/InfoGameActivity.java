@@ -83,14 +83,11 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
                 .build();
-
     }
-
     @Override
     public LevelComponent getComponent() {
         return levelComponent;
     }
-
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt(INSTANCE_STATE_PARAM_LEVEL_CODE, this.levelCode);
@@ -98,7 +95,6 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
         outState.putInt(INSTANCE_STATE_PARAM_CURRENT_GAME, this.currentGame);
         super.onSaveInstanceState(outState);
     }
-
     @Override
     public void onGameCompleted(String gameCode) {
         if (infoGameFragment != null) {

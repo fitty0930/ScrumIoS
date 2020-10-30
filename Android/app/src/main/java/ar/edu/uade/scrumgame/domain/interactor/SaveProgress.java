@@ -39,7 +39,7 @@ public class SaveProgress extends UseCase<String, Progress> {
                 public void onComplete() {
                     remoteProgressRepository.saveProgress(progress).subscribe(new DefaultObserver<Void>() {
                         @Override
-                        public void onComplete() {
+                        public void onComplete() { // STOP TIMER HERE
                             emitter.onNext(PROGRESS_SAVE_OUTCOMES.COMPLETE);
                             emitter.onComplete();
                         }

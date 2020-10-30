@@ -3,6 +3,7 @@ package ar.edu.uade.scrumgame.presentation.models;
 import java.util.List;
 
 import ar.edu.uade.scrumgame.domain.Progress;
+import ar.edu.uade.scrumgame.domain.interactor.Cronometro;
 import ar.edu.uade.scrumgame.presentation.constants.ProgressStatusConstant;
 import io.realm.internal.EmptyLoadChangeSet;
 
@@ -11,10 +12,12 @@ public class SubLevelModel {
     private String code;
     private List<InfoTheoryModel> infoTheory;
     private List<InfoGameModel> infoGame;
+    private Cronometro timer;
 
-
+    
     public SubLevelModel() {
     }
+
 
     public String getName() {
         return name;
@@ -90,8 +93,10 @@ public class SubLevelModel {
                     case 0:
                         return new ProgressStatusModel(ProgressStatusConstant.AVAILABLE, progressPercentage);
                     case 100:
+                        this.timer.stopTime();
                         return new ProgressStatusModel(ProgressStatusConstant.FINISHED, progressPercentage);
                     default:
+                    this.timer.startTime();
                         return new ProgressStatusModel(ProgressStatusConstant.STARTED, progressPercentage);
                 }
             }

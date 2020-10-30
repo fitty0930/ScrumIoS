@@ -1,5 +1,5 @@
 package ar.edu.uade.scrumgame.domain;
-
+import ar.edu.uade.scrumgame.domain.interactor.Cronometro;
 
 public class Progress {
     private String pK;

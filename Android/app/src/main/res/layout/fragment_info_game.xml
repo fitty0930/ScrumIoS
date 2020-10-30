@@ -11,88 +11,113 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/game_header"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/bar"
-                android:background="@drawable/gradient_background_logo"
-                app:layout_constraintTop_toTopOf="parent">
+            android:id="@+id/game_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bar"
+            android:background="@drawable/gradient_background_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/subLevelTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="56dp"
-                    android:layout_marginRight="56dp"
-                    android:cropToPadding="false"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/bt_exit"
-                    app:layout_constraintTop_toTopOf="parent" android:visibility="gone"/>
+                android:id="@+id/subLevelTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:cropToPadding="false"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bt_exit"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/levelTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="56dp"
-                    android:layout_marginRight="56dp"
-                    android:cropToPadding="false"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/bt_exit"
-                    app:layout_constraintTop_toBottomOf="@+id/subLevelTitle" android:visibility="gone"/>
+                android:id="@+id/levelTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:cropToPadding="false"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bt_exit"
+                app:layout_constraintTop_toBottomOf="@+id/subLevelTitle" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/progress_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/levelTitle" android:visibility="gone"/>
+                android:id="@+id/progress_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/levelTitle" />
 
             <Button
-                    android:id="@+id/bt_exit"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/transparent"
-                    android:text="X"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toStartOf="@id/game_progress"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" android:fontFamily="@font/gotham_rounded_bold"/>
+                android:id="@+id/bt_exit"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/transparent"
+                android:fontFamily="@font/gotham_rounded_bold"
+                android:text="X"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/game_progress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
             <ProgressBar
-                    android:id="@+id/game_progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="20dp"
-                    android:progressDrawable="@drawable/gradient_progress"
-                    tools:progress="60"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintBottom_toBottomOf="@id/game_header"
-                    app:layout_constraintStart_toEndOf="@+id/bt_exit" app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="16dp"
-                    android:layout_marginEnd="16dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+                android:id="@+id/game_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:progressDrawable="@drawable/gradient_progress"
+                app:layout_constraintBottom_toBottomOf="@id/game_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/bt_exit"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.296"
+                tools:progress="60" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="208dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="12dp"
+                android:background="#00BCD4"
+                android:shadowColor="#03A9F4"
+                android:shadowRadius="3"
+                android:singleLine="false"
+                android:text="TextView"
+                app:layout_constraintTop_toBottomOf="@+id/game_progress"
+                tools:layout_editor_absoluteX="187dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -148,5 +173,11 @@
 
     <include layout="@layout/view_progress"/>
     <include layout="@layout/view_bottom_sheet" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="148dp"
+        android:layout_height="59dp"
+        android:text="TextView" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
