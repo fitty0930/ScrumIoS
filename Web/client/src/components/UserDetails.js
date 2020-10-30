@@ -27,31 +27,32 @@ class UserDetails extends Component {
     super(props);
     this.state = {
       user: {
-        username: "Nico_erasun",
-        score: 14555,
-        id: 4,
-        name: "Nicolas",
-        email: "nico_erasun@gmail.com",
-        country: "Argentina",
-        hours: 800,
-        levels: 28,
-        edad: 14,                                     ////estos datos son de ejemplo
-        pais: "Argentina",                            //se van a cargar con la informacion de la base de datos
-        interesEnelJuego: "le da igual",
-        tiempoDedicadAjugar: "Mucho",
-        genero: "Otro",
-        ciudad: "Bolivar",
-        Provincia: "Buenos Aires"
+        username: "",
+        score: 0,
+        id: 0,
+        name: "",
+        email: "",
+        country: "",
+        hours: 0,
+        levels: 0,
+        edad: 0,                                     ////estos datos son de ejemplo
+        pais: "",                            //se van a cargar con la informacion de la base de datos
+        interesEnelJuego: "",
+        tiempoDedicadAjugar: "",
+        genero: "",
+        ciudad: "",
+        Provincia: "",
+        profesion: ""
       },
       BotonEditar: "Editar",
       precionado: false,
-      Provincia: "Buenos Aires",
-      Ciudad: "Bolivar",
-      email: "nico_erasun@gmail.com",
-      name: "Nicolas",
-      edad: 22,
-      pais: "Argentina",
-      interesEnelJuego: "Fantastico"
+      Provincia: "",
+      Ciudad: "",
+      email: "",
+      name: "",
+      edad: 0,
+      pais: "",
+      interesEnelJuego: ""
     }
     this.getDatauser();
   }
@@ -68,6 +69,7 @@ class UserDetails extends Component {
     let array = [];
     db.collection('users').doc(mail).get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
       let user= querySnapshot.data();
+      console.log(user);
       if(user !== undefined){
           this.setState({
             user: {
@@ -80,12 +82,13 @@ class UserDetails extends Component {
               hours: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
               levels: "traer niveles",//hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
               edad: user.age,                                     ////estos datos son de ejemplo
-              pais: "ESTE NI VA WEY",                            //se van a cargar con la informacion de la base de datos
+              pais: user.country,                            //se van a cargar con la informacion de la base de datos
               interesEnelJuego: user.gameTasteLevel,
               tiempoDedicadAjugar: user.gameTimeLevel,
               genero: user.gender,
               ciudad: user.city,
-              Provincia: user.state
+              Provincia: user.state,
+              profesion: user.profession
             },
             Provincia: user.state,
             Ciudad: user.city,
@@ -101,14 +104,30 @@ class UserDetails extends Component {
     });
   }
   
-  enviarDatos() {
-    //a
-    alert("matalo a ese hijo de puta")
+  enviarDatos = () => {
+    let user= this.state.user;
+    let db = firebase.firestore();
+    db.collection('users').doc(user.email).set({
+      age: this.state.edad,
+      city: this.state.Ciudad,
+      country: this.state.pais,
+      gameTasteLevel: this.state.interesEnelJuego,
+      gameTimeLevel: user.tiempoDedicadAjugar,
+      gender: user.genero,
+      mail: this.state.email,
+      name: this.state.name,
+      profession: user.profesion,
+      state: this.state.Provincia,
+      uid: user.id,
+    });
+
+    this.getDatauser();
+    alert("matalo a ese hijo de puta");
   }
 
   handleChange = (key) => {              //permite que los imputs puedan ser modificados
     return function (e) {             //estos imputs estan leyendo el state,por lo que no se puden modificar
-      var state = {}                  //la funcion permite capurar los valores que estas escribiendo y setearlos dentro del state en tiempo real
+      let state = {}                  //la funcion permite capurar los valores que estas escribiendo y setearlos dentro del state en tiempo real
       state[key] = e.target.value     //lo bueno es que no vas a perder los datos, ya que al actualizar la pagina los datos se vuelven
       this.setState(state)            //a cargar desde la base de datos
     }.bind(this)
@@ -164,12 +183,12 @@ class UserDetails extends Component {
           <div class="container">
             <div class="row">
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" href="#" role="button">
+                <a class="buttonsUser btn btn-primary" role="button">
                   Eliminar
                 </a>
               </div>
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" href="#" role="button" onClick={this.desplegarFormulario}>
+                <a class="buttonsUser btn btn-primary" role="button" onClick={this.desplegarFormulario}>
                   {this.state.BotonEditar}
                 </a>
               </div>
