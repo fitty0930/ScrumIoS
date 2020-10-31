@@ -3,22 +3,44 @@ import logo from "../assets/images/Scrumgame.JPG";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
 
-const  options = [
+const options = [
   {
-    label: "Poco",
-    value: "poco"
+    value: "Nada"
   },
   {
-    label: "Le da igual",
-    value: "le-da-igual"
+    value: "Poco"
   },
   {
-    label: "Mucho",
+    value: "Le da igual"
+  },
+  {
     value: "Mucho"
   },
   {
-    label: "fantastico",
     value: "Fantástico"
+  }
+];
+const Genero = [
+  {
+    value: "Femina"
+  },
+  {
+    value: "Otro"
+  },
+  {
+    value: "Opresor"
+  },
+  {
+    value: "Humano"
+  },
+  {
+    value: "Furro"
+  },
+  {
+    value: "Weabo"
+  },
+  {
+    value: "F4 phantom"
   }
 ];
 
@@ -35,15 +57,16 @@ class UserDetails extends Component {
         country: "",
         hours: 0,
         levels: 0,
-        edad: 0,                                     ////estos datos son de ejemplo
-        pais: "",                            //se van a cargar con la informacion de la base de datos
+        edad: 0,                                     ////estos datos se setean en "" para luego ser completados
+        pais: "",                                   //por la base de datos,en caso de que uno quede vacío , no se actualizan los datos
         interesEnelJuego: "",
         tiempoDedicadAjugar: "",
         genero: "",
         ciudad: "",
         Provincia: "",
-        profesion: ""
+        Profesion: ""
       },
+      Profesion: "",
       BotonEditar: "Editar",
       precionado: false,
       Provincia: "",
@@ -52,79 +75,87 @@ class UserDetails extends Component {
       name: "",
       edad: 0,
       pais: "",
-      interesEnelJuego: ""
+      interesEnelJuego: "",
+      tiempoDedicadAjugar: "",
+      genero: ""
     }
     this.getDatauser();
+    this.CambiarSelec1 = this.CambiarSelec1.bind(this)
+    this.CambiarSelec2 = this.CambiarSelec2.bind(this)
+    this.CambiarGenero = this.CambiarGenero.bind(this)
   }
-  getDatauser(){
+  getDatauser() {
     let mail = "";
-    if(this.props.location.query != undefined){
-      mail= this.props.location.query;
-    }else{
-      let valueUrl= window.location.pathname.split("/");
-      mail= valueUrl[2];
+    if (this.props.location.query != undefined) {
+      mail = this.props.location.query;
+    } else {
+      let valueUrl = window.location.pathname.split("/");
+      mail = valueUrl[2];
     }
 
     let db = firebase.firestore();
     let array = [];
     db.collection('users').doc(mail).get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
-      let user= querySnapshot.data();
+      let user = querySnapshot.data();
       console.log(user);
-      if(user !== undefined){
-          this.setState({
-            user: {
-              username: "este no va",
-              score: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
-              id: user.uid,
-              name: user.name,
-              email: mail,
-              country: user.country,
-              hours: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
-              levels: "traer niveles",//hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
-              edad: user.age,                                     ////estos datos son de ejemplo
-              pais: user.country,                            //se van a cargar con la informacion de la base de datos
-              interesEnelJuego: user.gameTasteLevel,
-              tiempoDedicadAjugar: user.gameTimeLevel,
-              genero: user.gender,
-              ciudad: user.city,
-              Provincia: user.state,
-              profesion: user.profession
-            },
-            Provincia: user.state,
-            Ciudad: user.city,
-            email: mail,
+      if (user !== undefined) {
+        this.setState({
+          user: {
+            username: "este no va",
+            score: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+            id: user.uid,
             name: user.name,
-            edad: user.age,
-            pais: user.country,
+            email: mail,
+            country: user.country,
+            hours: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+            levels: "traer niveles",//hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+            edad: user.age,                                     ////estos datos son de ejemplo
+            pais: user.country,                            //se van a cargar con la informacion de la base de datos
             interesEnelJuego: user.gameTasteLevel,
+            tiempoDedicadAjugar: user.gameTimeLevel,
+            genero: user.gender,
+            ciudad: user.city,
+            Provincia: user.state,
+            Profesion: user.profession
+          },
+          tiempoDedicadAjugar: user.gameTimeLevel,
+          Provincia: user.state,
+          Ciudad: user.city,
+          email: mail,
+          name: user.name,
+          edad: user.age,
+          pais: user.country,
+          interesEnelJuego: user.gameTasteLevel,
+          genero: user.gender,
+          Profesion: user.profession
         });
-      }else{
+      } else {
         alert("viejo pasame bien el mail, no se encontro nada");
       }
     });
   }
   deleteUser = () => {
-    let mail= this.state.user.email;
+    let mail = this.state.user.email;
     let db = firebase.firestore();
-    db.collection("users").doc(mail).delete().then(function() {
+    db.collection("users").doc(mail).delete().then(function () {
       alert("Usuario borrado con satisfacion dea!");
-    }).catch(function(error) {
+    }).catch(function (error) {
       alert("Error al matar a ese hijo de puta", error);
     });
   }
   enviarDatos = () => {
-    let user= this.state.user;
+    let user = this.state.user;
     let db = firebase.firestore();
     db.collection('users').doc(user.email).set({
       age: this.state.edad,
       city: this.state.Ciudad,
       country: this.state.pais,
       gameTasteLevel: this.state.interesEnelJuego,
-      gameTimeLevel: user.tiempoDedicadAjugar,
-      gender: user.genero,
+      gameTimeLevel: this.state.tiempoDedicadAjugar,
+      gender: this.state.genero,
       mail: this.state.email,
       name: this.state.name,
-      profession: user.profesion,
+      profession: this.state.Profesion,
       state: this.state.Provincia,
       uid: user.id,
     });
@@ -132,7 +163,6 @@ class UserDetails extends Component {
     this.getDatauser();
     alert("matalo a ese hijo de puta");
   }
-
   handleChange = (key) => {              //permite que los imputs puedan ser modificados
     return function (e) {             //estos imputs estan leyendo el state,por lo que no se puden modificar
       let state = {}                  //la funcion permite capurar los valores que estas escribiendo y setearlos dentro del state en tiempo real
@@ -140,22 +170,25 @@ class UserDetails extends Component {
       this.setState(state)            //a cargar desde la base de datos
     }.bind(this)
   }
-  CambiarSelect(e) {
-    this.setState({ user: e.target.value });
+  CambiarSelec1(e) {
+    this.setState({
+      tiempoDedicadAjugar: e.target.value
+    });
+  }
+  CambiarSelec2(e) {                        //tiene la misma funcionalidad que el metodo de arriba pero para los select
+    this.setState({                         //como no paraba de romperse los separe en 3 funciones
+      interesEnelJuego: e.target.value
+    });
+  }
+  CambiarGenero(e) {
+    this.setState({
+      genero: e.target.value
+    });
   }
   desplegarFormulario() {
-
     document.querySelector("#formulario").toggleAttribute("hidden");
   }
-
-
-  
-
-
   render() {
-
-    // En este componente se muestran los datos del usuario que van a ser traidos del localStorage, por 
-    // ahora esta fijo pero cuando se avance en java se van a traer los datos de forma correcta (ver en proximo sprint)
     return (
       <>
         <div className="d-flex justify-content-around">
@@ -193,7 +226,7 @@ class UserDetails extends Component {
               <div class="col-sm my-4">
                 <a class="buttonsUser btn btn-primary" role="button">
                   Eliminar
-                </a>
+                  </a>
               </div>
               <div class="col-sm my-4">
                 <a class="buttonsUser btn btn-primary" role="button" onClick={this.desplegarFormulario}>
@@ -203,7 +236,7 @@ class UserDetails extends Component {
               <div class="col-sm my-4">
                 <a class="buttonsUser btn btn-primary" href="/progress" role="button">
                   Ver Progreso
-                </a> {/* Enviar id de usuario como param al progreso*/}
+                  </a> {/* Enviar id de usuario como param al progreso*/}
               </div>
             </div>
             <div className="awdawd-col-8 m-auto h-100" id="formulario" hidden>
@@ -221,39 +254,29 @@ class UserDetails extends Component {
               <div className="form-group row">
                 <div className="col-4">
                   <label for="inputInteres">Interes en el Juego</label>
-                  <select id="inputInteres" className="form-control">
-                    defaultValue{this.setState.interesEnelJuego}////////////////////aca flaco 
-                    <option value="nada">Nada</option>
-                    <option value="poco">Poco</option>
-                    <option value="le-da-igual" >Le da igual</option>
-                    <option value="mucho">Mucho</option>
-                    <option value="fantástico">Fantástico</option>
+                  <select value={this.state.interesEnelJuego} className="form-control" onChange={this.CambiarSelec2}>
+                    {options.map((option) => (
+                      <option value={option.value}>{option.value} </option>
+                    ))}
                   </select>
                 </div>
                 <div className="col-4">
                   <label for="inputInteres">Tiempo dedicado a Jugar</label>
-                 {/*  <select id="inputTiempo" className="form-control">
-                    <option value="nada">Nada</option>
-                    <option value="poco">Poco</option>
-                    <option value="le-da-igual" defaultValue>Le da igual</option>
-                    <option value="mucho">Mucho</option>
-                    <option value="fantástico">Fantástico</option>
-                  </select> */}
                   <div className="select-container">
-                    <select value={this.state.user.tiempoDedicadAjugar} className="form-control">    
+                    <select value={this.state.tiempoDedicadAjugar} className="form-control" onChange={this.CambiarSelec1}>
                       {options.map((option) => (
-                        <option value={option.value}>{option.label} </option>
+                        <option value={option.value}>{option.value} </option>
                       ))}
                     </select>
                   </div>
-                  
+
                 </div>
                 <div className="col-4">
                   <label for="inputGenero">Género</label>
-                  <select id="inputTiempo" className="form-control">
-                    <option value="masculino" defaultValue>Masculino</option>
-                    <option value="otro">Otro</option>
-                    <option value="femenino">Femenino</option>
+                  <select value={this.state.genero} className="form-control" onChange={this.CambiarGenero}>
+                    {Genero.map((option) => (
+                      <option value={option.value}>{option.value} </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -261,6 +284,10 @@ class UserDetails extends Component {
                 <div className="form-group col-md-6">
                   <label for="inputCity">Ciudad</label>
                   <input type="text" className="form-control" id="inputCity" value={this.state.Ciudad} onChange={this.handleChange('Ciudad')} />
+                </div>
+                <div className="form-group col-md-6">
+                  <label for="inputCity">Profesion</label>
+                  <input type="text" className="form-control" id="inputCity" value={this.state.Profesion} onChange={this.handleChange('Profesion')} />
                 </div>
                 <div className="form-group col-md-6">
                   <label for="inputProvince">Provincia</label>
@@ -277,9 +304,7 @@ class UserDetails extends Component {
               </div>
               <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
                 Guardar Cambios
-           </button>
-
-
+            </button>
             </div>
           </div>
         </div>
