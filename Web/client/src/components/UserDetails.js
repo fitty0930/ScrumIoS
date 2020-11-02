@@ -22,25 +22,13 @@ const options = [
 ];
 const Genero = [
   {
-    value: "Femina"
+    value: "Femenino"
   },
   {
     value: "Otro"
   },
   {
-    value: "Opresor"
-  },
-  {
-    value: "Humano"
-  },
-  {
-    value: "Furro"
-  },
-  {
-    value: "Weabo"
-  },
-  {
-    value: "F4 phantom"
+    value: "Masculino"
   }
 ];
 
@@ -102,13 +90,13 @@ class UserDetails extends Component {
         this.setState({
           user: {
             username: "este no va",
-            score: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+            score: "viera mañana lo hace,djo", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
             id: user.uid,
             name: user.name,
             email: mail,
             country: user.country,
-            hours: "traer niveles", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
-            levels: "traer niveles",//hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+            hours: "viera mañana lo hace,djo", //hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
+            levels: "viera mañana lo hace,djo",//hacer foreach de todos los niveles (HAY QUE TRAER NIveles)
             edad: user.age,                                     ////estos datos son de ejemplo
             pais: user.country,                            //se van a cargar con la informacion de la base de datos
             interesEnelJuego: user.gameTasteLevel,
@@ -130,17 +118,18 @@ class UserDetails extends Component {
           Profesion: user.profession
         });
       } else {
-        alert("viejo pasame bien el mail, no se encontro nada");
+        alert("no se encontro usuario con este mail");
       }
     });
   }
   deleteUser = () => {
     let mail = this.state.user.email;
     let db = firebase.firestore();
+    console.log(mail)
     db.collection("users").doc(mail).delete().then(function () {
-      alert("Usuario borrado con satisfacion dea!");
+      alert("Usuario Eliminado");
     }).catch(function (error) {
-      alert("Error al matar a ese hijo de puta", error);
+      alert("Error al borrar usuario", error);
     });
   }
   enviarDatos = () => {
@@ -161,7 +150,7 @@ class UserDetails extends Component {
     });
 
     this.getDatauser();
-    alert("matalo a ese hijo de puta");
+    alert("se modificaron los datos");
   }
   handleChange = (key) => {              //permite que los imputs puedan ser modificados
     return function (e) {             //estos imputs estan leyendo el state,por lo que no se puden modificar
@@ -224,7 +213,7 @@ class UserDetails extends Component {
           <div class="container">
             <div class="row">
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" role="button">
+                <a class="buttonsUser btn btn-primary" role="button" /* onClick={this.deleteUser} */>
                   Eliminar
                   </a>
               </div>
