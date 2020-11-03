@@ -3,6 +3,7 @@ import logo from "../assets/images/Scrumgame.JPG";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
 
+
 const options = [
   {
     value: "Nada"
