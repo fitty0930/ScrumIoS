@@ -123,6 +123,7 @@ public class LevelPresenter implements Presenter {
         @Override
         public void onComplete() {
             LevelPresenter.this.hideViewLoading();
+
         }
 
         @Override
