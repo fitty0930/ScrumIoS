@@ -202,6 +202,9 @@
     <string name="quit">Salir</string>
     <string name="exit_game">¿Desea salir del juego? ¡Perderás el progreso!</string>
     <string name="version">Versión %s</string>
+    <string name="pause">Pause</string>
+    <string name="reset">Reset</string>
+    <string name="start">Start</string>
     <string-array name="fibonacci_sequence">
         <item>0</item>
         <item tools:ignore="TypographyFractions">1/2</item>

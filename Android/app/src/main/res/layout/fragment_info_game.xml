@@ -64,6 +64,39 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/levelTitle" android:visibility="gone"/>
 
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="312dp"
+                tools:layout_editor_absoluteY="6dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="startChronometer"
+                android:text="@string/start"
+                tools:layout_editor_absoluteX="224dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="pauseChronometer"
+                android:text="@string/pause"
+                tools:layout_editor_absoluteX="64dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="resetChronometer"
+                android:text="@string/reset"
+                tools:layout_editor_absoluteX="136dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
             <Button
                     android:id="@+id/bt_exit"
                     android:layout_width="48dp"

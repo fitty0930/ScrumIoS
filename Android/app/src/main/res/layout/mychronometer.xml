@@ -17,15 +17,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startChronometer"
-        android:text="Start" />
+        android:text="@string/start" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="pauseChronometer"
-        android:text="Pause" />
+        android:text="@string/pause" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="resetChronometer"
-        android:text="Reset" />
+        android:text="@string/reset" />
 </LinearLayout>
