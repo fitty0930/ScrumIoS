@@ -206,8 +206,8 @@ class UserDetails extends Component {
             <div className="col-sm">
               <h3 className="mt-3">Pais:</h3>
               <input type="text" name="nombre" value={this.state.user.country} className="rounded inputUser" />
-              <h3 className="mt-3">Puntaje Obtenido:</h3>
-              <input type="text" disabled name="nombre" value={this.state.score} className="rounded inputUser" />
+              <h3 className="mt-3">Tiempo Jugado:</h3>
+              <input type="text" disabled name="nombre" value={this.state.user.tiempoDedicadAjugar} className="rounded inputUser" />
               <h3 className="mt-3">Niveles Superados:</h3>
               <input type="text" disabled name="nombre" value={this.state.levels} className="rounded inputUser" />
             </div>
