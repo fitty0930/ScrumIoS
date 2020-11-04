@@ -1,17 +1,22 @@
 import React, { Component, useEffect, useState } from "react";
 import firebase from "../firebase" //importamos el archivo firebase que configuro el db, para conectarnos a la misma
 // ...
+import {Link} from 'react-router-dom'
+
 
 
 
 class Progress extends Component {
-    constructor() {
+    
+    constructor(props) {
+        
+       console.log(props)
         super();
         this.state = {
             levels: [{}],
             levelsFilter: [{}],
             filtro: "Nivel",
-            mail: "anmartinez@uade.edu.ar"
+            mail: ""
         }
 
         // this.loadLevels();
@@ -84,9 +89,21 @@ class Progress extends Component {
     //esta funcion se ejecuta cuando el componente se monto en el browsser
     loadLevels = () => {
         // if(this.state.mail != ""){
+            let mail = "";
+            if (this.props.location.query != undefined) {
+            mail = this.props.location.query;
+            } else {
+            let valueUrl = window.location.pathname.split("/");
+            mail = valueUrl[2];
+            }
+            this.setState({
+                mail:mail
+            });
+
+
             let db = firebase.firestore();
             let array = [];
-            db.collection('users').doc(this.state.mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
+            db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
                 querySnapshot.forEach((docu) => {
                     array.push(docu.data());
                 });

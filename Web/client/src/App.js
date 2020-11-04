@@ -35,7 +35,7 @@ function App() {
        <Route exact path='/register' component={Register} />
        <Route exact path='/home' component={Home} />
        <Route exact path='/user/:id' component={UserDetails}/>
-       <Route exact path='/progress' component={ResultCategory} />
+       <Route exact path='/progress/:id' component={ResultCategory} />
      </Router>
     
   );

@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import logo from "../assets/images/Scrumgame.JPG";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
-
-
+import {Button,Modal,ModalHeader,ModalBody,ModalFooter,FormGroup,Input,Label} from 'reactstrap';
+import {login} from './Adminfunctions'
+import {Link} from 'react-router-dom'
 const options = [
   {
     value: "Nada"
@@ -68,7 +69,8 @@ class UserDetails extends Component {
       pais: "",
       interesEnelJuego: "",
       tiempoDedicadAjugar: "",
-      genero: ""
+      genero: "",
+      formularioEliminar:false
     }
     this.getDatauser();
     this.CambiarSelec1 = this.CambiarSelec1.bind(this)
@@ -152,14 +154,33 @@ class UserDetails extends Component {
     });
   }
   deleteUser = () => {
-    let mail = this.state.user.email;
-    let db = firebase.firestore();
-    console.log(mail)
-    db.collection("users").doc(mail).delete().then(function () {
-      alert("Usuario Eliminado");
-    }).catch(function (error) {
-      alert("Error al borrar usuario", error);
-    });
+
+    let user={
+      email:document.getElementById('ModelAdmin').value,
+      password:document.getElementById('ModelPassword').value
+     }
+     console.log(user)////
+     login(user).then(
+          res=>{
+              console.log(res);
+              if(!res.error){
+                  /* alert("anta bakka") */
+                   let mail = this.state.user.email;
+                  let db = firebase.firestore();
+                  console.log(mail)
+                  db.collection("users").doc(mail).delete().then(function () {
+                    alert("Usuario Eliminado");
+                  }).catch(function (error) {
+                    alert("Error al borrar usuario", error);
+                  });
+              }else{
+                  alert(res.error)
+              }
+          }
+      ).catch(err=>{
+          console.log(err)
+      })  
+      this.abrirmodal();
   }
   enviarDatos = () => {
     let user = this.state.user;
@@ -206,6 +227,11 @@ class UserDetails extends Component {
   desplegarFormulario() {
     document.querySelector("#formulario").toggleAttribute("hidden");
   }
+  abrirmodal=()=>{
+    this.setState(
+      {formularioEliminar:!this.state.formularioEliminar}
+    )
+  }
   render() {
     return (
       <>
@@ -215,36 +241,63 @@ class UserDetails extends Component {
             <input type="text" name="username" value={this.state.user.username} className="user-details rounded " />
             <input type="text" disabled name="points" value={this.state.score} className="user-details rounded" />
           </div>
-          <img src={logo} width="150" height="150" />
+          
         </div>
-        <div className="container mb-16 contenedorListaUser">
-          <div className="row">
-            <div className="col-sm ">
-              <h3 className="mt-3">Id de Usuario:</h3>
-              <input type="text" disabled name="user-id" value={this.state.user.id} className="rounded inputUser" />
-              <h3 className="mt-3">Nombre Completo:</h3>
-              <input type="text" name="user-name" value={this.state.user.name} className="rounded inputUser" />
-              <h3 className="mt-3">Correo Electronico:</h3>
-              <input type="text" name="user-mail" value={this.state.user.email} className="rounded inputUser" />
-            </div>
-            <div className="col-sm">
-              {" "}
-            </div>
-            <div className="col-sm">
-              <h3 className="mt-3">Pais:</h3>
-              <input type="text" name="nombre" value={this.state.user.country} className="rounded inputUser" />
-              <h3 className="mt-3">Tiempo jugado:</h3>
-              <input type="text" disabled name="nombre" value={this.state.user.tiempoDedicadAjugar} className="rounded inputUser" />
-              <h3 className="mt-3">Niveles Superados:</h3>
-              <input type="text" disabled name="nombre" value={this.state.levels} className="rounded inputUser" />
-            </div>
+        <div className="container lg-16 contenedorListaUser bg-white">
+          <div className="row ">
+            
+              <div className="col-4 ">
+                <h3 className="mt-3">Id de Usuario:</h3>
+                <input type="text" disabled name="user-id" value={this.state.user.id} className="rounded inputUser" />
+                <h3 className="mt-3">Nombre Completo:</h3>
+                <input type="text" name="user-name" value={this.state.user.name} className="rounded inputUser" />
+                <h3 className="mt-3">Correo Electronico:</h3>
+                <input type="text" name="user-mail" value={this.state.user.email} className="rounded inputUser" />
+              </div>
+              <div className="col-4 float-center">
+                <img src={logo} width="210" height="210"  />
+              </div>
+              <div className="col-4 float-right">
+                
+                <h3 className="mt-3">Pais:</h3>
+                <input type="text" name="nombre" value={this.state.user.country} className="rounded inputUser" />
+                <h3 className="mt-3">Tiempo jugado:</h3>
+                <input type="text" disabled name="nombre" value={this.state.user.tiempoDedicadAjugar} className="rounded inputUser" />
+                <h3 className="mt-3">Niveles Superados:</h3>
+                <input type="text" disabled name="nombre" value={this.state.levels} className="rounded inputUser" />
+              </div>
+            
           </div>
           <div class="container">
             <div class="row">
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" role="button" /* onClick={this.deleteUser} */>
-                  Eliminar
-                  </a>
+                  <Button className="buttonsUser btn btn-primary" role="button" onClick={this.abrirmodal}>
+                    Eliminar
+                  </Button>
+                  <Modal isOpen={this.state.formularioEliminar}>
+                    <ModalHeader>
+                      Ingrese datos administrador para eliminar usuario
+                    </ModalHeader>
+                    <ModalBody>
+                      <FormGroup>
+                        <Label for="admin">administrador</Label>
+                        <Input type="text" id="ModelAdmin"/>
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Contraseña</Label>
+                        <Input type="password" id="ModelPassword"/>
+                      </FormGroup>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button onClick={this.abrirmodal}>
+                        Cancelar
+                      </Button>
+                      <Button color="danger" onClick={this.deleteUser}>
+                        Eliminar Usuario
+                      </Button>
+                    </ModalFooter>
+                  </Modal>
+                  
               </div>
               <div class="col-sm my-4">
                 <a class="buttonsUser btn btn-primary" role="button" onClick={this.desplegarFormulario}>
@@ -252,13 +305,12 @@ class UserDetails extends Component {
                 </a>
               </div>
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" href="/progress" role="button">
-                  Ver Progreso
-                  </a> {/* Enviar id de usuario como param al progreso*/}
+                  <Link to={{pathname:"/progress/"+this.state.mail, query:this.state.mail}}>
+                          <button type="button" className="buttonsUser btn btn-primary" >Ver Progreso</button>
+                  </Link>
               </div>
             </div>
             <div className="awdawd-col-8 m-auto h-100" id="formulario" hidden>
-
               <div className="form-row">
                 <div className="form-group col-md-6">
                   <label for="inputEdad">Edad</label>
