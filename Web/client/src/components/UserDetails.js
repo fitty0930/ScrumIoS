@@ -85,7 +85,6 @@ class UserDetails extends Component {
       querySnapshot.forEach((docu) => {
         levels.push(docu.data());
       });
-      console.log(levels);
       let score= 0;
       let levelsCompleted=0;
 
@@ -117,7 +116,6 @@ class UserDetails extends Component {
     let array = [];
     db.collection('users').doc(mail).get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
       let user = querySnapshot.data();
-      console.log(user);
       if (user !== undefined) {
         this.setState({
           user: {
@@ -159,15 +157,12 @@ class UserDetails extends Component {
       email:document.getElementById('ModelAdmin').value,
       password:document.getElementById('ModelPassword').value
      }
-     console.log(user)////
      login(user).then(
           res=>{
-              console.log(res);
               if(!res.error){
                   /* alert("anta bakka") */
                    let mail = this.state.user.email;
                   let db = firebase.firestore();
-                  console.log(mail)
                   db.collection("users").doc(mail).delete().then(function () {
                     alert("Usuario Eliminado");
                   }).catch(function (error) {
@@ -305,7 +300,7 @@ class UserDetails extends Component {
                 </a>
               </div>
               <div class="col-sm my-4">
-                  <Link to={{pathname:"/progress/"+this.state.mail, query:this.state.mail}}>
+                  <Link to={{pathname:"/progress/"+this.state.email, query:this.state.email}}>
                           <button type="button" className="buttonsUser btn btn-primary" >Ver Progreso</button>
                   </Link>
               </div>

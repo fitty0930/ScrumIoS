@@ -7,7 +7,6 @@ export function ListaUsers({users, filterValue}){
 
     return(
         <div>
-        {console.log(users)}
             <div className="col-10 mx-auto contenedorListaUser overflow-auto">
                 <ul className="list-group" id="lista-usuarios">
                     {filteredUsers.map((user) => (

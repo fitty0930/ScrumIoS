@@ -33,7 +33,6 @@ class Login extends React.Component{
             
             login(user).then(
                 res=>{
-                    console.log(res);
                     if(!res.error){
                         this.props.history.push('/home')
                     }else{

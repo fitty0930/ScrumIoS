@@ -9,8 +9,6 @@ import {Link} from 'react-router-dom'
 class Progress extends Component {
     
     constructor(props) {
-        
-       console.log(props)
         super();
         this.state = {
             levels: [{}],
@@ -115,7 +113,6 @@ class Progress extends Component {
         // }
     };
     render() {
-        console.log(this.state.levelsFilter)
         return (
             <>
                 <div className="row col-10 mx-auto">
