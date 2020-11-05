@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import './assets/css/App.css';
 import './assets/css/index.css';
-import {ListaUsers} from './components/ListaUser';
+import ListaUsers from './components/ListaUser';
 import ListaUsersWait from './components/ListaUsersWait';
 import Login from './components/Login'
 import Home from './components/Home'
@@ -12,11 +12,7 @@ import UserDetails from './components/UserDetails'
 function App() {
   return (
     <Router>
-        <Route exact path='/adminUsers' render={() => (
-              <div>
-                <ListaUsers/>
-              </div>
-        )}/>
+        <Route exact path='/adminUsers' component={ListaUsers}/>
         <Route exact path='/adminWaitingUsers' component={ListaUsersWait} />
        <Route exact path='/login' component={Login} />
        <Route exact path='/home' component={Home} />
