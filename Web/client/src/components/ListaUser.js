@@ -14,7 +14,7 @@ export function ListaUsers(){
         {uid:7, name:"Cassoli", puntos:7000, mail:"Mail012@testing.com"},
         {uid:8, name:"Nico", puntos:7000,    mail:"Mail654@testing.com"},
     ]
-    
+
     //Funcion que retorna los usuarios filtrados
     const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase())
     || entry.mail.toLowerCase().includes(filterValue.toLowerCase()))
@@ -54,8 +54,8 @@ export function ListaUsers(){
                         <div className="position-left align-items-left">
                             {user.mail}  
                         </div>
-                        <Link to={"/user/"+user.uid}>
-                            <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.uid}>Administrar</button>
+                        <Link to={"/user/"+user.mail}>
+                            <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.mail}>Administrar</button>
                         </Link>
                         </li>
                     </div>
