@@ -1,37 +1,100 @@
-import React from 'react'
+import React, { Suspense, Component} from 'react'
 import {Link} from 'react-router-dom'
+import firebase from '../firebase'
 import './AdminStyles.css';
-export function ListaUsers({users, filterValue}){
-    const filteredUsers = users.filter(entry => entry.name.toLowerCase().includes(filterValue.toLowerCase())
-    || entry.mail.toLowerCase().includes(filterValue.toLowerCase()))
 
-    return(
-        <div>
-            <div className="col-10 mx-auto contenedorListaUser overflow-auto">
-                <ul className="list-group" id="lista-usuarios">
-                    {filteredUsers.map((user) => (
-                        <div key={user.uid}>
-                            <li className="list-group-item d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                <div className="col-8">
-                                    {user.name}  
-                                </div>
-                                <div className="position-left align-items-left">
-                                    {user.mail}  
-                                </div>
+class ListaUser extends Component {
 
-                                {/* const backUrl = '/some/other/value'
-                                // this.props.testvalue === "hello"
-                                <Link to={{pathname: /${this.props.testvalue}, query: {backUrl}}} /> */}
+    constructor(){
+        super()
+        this.state = {
+            users: [],
+            filterValue: "",
+            filteredUsers : [],
+            guia: false
+        }
+        this.cargarUsuarios = this.cargarUsuarios.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.filtrar = this.filtrar.bind(this);
+    }
 
-                                <Link to={{pathname:"/user/"+user.mail, query:user.mail}}>
-                                    <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.uid}>Administrar</button>
-                                </Link>
-                            </li>
+    //Funcion de filtro de la lista de usuarios
+    filtrar(){
+        let users = this.state.users;
+        if(this.state.guia){
+            let arrFilteredUsers = users.filter(entry => entry.name.toLowerCase().includes(this.state.filterValue.toLowerCase())
+            || entry.mail.toLowerCase().includes(this.state.filterValue.toLowerCase()));
+            this.setState({filteredUsers: arrFilteredUsers});
+            console.log(this.state.filteredUsers);
+        } else {
+            this.setState({filteredUsers: users});
+            this.state.guia = true;
+        }
+    }
+
+    handleChange(e){
+        this.setState({filterValue : e.target.value});
+        setTimeout(() => {
+            this.filtrar();
+        }, 5);
+    }
+
+    componentDidMount(){
+        this.cargarUsuarios();
+    }
+    //conexion con firebase para traer usuarios
+    cargarUsuarios(){
+        let db = firebase.firestore()
+        db.collection("users").get().then((res) => {
+            res.forEach((doc) => {
+                this.state.users.push(doc.data());
+            });
+            this.setState({filteredUsers: this.state.users})
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <header className="row col-10 mx-auto">
+                    <div>
+                        <h1 className="col-2">Back</h1>
+                    </div>
+                    <form className="form-inline mx-auto">
+                        <div className="form-group padding-auto mx-5">
+                            <input type="text" className="form-control input-color rounded-pill" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange}/>
                         </div>
-                    ))}
-                </ul>
+                    </form>
+                    <div>
+                        <h1 className="col-2">Logo</h1>
+                    </div>
+                </header>
+                <div className="col-10 mx-auto contenedorListaUser overflow-auto" id="listaUser">
+                    <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
+                        <h1 className="text-black p-1">Lista de Usuarios:</h1>
+                    </div>
+                    <ul className="list-group" id="lista-usuarios">
+                        {this.state.filteredUsers.map((user) => (
+                            <div key={user.uid}>
+                                <li className="list-group-item d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
+                                    <div className="col-8">
+                                        {user.name}  
+                                    </div>
+                                    <div className="position-left align-items-left">
+                                        {user.mail}  
+                                    </div>
+                                    <Link to={"/user/"+user.mail}>
+                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.mail}>Administrar</button>
+                                    </Link>
+                                </li>
+                            </div>
+                        ))}
+                    </ul>
+                </div>
             </div>
-        </div>
-    )
-}
-
+        );
+    }
+}   
+export default ListaUser;
+    
+        
