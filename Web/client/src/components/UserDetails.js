@@ -10,7 +10,7 @@ const options = [
   {
     value: "Nada"
   },
-  {
+  {                           //constantes que sirven para darle funcionalidad a los select del componente
     value: "Poco"
   },
   {
@@ -121,14 +121,12 @@ class UserDetails extends Component {
         this.setState({
           user: {
             username: user.name,
-            
             id: user.uid,
             name: user.name,
             email: mail,
             country: user.country,
-            
-            edad: user.age,                                     ////estos datos son de ejemplo
-            pais: user.country,                            //se van a cargar con la informacion de la base de datos
+            edad: user.age,                                    
+            pais: user.country,                            
             interesEnelJuego: user.gameTasteLevel,
             tiempoDedicadAjugar: user.gameTimeLevel,
             genero: user.gender,
@@ -161,12 +159,12 @@ class UserDetails extends Component {
      login(user).then(
           res=>{
               if(!res.error){
-                  /* alert("anta bakka") */
+                  /*envia los datos a mongoDB para confirmar que exista el administrador y si no hay error procede a eliminar al usuario */
                    let mail = this.state.user.email;
                   let db = firebase.firestore();
                   db.collection("users").doc(mail).delete().then(function () {
                     alert("Usuario Eliminado");
-                    window.location.href = "/adminUsers";
+                    window.location.href = "/adminUsers";//luego de eliminar redirige a /AdminUser
                   }).catch(function (error) {
                     alert("Error al borrar usuario", error);
                   });
@@ -195,7 +193,7 @@ class UserDetails extends Component {
       state: this.state.Provincia,
       uid: user.id,
     });
-
+    //crea una variable con los datos del usuario sacados del State y luego actualiza los datos del usuario correspondientes a este mail
     this.getDatauser();
     alert("se modificaron los datos");
   }
@@ -224,15 +222,14 @@ class UserDetails extends Component {
   desplegarFormulario() {
     document.querySelector("#formulario").toggleAttribute("hidden");
     document.querySelector("#formulario").classList.toggle("normal-clase");
-
-  
     document.querySelector("#formulario2").classList.toggle("normal-clase");
-    
+    //funcionalidad para la el formulario css
   }
   abrirmodal=()=>{
     this.setState(
       {formularioEliminar:!this.state.formularioEliminar}
     )
+    //funcion que permite visualizar el modal para eliminar usuarios
   }
   render() {
     return (
