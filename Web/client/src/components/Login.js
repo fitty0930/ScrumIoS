@@ -6,7 +6,7 @@ class Login extends React.Component{
 
     constructor(props){
         super(props)
-        this.state={
+        this.state={                        //el state se utiliza para mostrar errores a la hora de logearse
             error0:"",
             error1:"*Por favor, rellene todos los campos*",
             verificando:"",
@@ -31,9 +31,9 @@ class Login extends React.Component{
                 password:document.getElementById('password').value
             }
             
-            login(user).then(
-                res=>{
-                    console.log(res);
+            login(user).then(           //funcion inportada desde Adminfunctions
+                res=>{                  //comprueba los datos retornados de la base de datos y si el usuario Admin existe te redirige
+                    console.log(res);   //hacia la template home, si no es el caso saltara una alerta proviniente de la base de datos 
                     if(!res.error){
                         this.props.history.push('/home')
                     }else{

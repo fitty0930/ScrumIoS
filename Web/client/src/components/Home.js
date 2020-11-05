@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom' 
 import Logo from '../assets/images/Scrumgame.JPG'
 //do something...
-
+//este template funciona como una interfaz para redirigir a los otros componentes
 class Home extends React.Component{
 
     constructor(props){
