@@ -5,6 +5,7 @@ import firebase from "../firebase"
 import {Button,Modal,ModalHeader,ModalBody,ModalFooter,FormGroup,Input,Label} from 'reactstrap';
 import {login} from './Adminfunctions'
 import {Link} from 'react-router-dom'
+import '../assets/css/normalClase.css';
 const options = [
   {
     value: "Nada"
@@ -41,7 +42,7 @@ class UserDetails extends Component {
       user: {
         username: "",
   
-        id: 0,
+        id: "",
         name: "",
         email: "",
         country: "",
@@ -165,6 +166,7 @@ class UserDetails extends Component {
                   let db = firebase.firestore();
                   db.collection("users").doc(mail).delete().then(function () {
                     alert("Usuario Eliminado");
+                    window.location.href = "/adminUsers";
                   }).catch(function (error) {
                     alert("Error al borrar usuario", error);
                   });
@@ -221,6 +223,11 @@ class UserDetails extends Component {
   }
   desplegarFormulario() {
     document.querySelector("#formulario").toggleAttribute("hidden");
+    document.querySelector("#formulario").classList.toggle("normal-clase");
+
+  
+    document.querySelector("#formulario2").classList.toggle("normal-clase");
+    
   }
   abrirmodal=()=>{
     this.setState(
@@ -238,7 +245,7 @@ class UserDetails extends Component {
           </div>
           
         </div>
-        <div className="container lg-16 contenedorListaUser bg-white">
+        <div className="container  contenedorListaUser bg-white" id="formulario2">
           <div className="row ">
             
               <div className="col-4 ">
@@ -305,74 +312,74 @@ class UserDetails extends Component {
                   </Link>
               </div>
             </div>
-            <div className="awdawd-col-8 m-auto h-100" id="formulario" hidden>
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label for="inputEdad">Edad</label>
-                  <input type="number" className="form-control" id="inputEdad" value={this.state.edad} onChange={this.handleChange('edad')} />
+          </div>
+        </div>
+              <div className="container  contenedorListaUser bg-white" id="formulario" hidden>
+                <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <label for="inputEdad">Edad</label>
+                    <input type="number" className="form-control" id="inputEdad" value={this.state.edad} onChange={this.handleChange('edad')} />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputCountry">País</label>
+                    <input type="input" className="form-control" id="inputCountry" value={this.state.pais} onChange={this.handleChange('pais')} />
+                  </div>
                 </div>
-                <div className="form-group col-md-6">
-                  <label for="inputCountry">País</label>
-                  <input type="input" className="form-control" id="inputCountry" value={this.state.pais} onChange={this.handleChange('pais')} />
-                </div>
-              </div>
-              <div className="form-group row">
-                <div className="col-4">
-                  <label for="inputInteres">Interes en el Juego</label>
-                  <select value={this.state.interesEnelJuego} className="form-control" onChange={this.CambiarSelec2}>
-                    {options.map((option) => (
-                      <option value={option.value}>{option.value} </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-4">
-                  <label for="inputInteres">Tiempo dedicado a Jugar</label>
-                  <div className="select-container">
-                    <select value={this.state.tiempoDedicadAjugar} className="form-control" onChange={this.CambiarSelec1}>
+                <div className="form-group row">
+                  <div className="col-4">
+                    <label for="inputInteres">Interes en el Juego</label>
+                    <select value={this.state.interesEnelJuego} className="form-control" onChange={this.CambiarSelec2}>
                       {options.map((option) => (
                         <option value={option.value}>{option.value} </option>
                       ))}
                     </select>
                   </div>
+                  <div className="col-4">
+                    <label for="inputInteres">Tiempo dedicado a Jugar</label>
+                    <div className="select-container">
+                      <select value={this.state.tiempoDedicadAjugar} className="form-control" onChange={this.CambiarSelec1}>
+                        {options.map((option) => (
+                          <option value={option.value}>{option.value} </option>
+                        ))}
+                      </select>
+                    </div>
 
+                  </div>
+                  <div className="col-4">
+                    <label for="inputGenero">Género</label>
+                    <select value={this.state.genero} className="form-control" onChange={this.CambiarGenero}>
+                      {Genero.map((option) => (
+                        <option value={option.value}>{option.value} </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <div className="col-4">
-                  <label for="inputGenero">Género</label>
-                  <select value={this.state.genero} className="form-control" onChange={this.CambiarGenero}>
-                    {Genero.map((option) => (
-                      <option value={option.value}>{option.value} </option>
-                    ))}
-                  </select>
+                <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <label for="inputCity">Ciudad</label>
+                    <input type="text" className="form-control" id="inputCity" value={this.state.Ciudad} onChange={this.handleChange('Ciudad')} />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputCity">Profesion</label>
+                    <input type="text" className="form-control" id="inputCity" value={this.state.Profesion} onChange={this.handleChange('Profesion')} />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputProvince">Provincia</label>
+                    <input type="text" className="form-control" id="inputProvince" value={this.state.Provincia} onChange={this.handleChange('Provincia')} />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputMail">Mail</label>
+                    <input type="email" className="form-control" id="inputMail" value={this.state.email} onChange={this.handleChange('email')} />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label for="inputName">Nombre</label>
+                    <input type="text" className="form-control" id="inputName" value={this.state.name} onChange={this.handleChange('name')} />
+                  </div>
                 </div>
+                <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
+                  Guardar Cambios
+              </button>
               </div>
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label for="inputCity">Ciudad</label>
-                  <input type="text" className="form-control" id="inputCity" value={this.state.Ciudad} onChange={this.handleChange('Ciudad')} />
-                </div>
-                <div className="form-group col-md-6">
-                  <label for="inputCity">Profesion</label>
-                  <input type="text" className="form-control" id="inputCity" value={this.state.Profesion} onChange={this.handleChange('Profesion')} />
-                </div>
-                <div className="form-group col-md-6">
-                  <label for="inputProvince">Provincia</label>
-                  <input type="text" className="form-control" id="inputProvince" value={this.state.Provincia} onChange={this.handleChange('Provincia')} />
-                </div>
-                <div className="form-group col-md-6">
-                  <label for="inputMail">Mail</label>
-                  <input type="email" className="form-control" id="inputMail" value={this.state.email} onChange={this.handleChange('email')} />
-                </div>
-                <div className="form-group col-md-6">
-                  <label for="inputName">Nombre</label>
-                  <input type="text" className="form-control" id="inputName" value={this.state.name} onChange={this.handleChange('name')} />
-                </div>
-              </div>
-              <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
-                Guardar Cambios
-            </button>
-            </div>
-          </div>
-        </div>
       </>
     );
   }

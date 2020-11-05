@@ -9,7 +9,7 @@
 .contenedorListaUser {
     background-color: #E5E5E5;
     min-height: 10px;
-    max-height: 90vh;
+    /* max-height: 90vh; */
     border-radius: 25px;
     scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
     scrollbar-width: thin;
