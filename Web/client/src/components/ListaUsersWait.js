@@ -131,5 +131,4 @@ class ListaUsersWait extends Component {
         );
     }
 }
-
 export default ListaUsersWait;
