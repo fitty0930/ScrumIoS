@@ -31,15 +31,14 @@ class Login extends React.Component{
                 password:document.getElementById('password').value
             }
             
+
             login(user).then(           //funcion inportada desde Adminfunctions
-                res=>{                  //comprueba los datos retornados de la base de datos y si el usuario Admin existe te redirige
-                    console.log(res);   //hacia la template home, si no es el caso saltara una alerta proviniente de la base de datos 
-                    if(!res.error){
+                res=>{                  //comprueba los datos retornados de la base de datos y si el usuario Admin existe te redirige 
+                    if(!res.error){     //hacia la template home, si no es el caso saltara una alerta proviniente de la base de datos 
                         this.props.history.push('/home')
                     }else{
                         alert(res.error)
                     }
-
                 }
             ).catch(err=>{
                 console.log(err)
@@ -71,8 +70,6 @@ class Login extends React.Component{
                 <input type="password" name="password" className="input" placeholder="*******" id="password"/>
                 <button type="submit"   className="boton-ingresar" >Ingresar</button>
                 <label>{this.state.error0}</label>  
-
-               {/*  className="input" */}
             </form>
         </div>
         );

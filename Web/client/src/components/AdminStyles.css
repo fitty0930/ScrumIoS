@@ -41,3 +41,7 @@
 .contenedorListaUser::-webkit-scrollbar-track {
     border-radius: 10px !important;
 }
+
+.normal-clase {
+    border-radius: 0% !important;
+}
