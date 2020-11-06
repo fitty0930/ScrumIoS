@@ -71,13 +71,13 @@ const Register =(props)=> {
           <div className="form-row">
             <div className="form-group col-md-6">
               <label for="inputEdad">Edad</label>
-              <input type="email" onChange={handleInputChange} name="edad" className="form-control" id="inputEdad" />
+              <input type="number" onChange={handleInputChange} name="edad" className="form-control" id="inputEdad" />
             </div>
             <div className="form-group col-md-6">
               <label for="inputCountry">País</label>
               <input
                 onChange={handleInputChange}
-                type="email"
+                type="text"
                 name="pais"
                 className="form-control"
                 id="inputCountry"
