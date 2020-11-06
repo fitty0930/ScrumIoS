@@ -167,10 +167,18 @@ class UserDetails extends Component {
                   /*envia los datos a mongoDB para confirmar que exista el administrador y si no hay error procede a eliminar al usuario */
                    let mail = this.state.user.email;
                   let db = firebase.firestore();
+                  db.collection("users").doc(mail).collection("levels").doc().delete().then(function (){
                   db.collection("users").doc(mail).delete().then(function () {
-                    alert("Usuario Eliminado");
-                    window.location.href = "/adminUsers";//luego de eliminar redirige a /AdminUser
-                  }).catch(function (error) {
+                      alert("Usuario Eliminado");
+                      window.location.href = "/adminUsers";//luego de eliminar redirige a /AdminUser
+                    }).catch(function (error) {
+                      alert("Error al borrar usuario", error);
+                    });
+                  }
+
+                  )
+
+                  .catch(function (error) {
                     alert("Error al borrar usuario", error);
                   });
               }else{
