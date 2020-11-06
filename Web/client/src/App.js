@@ -8,7 +8,7 @@ import Home from './components/Home'
 import { BrowserRouter as Router, Route } from 'react-router-dom' 
 import ResultCategory from './components/Progress';
 import UserDetails from './components/UserDetails'
-import Register from './components/Register';
+import {Register} from './components/Register';
 
 function App() {
   return (
