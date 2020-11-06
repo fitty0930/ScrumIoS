@@ -35,7 +35,7 @@ class Login extends React.Component{
             login(user).then(           //funcion inportada desde Adminfunctions
                 res=>{                  //comprueba los datos retornados de la base de datos y si el usuario Admin existe te redirige 
                     if(!res.error){     //hacia la template home, si no es el caso saltara una alerta proviniente de la base de datos 
-                        this.props.history.push('/home')
+                        this.props.history.push('/home');
                     }else{
                         alert(res.error)
                     }
@@ -68,7 +68,7 @@ class Login extends React.Component{
                 
                 <input type="text" name="username" className="input" placeholder="Usuario" id="usuario"/>
                 <input type="password" name="password" className="input" placeholder="*******" id="password"/>
-                <button type="submit"   className="boton-ingresar" >Ingresar</button>
+                <button type="submit" className="boton-ingresar" >Ingresar</button>
                 <label>{this.state.error0}</label>  
             </form>
         </div>

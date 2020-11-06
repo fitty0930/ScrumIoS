@@ -58,16 +58,15 @@ class ListaUser extends Component {
             <div>
                 <header className="row col-10 mx-auto">
                     <div>
-                        <h1 className="col-2">Back</h1>
+                    <Link to='/home'>
+                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
+                    </Link>
                     </div>
                     <form className="form-inline mx-auto">
                         <div className="form-group padding-auto mx-5">
                             <input type="text" className="form-control input-color rounded-pill" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange}/>
                         </div>
                     </form>
-                    <div>
-                        <h1 className="col-2">Logo</h1>
-                    </div>
                 </header>
                 <div className="col-10 mx-auto contenedorListaUser overflow-auto" id="listaUser">
                     <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">

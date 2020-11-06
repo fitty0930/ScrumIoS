@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import emailjs from 'emailjs-com';
+import {Link} from 'react-router-dom'
 import {getUsers, deleteUser} from './Userslistfunctions'
 import firebase from '../firebase'
 import './AdminStyles.css';
@@ -93,15 +94,9 @@ class ListaUsersWait extends Component {
             <div>
                 <header className="row col-10 mx-auto">
                     <div>
-                        <h1 className="col-2">Back</h1>
-                    </div>
-                    {/* <form className="form-inline mx-auto">
-                        <div className="form-group padding-auto mx-5">
-                            <input type="text" className="form-control input-color rounded-pill" id="inputFilterUser" placeholder="Filtrar por Usuario" value={filterValue} onChange={handleChange}/>
-                        </div>
-                    </form> */}
-                    <div>
-                        <h1 className="col-2 float-right">Logo</h1>
+                        <Link to='/home'>
+                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
+                        </Link>
                     </div>
                 </header>
             <div>

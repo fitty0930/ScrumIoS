@@ -15,11 +15,12 @@ function App() {
     <Router>
         <Route exact path='/adminUsers' component={ListaUsers}/>
         <Route exact path='/adminWaitingUsers' component={ListaUsersWait} />
-       <Route exact path='/login' component={Login} />
-       <Route exact path='/register' component={Register} />
-       <Route exact path='/home' component={Home} />
-       <Route exact path='/user/:id' component={UserDetails}/>
-       <Route exact path='/progress/:id' component={ResultCategory} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/user/:id' component={UserDetails}/>
+        <Route exact path='/progress/:id' component={ResultCategory} />
+        <Route exact path="/" component={Login}/>
      </Router>
     
   );

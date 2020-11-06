@@ -14,6 +14,7 @@ const Register =(props)=> {
     const [provincia, setProvincia] = useState("");
     const [mail, setMail] = useState("");
     const [nombre, setNombre] = useState("");
+    const [profesion, setProfesion] = useState("");
     const handleSubmit = (event) => {
       notification();
       const user = {
@@ -26,7 +27,7 @@ const Register =(props)=> {
           state: provincia,
           mail: mail,
           name: nombre,
-          profession: "albañil"
+          profession: profesion
       };
       register(user)
       .then(res => 
@@ -62,10 +63,20 @@ const Register =(props)=> {
       if (event.target.name === "nombre") {
         setNombre(event.target.value);
       }
+      if (event.target.name === "profesion") {
+        setProfesion(event.target.value);
+      }
     };
     return (
       <>
-        <div className="col-8 m-auto h-100">
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+        <div className="col-8 m-auto h-100 bg-light rounded">
           {/*           <form>
            */}{" "}
           <div className="form-row">
@@ -88,7 +99,7 @@ const Register =(props)=> {
             <div className="col-4">
               <label for="inputInteres">Interes en el Juego</label>
               <select id="inputInteres"onChange={handleInputChange} name="interes" className="form-control">
-                <option value="nada">Nada</option>
+                <option  value="nada">Nada</option>
                 <option value="poco">Poco</option>
                 <option value="le-da-igual" defaultValue>
                   Le da igual
@@ -139,6 +150,16 @@ const Register =(props)=> {
                 name="provincia"
                 className="form-control"
                 id="inputProvince"
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label for="inputProvince">Profesion</label>
+              <input
+                onChange={handleInputChange}
+                type="text"
+                name="profesion"
+                className="form-control"
+                id="inputProfesion"
               />
             </div>
             <div className="form-group col-md-6">
