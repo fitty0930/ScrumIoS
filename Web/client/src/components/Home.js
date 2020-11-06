@@ -22,6 +22,10 @@ class Home extends React.Component{
                         <Link to="/adminUsers"> 
                             <button type="submit" className="boton-administrar" >Administrar Usuarios</button>
                         </Link>
+                        <Link to='/adminWaitingUsers'> 
+                            {/* proximo sprint */}
+                            <button type="submit"   className="boton-administrar" >Administrar Usuarios en espera</button>
+                        </Link>
                     
                         <Link to='/admin-levels'> 
                             {/* proximo sprint */}

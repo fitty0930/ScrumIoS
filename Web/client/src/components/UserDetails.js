@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "../assets/images/Scrumgame.JPG";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
-import './AdminStyles.css';
+import './AdminStyles.css'
 import {Button,Modal,ModalHeader,ModalBody,ModalFooter,FormGroup,Input,Label} from 'reactstrap';
 import {login} from './Adminfunctions'
 import {Link} from 'react-router-dom'
