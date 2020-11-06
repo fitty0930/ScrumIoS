@@ -145,7 +145,7 @@ public class LoginFragment extends BaseFragment implements LoginView {
     }
 
     @Override
-    @OnClick(R.id.signup)
+    @OnClick()
     public void goToSignup() {
         this.loginListener.onSignupPressed();
     }

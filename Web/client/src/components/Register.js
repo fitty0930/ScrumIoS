@@ -174,11 +174,9 @@ const Register =(props)=> {
             draggable
             closeOnClick
           />
-          {/* </form> */}
         </div>
       </>
     );
   };
 
 export {Register};
-/*Barras, pensalas*/
