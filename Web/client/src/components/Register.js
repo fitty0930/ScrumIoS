@@ -181,3 +181,4 @@ const Register =(props)=> {
   };
 
 export {Register};
+/*Barras, pensalas*/
