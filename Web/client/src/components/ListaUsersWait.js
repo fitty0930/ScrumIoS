@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import emailjs from 'emailjs-com';
-import {Link} from 'react-router-dom'
-import {getUsers, deleteUser} from './Userslistfunctions'
+import { Link } from 'react-router-dom'
+import { getUsers, deleteUser } from './Userslistfunctions'
 import firebase from '../firebase'
 import './AdminStyles.css';
 
 class ListaUsersWait extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             waitingUsers: [],
@@ -14,30 +14,30 @@ class ListaUsersWait extends Component {
         this.getWaitingUsers = this.getWaitingUsers.bind(this)
     }
 
-    getWaitingUsers(){
+    getWaitingUsers() {
         getUsers().then(res => {
             this.setState({
                 waitingUsers: res
             })
         })
     }
-    
-    
 
-    sendMail(data){
-        emailjs.send("service_d16913k","template_vwt9yfd",{
+
+
+    sendMail(data) {
+        emailjs.send("service_d16913k", "template_vwt9yfd", {
             name: data.name,
             texto: data.texto,
             mail: data.mail
         }, "user_MQPRaaR0lgvvmtsY8fJvR")
-        .then((result) => {
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
-        });
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
 
-    darAltaUser(user){
+    darAltaUser(user) {
         console.log(user)
         let db = firebase.firestore()
         db.collection('users').doc(user.mail).set({
@@ -56,13 +56,13 @@ class ListaUsersWait extends Component {
         })
     }
 
-    aceptUser(id){
-        const data = {mail: id}
+    aceptUser(id) {
+        const data = { mail: id }
         deleteUser(data).then(res => {
             this.darAltaUser(res.data)
             let dato = {
                 name: res.data.name,
-                texto: " Su usuario ha sido aceptado. Su contrasena es: "+ res.data.name + res.data.age +".",
+                texto: " Su usuario ha sido aceptado. Su contrasena es: " + res.data.name + res.data.age + ".",
                 mail: res.data.mail,
             }
             console.log(dato)
@@ -71,8 +71,8 @@ class ListaUsersWait extends Component {
         })
     }
 
-    rejectUser(id){
-        const data = {mail: id}
+    rejectUser(id) {
+        const data = { mail: id }
         deleteUser(data).then(res => {
             let dato = {
                 name: res.data.name,
@@ -85,12 +85,12 @@ class ListaUsersWait extends Component {
         })
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getWaitingUsers()
     }
 
     render() {
-        return(
+        return (
             <div>
                 <header className="row col-10 mx-auto">
                     <div>
@@ -99,7 +99,7 @@ class ListaUsersWait extends Component {
                         </Link>
                     </div>
                 </header>
-            <div>
+                <div>
                     <div className="col-10 mx-auto my-2 contenedorListaUser overflow-auto" id="listaUserEspera">
                         <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
                             <h1 className="text-black p-1">Lista de Usuarios <span className="font-weight-bold">en espera</span>:</h1>
@@ -109,10 +109,10 @@ class ListaUsersWait extends Component {
                                 <div key={user._id}>
                                     <li className="list-group-item d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
                                         <div className="col-8">
-                                            {user.name}  
+                                            {user.name}
                                         </div>
                                         <div className="position-left align-items-left">
-                                            {user.mail}  
+                                            {user.mail}
                                         </div>
                                         <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.aceptUser(user.mail)} id={user.mail}>Aceptar</button>
                                         <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.rejectUser(user.mail)} id={user.mail}>Rechazar</button>

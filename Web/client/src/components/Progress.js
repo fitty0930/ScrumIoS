@@ -1,13 +1,13 @@
 import React, { Component, useEffect, useState } from "react";
 import firebase from "../firebase" //importamos el archivo firebase que configuro el db, para conectarnos a la misma
 // ...
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
 
 class Progress extends Component {
-    
+
     constructor(props) {
         super();
         this.state = {
@@ -21,7 +21,7 @@ class Progress extends Component {
         // this.getUsers();
     }
     //componentDidMount se ejecuta despues de que se monto el componente en el browsser
-    componentDidMount (){
+    componentDidMount() {
         this.loadLevels();
     }
     //setFiltro su funcion es cambiar el tipo de filtrado que se va a realizar
@@ -87,29 +87,29 @@ class Progress extends Component {
     //esta funcion se ejecuta cuando el componente se monto en el browsser
     loadLevels = () => {
         // if(this.state.mail != ""){
-            let mail = "";
-            if (this.props.location.query != undefined) {
+        let mail = "";
+        if (this.props.location.query != undefined) {
             mail = this.props.location.query;
-            } else {
+        } else {
             let valueUrl = window.location.pathname.split("/");
             mail = valueUrl[2];
-            }
+        }
+        this.setState({
+            mail: mail
+        });
+
+
+        let db = firebase.firestore();
+        let array = [];
+        db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
+            querySnapshot.forEach((docu) => {
+                array.push(docu.data());
+            });
             this.setState({
-                mail:mail
+                levelsFilter: array,
+                levels: array
             });
-
-
-            let db = firebase.firestore();
-            let array = [];
-            db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
-                querySnapshot.forEach((docu) => {
-                    array.push(docu.data());
-                });
-                this.setState({
-                    levelsFilter: array,
-                    levels: array
-                });
-            });
+        });
         // }
     };
     render() {
@@ -127,9 +127,9 @@ class Progress extends Component {
                                 <option value="EN CURSO">En Curso</option>
                                 <option value="NO INICIADO">No Iniciado</option>
                             </select>
-                            {   this.state.filtro === "Nivel" ? 
-                                <input type="text"  onChange={this.getFiltro} className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
-                            : ""
+                            {this.state.filtro === "Nivel" ?
+                                <input type="text" onChange={this.getFiltro} className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
+                                : ""
                             }
                         </div>
                     </form>
@@ -143,7 +143,7 @@ class Progress extends Component {
                             this.state.levelsFilter.map((item, index) =>
                                 item.status == "HECHO" ?
                                     <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                        <p>{"nivel: " + item.levelId + " " + item.status }</p> <p>SubLevelID: {item.sublevelID}</p>
+                                        <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
                                     </li>
                                     : item.status == "EN CURSO" ?
                                         <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
@@ -152,7 +152,7 @@ class Progress extends Component {
                                         :
                                         <li className="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
                                             <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
-                                            
+
                                         </li>
                             )
                         }
