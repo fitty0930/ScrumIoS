@@ -207,8 +207,14 @@ class UserDetails extends Component {
       uid: user.id,
     });
     //crea una variable con los datos del usuario sacados del State y luego actualiza los datos del usuario correspondientes a este mail
-    this.getDatauser();
+    
     alert("se modificaron los datos");
+    this.desplegarFormulario() // esto para que quede mas prolijo
+    setTimeout(() => {
+      this.getDatauser();
+    }, 500); // esto es para darle el tiempo a consultar la bdd y renderizar 
+    
+    
   }
   handleChange = (key) => {              //permite que los imputs puedan ser modificados
     return function (e) {             //estos imputs estan leyendo el state,por lo que no se puden modificar
@@ -260,11 +266,11 @@ class UserDetails extends Component {
 
             <div className="col-4 ">
               <h3 className="mt-3">Id de Usuario:</h3>
-              <input type="text" disabled name="user-id" value={this.state.user.id} className="rounded inputUser" />
+              <input type="text" name="user-id" value={this.state.user.id} readOnly className="rounded inputUser" />
               <h3 className="mt-3">Nombre Completo:</h3>
-              <input type="text" name="user-name" value={this.state.user.name} className="rounded inputUser" />
+              <input type="text" name="user-name" value={this.state.user.name} readOnly className="rounded inputUser" />
               <h3 className="mt-3">Correo Electronico:</h3>
-              <input type="text" name="user-mail" value={this.state.user.email} className="rounded inputUser" />
+              <input type="text" name="user-mail" value={this.state.user.email} readOnly className="rounded inputUser" />
             </div>
             <div className="col-4 float-center">
               <img src={logo} width="210" height="210" />
@@ -272,11 +278,11 @@ class UserDetails extends Component {
             <div className="col-4 float-right">
 
               <h3 className="mt-3">Pais:</h3>
-              <input type="text" name="nombre" value={this.state.user.country} className="rounded inputUser" />
+              <input type="text" name="nombre" value={this.state.user.country} readOnly className="rounded inputUser" />
               <h3 className="mt-3">Tiempo jugado:</h3>
-              <input type="text" name="nombre" value={this.state.user.tiempoDedicadAjugar} className="rounded inputUser" />
+              <input type="text" name="nombre" value={this.state.user.tiempoDedicadAjugar} readOnly className="rounded inputUser" />
               <h3 className="mt-3">Niveles Superados:</h3>
-              <input type="text" name="nombre" value={this.state.levels} className="rounded inputUser" />
+              <input type="text" name="nombre" value={this.state.levels} readOnly className="rounded inputUser" />
             </div>
 
           </div>
