@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {getUsers, deleteUser} from './Userslistfunctions'
 import firebase from '../firebase'
 import './AdminStyles.css';
-
+import { withTranslation } from 'react-i18next';
 class ListaUsersWait extends Component {
     constructor(){
         super()
@@ -95,14 +95,14 @@ class ListaUsersWait extends Component {
                 <header className="row col-10 mx-auto">
                     <div>
                         <Link to='/home'>
-                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
+                            <button type="submit" className="boton-administrar-maschico" >{this.props.t('WaitingUsersList.back')}</button>
                         </Link>
                     </div>
                 </header>
             <div>
                     <div className="col-10 mx-auto my-2 contenedorListaUser overflow-auto" id="listaUserEspera">
                         <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
-                            <h1 className="text-black p-1">Lista de Usuarios <span className="font-weight-bold">en espera</span>:</h1>
+                            <h1 className="text-black p-1">{this.props.t('WaitingUsersList.user-list')}<span className="font-weight-bold">{this.props.t('WaitingUsersList.on-hold')}</span>:</h1>
                         </div>
                         <ul className="list-group" id="lista-usuarios">
                             {this.state.waitingUsers.map((user) => (
@@ -114,8 +114,8 @@ class ListaUsersWait extends Component {
                                         <div className="position-left align-items-left">
                                             {user.mail}  
                                         </div>
-                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.aceptUser(user.mail)} id={user.mail}>Aceptar</button>
-                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.rejectUser(user.mail)} id={user.mail}>Rechazar</button>
+                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.aceptUser(user.mail)} id={user.mail}>{this.props.t('WaitingUsersList.accept')}</button>
+                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.rejectUser(user.mail)} id={user.mail}>{this.props.t('WaitingUsersList.reject')}</button>
                                     </li>
                                 </div>
                             ))}
@@ -126,4 +126,4 @@ class ListaUsersWait extends Component {
         );
     }
 }
-export default ListaUsersWait;
+export default withTranslation()(ListaUsersWait);

@@ -11,6 +11,8 @@
     "emailjs-com": "^2.6.3",
     "firebase": "^7.23.0",
     "i18next": "^19.8.4",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-http-backend": "^1.0.21",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",

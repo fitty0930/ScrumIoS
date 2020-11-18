@@ -7,7 +7,7 @@ import {Button,Modal,ModalHeader,ModalBody,ModalFooter,FormGroup,Input,Label} fr
 import {login} from './Adminfunctions'
 import {Link} from 'react-router-dom'
 import '../assets/css/normalClase.css';
-
+import { withTranslation } from 'react-i18next';
 
 
 
@@ -259,11 +259,11 @@ class UserDetails extends Component {
           <div className="row ">
             
               <div className="col-4 ">
-                <h3 className="mt-3">Id de Usuario:</h3>
+                <h3 className="mt-3">{this.props.t('UserDetails.user-id')}</h3>
                 <input type="text" disabled name="user-id" value={this.state.user.id} className="rounded inputUser" />
-                <h3 className="mt-3">Nombre Completo:</h3>
+                <h3 className="mt-3">{this.props.t('UserDetails.complete-name')}</h3>
                 <input type="text" name="user-name" value={this.state.user.name} className="rounded inputUser" />
-                <h3 className="mt-3">Correo Electronico:</h3>
+                <h3 className="mt-3">{this.props.t('UserDetails.e-mail')}</h3>
                 <input type="text" name="user-mail" value={this.state.user.email} className="rounded inputUser" />
               </div>
               <div className="col-4 float-center">
@@ -271,11 +271,11 @@ class UserDetails extends Component {
               </div>
               <div className="col-4 float-right">
                 
-                <h3 className="mt-3">Pais:</h3>
+                <h3 className="mt-3">{this.props.t('UserDetails.country')}</h3>
                 <input type="text" name="nombre" value={this.state.user.country} className="rounded inputUser" />
-                <h3 className="mt-3">Tiempo jugado:</h3>
+                <h3 className="mt-3">{this.props.t('UserDetails.time-played')}</h3>
                 <input type="text" disabled name="nombre" value={this.state.user.tiempoDedicadAjugar} className="rounded inputUser" />
-                <h3 className="mt-3">Niveles Superados:</h3>
+                <h3 className="mt-3">{this.props.t('UserDetails.levels-passed')}</h3>
                 <input type="text" disabled name="nombre" value={this.state.levels} className="rounded inputUser" />
               </div>
             
@@ -284,28 +284,28 @@ class UserDetails extends Component {
             <div class="row">
               <div class="col-sm my-4">
                   <Button className="buttonsUser btn btn-primary" role="button" onClick={this.abrirmodal}>
-                    Eliminar
+                  {this.props.t('UserDetails.delete')}
                   </Button>
                   <Modal isOpen={this.state.formularioEliminar}>
                     <ModalHeader>
-                      Ingrese datos administrador para eliminar usuario
+                    {this.props.t('UserDetails.admin-data')}
                     </ModalHeader>
                     <ModalBody>
                       <FormGroup>
-                        <Label for="admin">administrador</Label>
+                        <Label for="admin">{this.props.t('UserDetails.admin')}</Label>
                         <Input type="text" id="ModelAdmin"/>
                       </FormGroup>
                       <FormGroup>
-                        <Label for="password">Contraseña</Label>
+                        <Label for="password">{this.props.t('UserDetails.password')}</Label>
                         <Input type="password" id="ModelPassword"/>
                       </FormGroup>
                     </ModalBody>
                     <ModalFooter>
                       <Button onClick={this.abrirmodal}>
-                        Cancelar
+                      {this.props.t('UserDetails.cancel')}
                       </Button>
                       <Button color="danger" onClick={this.deleteUser}>
-                        Eliminar Usuario
+                      {this.props.t('UserDetails.delete-user')}
                       </Button>
                     </ModalFooter>
                   </Modal>
@@ -318,7 +318,7 @@ class UserDetails extends Component {
               </div>
               <div class="col-sm my-4">
                   <Link to={{pathname:"/progress/"+this.state.email, query:this.state.email}}>
-                          <button type="button" className="buttonsUser btn btn-primary" >Ver Progreso</button>
+                          <button type="button" className="buttonsUser btn btn-primary" >{this.props.t('UserDetails.see-progress')}</button>
                   </Link>
               </div>
             </div>
@@ -327,17 +327,17 @@ class UserDetails extends Component {
               <div className="container  contenedorListaUser bg-white" id="formulario" hidden>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label for="inputEdad">Edad</label>
+                    <label for="inputEdad">{this.props.t('Register.age')}</label>
                     <input type="number" className="form-control" id="inputEdad" value={this.state.edad} onChange={this.handleChange('edad')} />
                   </div>
                   <div className="form-group col-md-6">
-                    <label for="inputCountry">País</label>
+                    <label for="inputCountry">{this.props.t('Register.country')}</label>
                     <input type="input" className="form-control" id="inputCountry" value={this.state.pais} onChange={this.handleChange('pais')} />
                   </div>
                 </div>
                 <div className="form-group row">
                   <div className="col-4">
-                    <label for="inputInteres">Interes en el Juego</label>
+                    <label for="inputInteres">{this.props.t('Register.gameTasteLevel')}</label>
                     <select value={this.state.interesEnelJuego} className="form-control" onChange={this.CambiarSelec2}>
                       {options.map((option) => (
                         <option value={option.value}>{option.value} </option>
@@ -345,7 +345,7 @@ class UserDetails extends Component {
                     </select>
                   </div>
                   <div className="col-4">
-                    <label for="inputInteres">Tiempo dedicado a Jugar</label>
+                    <label for="inputInteres">{this.props.t('Register.gameTimeLevel')}</label>
                     <div className="select-container">
                       <select value={this.state.tiempoDedicadAjugar} className="form-control" onChange={this.CambiarSelec1}>
                         {options.map((option) => (
@@ -356,42 +356,44 @@ class UserDetails extends Component {
 
                   </div>
                   <div className="col-4">
-                    <label for="inputGenero">Género</label>
-                    <select value={this.state.genero} className="form-control" onChange={this.CambiarGenero}>
-                      {Genero.map((option) => (
-                        <option value={option.value}>{option.value} </option>
-                      ))}
+                    <label for="inputGenero">{this.props.t('Register.gender')}</label>
+                    <select value={this.state.genero} id="inputTiempo" onChange={this.CambiarGenero} name="genero" className="form-control">
+                      <option value="masculino" defaultValue>
+                      {this.props.t('Register.male')}
+                      </option>
+                      <option value="otro">{this.props.t('Register.other')}</option>
+                      <option value="femenino">{this.props.t('Register.female')}</option>
                     </select>
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label for="inputCity">Ciudad</label>
+                    <label for="inputCity">{this.props.t('Register.city')}</label>
                     <input type="text" className="form-control" id="inputCity" value={this.state.Ciudad} onChange={this.handleChange('Ciudad')} />
                   </div>
                   <div className="form-group col-md-6">
-                    <label for="inputCity">Profesion</label>
+                    <label for="inputCity">{this.props.t('Register.profession')}</label>
                     <input type="text" className="form-control" id="inputCity" value={this.state.Profesion} onChange={this.handleChange('Profesion')} />
                   </div>
                   <div className="form-group col-md-6">
-                    <label for="inputProvince">Provincia</label>
+                    <label for="inputProvince">{this.props.t('Register.state')}</label>
                     <input type="text" className="form-control" id="inputProvince" value={this.state.Provincia} onChange={this.handleChange('Provincia')} />
                   </div>
                   <div className="form-group col-md-6">
-                    <label for="inputMail">Mail</label>
+                    <label for="inputMail">{this.props.t('Register.mail')}</label>
                     <input type="email" className="form-control" id="inputMail" value={this.state.email} onChange={this.handleChange('email')} />
                   </div>
                   <div className="form-group col-md-6">
-                    <label for="inputName">Nombre</label>
+                    <label for="inputName">{this.props.t('Register.name')}</label>
                     <input type="text" className="form-control" id="inputName" value={this.state.name} onChange={this.handleChange('name')} />
                   </div>
                 </div>
                 <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
-                  Guardar Cambios
+                {this.props.t('UserDetails.save-changes')}
               </button>
               </div>
       </>
     );
   }
 }
-export default UserDetails;
+export default withTranslation()(UserDetails);

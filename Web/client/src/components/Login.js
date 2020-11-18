@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from '../assets/images/Scrumgame.JPG'
 import {login} from './Adminfunctions'
-
+import { withTranslation } from 'react-i18next';
 class Login extends React.Component{
 
     constructor(props){
@@ -66,9 +66,9 @@ class Login extends React.Component{
                     <img src={Logo} alt="" className="logo"/>  
                 </div>
                 
-                <input type="text" name="username" className="input" placeholder="Usuario" id="usuario"/>
+                <input type="text" name="username" className="input" placeholder="*******" id="usuario"/>
                 <input type="password" name="password" className="input" placeholder="*******" id="password"/>
-                <button type="submit" className="boton-ingresar" >Ingresar</button>
+                <button type="submit" className="boton-ingresar" >{this.props.t('Login.sign-in')}</button>
                 <label>{this.state.error0}</label>  
             </form>
         </div>
@@ -77,6 +77,6 @@ class Login extends React.Component{
      
         
 }
-export default Login;
+export default withTranslation()(Login);
 
  

@@ -1,0 +1,69 @@
+{
+    "Home": {
+        "admin-users": "Administrar Usuarios",
+        "admin-waitingUsers": "Administrar Usuarios en espera",
+        "admin-levels": "Administrar Niveles"
+    },
+    "UserList": {
+        "back": "Volver",
+        "user-list": "Lista de Usuarios:",
+        "admin": "Administrar"
+    },
+    "WaitingUsersList": {
+        "back": "Volver",
+        "user-list": "Lista de Usuarios",
+        "on-hold": "en espera",
+        "accept": "Aceptar",
+        "reject": "Rechazar"
+    },
+    "Login": {
+        "sign-in": "Ingresar",
+        "user": "Usuario"
+    },
+    "Progress": {
+        "my-levels": "Mis Niveles",
+        "filter-by": "Filtar Por",
+        "level": "Nivel",
+        "in-progress": " En Curso",
+        "not-started": "No Iniciado"
+    },
+    "Register": {
+        "age": "Edad",
+        "country": "Pais",
+        "gameTasteLevel": "Interes en el Juego",
+        "nothing": "Nada",
+        "litle-bit": "Poco",
+        "same": "Le da igual",
+        "a-lot": "Mucho",
+        "fantastic": "Fantástico",
+        "gameTimeLevel": "Tiempo dedicado a Jugar",
+        "gender": "Género",
+        "male": "Masculino",
+        "female": "Femenino",
+        "other": "Otro",
+        "city": "Ciudad",
+        "state": "Provincia",
+        "profession": "Profesion",
+        "mail": "Mail",
+        "name": "Nombre",
+        "request-registration": "Solicitar Registro"
+    },
+    "UserDetails": {
+        "user-id": "ID de Usuario:",
+        "complete-name": "Nombre Completo:",
+        "e-mail": "Correo Electronico:",
+        "country": "Pais:",
+        "time-played": "Tiempo Jugado:",
+        "levels-passed": "Niveles Superados:",
+        "delete": "Eliminar",
+        "admin-data": "Re ingrese los datos del administrador para eliminar el usuario",
+        "admin": "Administrador",
+        "password": "Contraseña",
+        "cancel": "Cancelar",
+        "delete-user": "Eliminar Usuario",
+        "see-progress": "Ver Progreso",
+        "save-changes": "Guardar Cambios"
+    }
+
+
+}
