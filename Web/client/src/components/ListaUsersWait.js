@@ -102,7 +102,7 @@ class ListaUsersWait extends Component {
             <div>
                     <div className="col-10 mx-auto my-2 contenedorListaUser overflow-auto" id="listaUserEspera">
                         <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
-                            <h1 className="text-black p-1">{this.props.t('WaitingUsersList.user-list')}<span className="font-weight-bold">{this.props.t('WaitingUsersList.on-hold')}</span>:</h1>
+                            <h1 className="text-black p-1">{this.props.t('WaitingUsersList.user-list')} <span className="font-weight-bold">{this.props.t('WaitingUsersList.on-hold')}</span>:</h1>
                         </div>
                         <ul className="list-group" id="lista-usuarios">
                             {this.state.waitingUsers.map((user) => (
