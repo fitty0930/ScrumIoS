@@ -6,6 +6,7 @@ import './AdminStyles.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label } from 'reactstrap';
 import { login } from './Adminfunctions'
 import { Link } from 'react-router-dom'
+import  NavBar  from './NavBar';
 import '../assets/css/normalClase.css';
 
 
@@ -253,6 +254,7 @@ class UserDetails extends Component {
   render() {
     return (
       <>
+      <NavBar />
         <div className="d-flex justify-content-around">
           <div className="user-details my-auto rounded-pill">
             <img src={profilePicture} className="img-profile rounded-circle" alt="" />

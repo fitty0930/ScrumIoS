@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import firebase from '../firebase'
 import './AdminStyles.css';
 
+import  NavBar  from './NavBar';
+
 class ListaUser extends Component {
 
     constructor() {
@@ -56,6 +58,7 @@ class ListaUser extends Component {
     render() {
         return (
             <div>
+                  <NavBar />
                 <header className="row col-10 mx-auto">
                     <div>
                         <Link to='/home'>
