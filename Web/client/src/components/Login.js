@@ -10,7 +10,8 @@ class Login extends React.Component{
             error0:"",
             error1:"*Por favor, rellene todos los campos*",
             verificando:"",
-            ups:"*Usuario no encontrado*"
+            ups:"*Usuario no encontrado*",
+            errorMessege: false
         }
     }
     verificar=(e)=>{
@@ -48,20 +49,28 @@ class Login extends React.Component{
       }
       
        camposVacios=()=>{
-        let usuario=document.getElementById('usuario').value;
-        let password=document.getElementById('password').value;
-        
-        if((usuario==="")||(password==="")){
-            return true
+            let usuario=document.getElementById('usuario').value;
+            let password=document.getElementById('password').value;
+            
+            if((usuario==="")||(password==="")){
+                return true
+            }
+            return false
         }
-        return false
-    }
 
-    render(){
+        render(){
+            console.log(this.props)
         return(
            
         <div className="sombreado">
             <form action="" method="" className="formulario"  onSubmit={this.verificar}>
+                { this.props.location.state != undefined ?
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>¡Porfavor Inicie Session!</strong> para poder acceder.
+                    </div>
+                    : ""
+                }
                 <div>
                     <img src={Logo} alt="" className="logo"/>  
                 </div>

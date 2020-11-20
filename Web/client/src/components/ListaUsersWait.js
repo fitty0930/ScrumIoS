@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import emailjs from 'emailjs-com';
-import {Link} from 'react-router-dom'
+import {Link, useHistory } from 'react-router-dom'
 import {getUsers, deleteUser} from './Userslistfunctions'
 import firebase from '../firebase'
 import './AdminStyles.css';
@@ -13,6 +13,16 @@ class ListaUsersWait extends Component {
         }
         this.getWaitingUsers = this.getWaitingUsers.bind(this)
     }
+
+    // componentWillMount(){
+    //     console.log(localStorage.getItem('session'))
+    //     if(!localStorage.getItem('session')){
+    //         console.log("entraa")
+    //         const history = useHistory();
+    //         history.push("/login");
+    //         // console.log(History);
+    //     }
+    // }
 
     getWaitingUsers(){
         getUsers().then(res => {
@@ -86,7 +96,14 @@ class ListaUsersWait extends Component {
     }
 
     componentDidMount(){
-        this.getWaitingUsers()
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }else{
+            this.getWaitingUsers()
+        }
     }
 
     render() {
