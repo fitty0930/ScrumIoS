@@ -10,12 +10,13 @@
     margin-top: 40px;
     margin-bottom: 40px;
     /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%); */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+   
 }
 
 .consola {
@@ -45,14 +46,32 @@
 }
 
 .sombreado {
+    /* background-color: #a34cee; */
+    
+   /*  background-image: url('../images/wallpaper-login2.jpg');  */
+    
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
+    
     /* background-color: chocolate; */
     /* background: linear-gradient(180deg, rgba(21, 20, 20, 0.192) -4.54%, rgba(67, 65, 65, 0.559333) 35.75%, rgba(3, 0, 0, 0.8) 100%); */
 }
+.sombreado:before{
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    background: linear-gradient(180deg, #a34cee 0%, #4dcde4 100%)!important;
+    
+    z-index: -1;
+
+
+}
 
 .boton-ingresar {
     position: relative;
@@ -66,7 +85,8 @@
     font-family: Ropa Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    /* font-size: 24px; */
+    
 }
 
 .boton-ingresar:hover {
@@ -75,7 +95,7 @@
 
 .input {
     position: relative;
-    width: 342.03px;
+    width: 342.03px !important;
     height: 53.41px;
     left: 45.09px;
     top: 368.52px;

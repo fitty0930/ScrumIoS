@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import logo from "../assets/images/Scrumgame.JPG";
+import imagen from "../assets/images/pic01.jpg";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
 import './AdminStyles.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label } from 'reactstrap';
 import { login } from './Adminfunctions'
 import { Link } from 'react-router-dom'
-import  NavBar  from './NavBar';
+import NavBar from './NavBar';
 import '../assets/css/normalClase.css';
+import Footer from "./Footer";
+
 
 
 
@@ -208,14 +210,14 @@ class UserDetails extends Component {
       uid: user.id,
     });
     //crea una variable con los datos del usuario sacados del State y luego actualiza los datos del usuario correspondientes a este mail
-    
+
     alert("se modificaron los datos");
     this.desplegarFormulario() // esto para que quede mas prolijo
     setTimeout(() => {
       this.getDatauser();
     }, 500); // esto es para darle el tiempo a consultar la bdd y renderizar 
-    
-    
+
+
   }
   handleChange = (key) => {              //permite que los imputs puedan ser modificados
     return function (e) {             //estos imputs estan leyendo el state,por lo que no se puden modificar
@@ -254,17 +256,100 @@ class UserDetails extends Component {
   render() {
     return (
       <>
-      <NavBar />
-        <div className="d-flex justify-content-around">
+        <NavBar />
+        {/*  <div className="d-flex justify-content-around">
           <div className="user-details my-auto rounded-pill">
             <img src={profilePicture} className="img-profile rounded-circle" alt="" />
             <input type="text" name="username" value={this.state.user.username} className="user-details rounded " />
             <input type="text" disabled name="points" value={this.state.score} className="user-details rounded" />
           </div>
 
-        </div>
+        </div> */}
+        {/* --------------------------------------------------------------------------------------------- */}
+        <section id="one" class="wrapper">
+          <div class="inner flex flex-3">
+            <div class="flex-item left">
+              <div>
+                <h3>id de Usuario:</h3>
+                <input type="text" name="user-id" value={this.state.user.id} readOnly className="rounded inputUser" />
+              </div>
+              <div>
+                <h3>Nombre Completo:</h3>
+                <input type="text" name="user-name" value={this.state.user.name} readOnly className="rounded inputUser" />
+              </div>
+            </div>
+            <div class="flex-item image fit round">
+              <img src={imagen} alt="" />
+
+            </div>
+            <div class="flex-item right">
+              <div>
+                <h3>Correo Electronico:</h3>
+                <input type="text" name="user-mail" value={this.state.user.email} readOnly className="rounded inputUser" />
+              </div>
+              <div>
+                <h3>Niveles Superados:</h3>
+                <input type="text" name="nombre" value={this.state.levels} readOnly className="rounded inputUser" />
+              </div>
+
+            </div>
+          </div>
+          <div class="inner flex flex-3">
+
+            <div class="flex-item left">
+              <div class="mx-auto">
+                <Button className="button small ml-2 button-amigote" role="button" onClick={this.abrirmodal}>
+                  Eliminar
+                  </Button>
+                <Modal isOpen={this.state.formularioEliminar}>
+                  <ModalHeader>
+                    Ingrese datos administrador para eliminar usuario
+                    </ModalHeader>
+                  <ModalBody>
+                    <FormGroup>
+                      <Label for="admin">administrador</Label>
+                      <Input type="text" id="ModelAdmin" />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Contraseña</Label>
+                      <Input type="password" id="ModelPassword" />
+                    </FormGroup>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button onClick={this.abrirmodal}>
+                      Cancelar
+                      </Button>
+                    <Button color="danger" onClick={this.deleteUser}>
+                      Eliminar Usuario
+                      </Button>
+                  </ModalFooter>
+                </Modal>
+
+              </div>
+            </div>
+            <div class="flex-item mt-auto">
+              <div className="mx-auto">
+                <a class="button small ml-2 button-amigote" role="button" onClick={this.desplegarFormulario}>
+                  {this.state.BotonEditar}
+                </a>
+              </div>
+            </div>
+            <div class="flex-item right">
+              <div class="mx-auto">
+                <Link to={{ pathname: "/progress/" + this.state.email, query: this.state.email }}>
+                  <button type="button" className="button small ml-2 button-amigote" >Ver Progreso</button>
+                </Link>
+                {/*  <Link to='/adminUsers'>
+                  <button type="submit" className="btn btn-danger float-right" >Volver</button>
+                </Link> */}
+              </div>
+            </div>
+          </div>
+
+        </section>
+        {/* ---------------------------------------------------------------------------------------------------------- */}
         <div className="container  contenedorListaUser bg-white" id="formulario2">
-          <div className="row ">
+          {/* <div className="row ">
 
             <div className="col-4 ">
               <h3 className="mt-3">Id de Usuario:</h3>
@@ -291,7 +376,7 @@ class UserDetails extends Component {
           <div class="container">
             <div class="row">
               <div class="col-sm my-4">
-                <Button className="buttonsUser btn btn-primary" role="button" onClick={this.abrirmodal}>
+                <Button className="button small ml-2 button-amigote" role="button" onClick={this.abrirmodal}>
                   Eliminar
                   </Button>
                 <Modal isOpen={this.state.formularioEliminar}>
@@ -320,34 +405,35 @@ class UserDetails extends Component {
 
               </div>
               <div class="col-sm my-4">
-                <a class="buttonsUser btn btn-primary" role="button" onClick={this.desplegarFormulario}>
+                <a class="button small ml-2 button-amigote" role="button" onClick={this.desplegarFormulario}>
                   {this.state.BotonEditar}
                 </a>
               </div>
               <div class="col-sm my-4">
                 <Link to={{ pathname: "/progress/" + this.state.email, query: this.state.email }}>
-                  <button type="button" className="buttonsUser btn btn-primary" >Ver Progreso</button>
-                </Link><Link to='/adminUsers'>
-                  <button type="submit" className="btn btn-danger float-right" >Volver</button>
+                  <button type="button" className="button small ml-2 button-amigote" >Ver Progreso</button>
                 </Link>
+               <Link to='/adminUsers'>
+                  <button type="submit" className="btn btn-danger float-right" >Volver</button>
+                </Link> 
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
         <div className="container  contenedorListaUser bg-white" id="formulario" hidden>
           <div className="form-row">
-            <div className="form-group col-md-6">
+            <div className="12u$(xsmall) form-group col-md-6">
               <label for="inputEdad">Edad</label>
-              <input type="number" className="form-control" id="inputEdad" value={this.state.edad} onChange={this.handleChange('edad')} />
+              <input type="text" className="form-control" id="inputEdad" value={this.state.edad} onChange={this.handleChange('edad')} />
             </div>
             <div className="form-group col-md-6">
               <label for="inputCountry">País</label>
-              <input type="input" className="form-control" id="inputCountry" value={this.state.pais} onChange={this.handleChange('pais')} />
+              <input type="text" className="form-control" id="inputCountry" value={this.state.pais} onChange={this.handleChange('pais')} />
             </div>
           </div>
           <div className="form-group row">
-            <div className="col-4">
+            <div className="select-wrapper col-4">
               <label for="inputInteres">Interes en el Juego</label>
               <select value={this.state.interesEnelJuego} className="form-control" onChange={this.CambiarSelec2}>
                 {options.map((option) => (
@@ -396,11 +482,15 @@ class UserDetails extends Component {
               <label for="inputName">Nombre</label>
               <input type="text" className="form-control" id="inputName" value={this.state.name} onChange={this.handleChange('name')} />
             </div>
-          </div>
-          <button className="btn btn-primary regular-button" onClick={this.enviarDatos}>
+          <button className="button small   mt-5 ml-auto button-amigote" onClick={this.enviarDatos}>
             Guardar Cambios
-              </button>
+          </button>
+          </div>
         </div>
+
+        <Footer/>
+
+        
       </>
     );
   }

@@ -59,8 +59,8 @@ class Login extends React.Component {
 
     render() {
         return (
-
-            <div className="sombreado">
+            
+            <div className="sombreado sombreado2">
                 <form action="" method="" className="formulario" onSubmit={this.verificar}>
                     <div>
                         <img src={Logo} alt="" className="logo" />
@@ -68,8 +68,10 @@ class Login extends React.Component {
 
                     <input type="text" name="username" className="input" placeholder="Usuario" id="usuario" />
                     <input type="password" name="password" className="input" placeholder="*******" id="password" />
-                    <button type="submit" className="boton-ingresar" >Ingresar</button>
+                    <button type="submit" className="boton-ingresar  button-amigote" >Ingresar</button>
+                    
                     <label>{this.state.error0}</label>
+                    <a href="/register">registrase</a>
                 </form>
             </div>
         );
