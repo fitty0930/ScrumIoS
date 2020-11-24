@@ -4,6 +4,7 @@ import firebase from '../firebase'
 import './AdminStyles.css';
 
 import  NavBar  from './NavBar';
+import  Footer  from './Footer';
 
 class ListaUser extends Component {
 
@@ -57,42 +58,43 @@ class ListaUser extends Component {
 
     render() {
         return (
-            <div>
-                  <NavBar />
-                <header className="row col-10 mx-auto">
-                    <div>
-                        <Link to='/home'>
-                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
-                        </Link>
-                    </div>
-                    <form className="form-inline mx-auto">
-                        <div className="form-group padding-auto mx-5">
-                            <input type="text" className="form-control input-color rounded-pill" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange} />
+            <div className="mt-2">
+                <NavBar/>
+                <div className="col-10 mx-auto overflow-auto" id="listaUser">
+                    <div className="row">
+                        <h4>Lista de usuarios:</h4>
+                        <div className="form-group padding-auto ml-auto">
+                            <input type="text" className="form-control" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange} />
                         </div>
-                    </form>
-                </header>
-                <div className="col-10 mx-auto contenedorListaUser overflow-auto" id="listaUser">
-                    <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
-                        <h1 className=" jumbotron jumbotron-fluid rounded-pill text-black p-1 ">Lista de Usuarios:</h1>
                     </div>
-                    <ul className="list-group" id="lista-usuarios">
-                        {this.state.filteredUsers.map((user) => (
-                            <div key={user.uid}>
-                                <li className="list-group-item d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                    <div className="col-8">
-                                        {user.name}
-                                    </div>
-                                    <div className="position-left align-items-right">
-                                        {user.mail}
-                                    </div>
-                                        <Link to={"/user/" + user.mail}>
-                                            <button type="button" className="btn btn-color rounded-pill btn-admin-user ml-1" id={user.mail}>Administrar</button>
-                                        </Link>
-                                </li>
-                            </div>
-                        ))}
-                    </ul>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.filteredUsers.map((user) => (
+                                    <tr>
+                                        <td>{user.name}</td>
+                                        <td>{user.mail}</td>
+                                        <td></td>
+                                        <td>
+                                            <Link to={"/user/" + user.mail}>
+                                                <button type="button" className="button small ml-2 button-amigote" id={user.mail}>Administrar</button>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
