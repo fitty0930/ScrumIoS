@@ -30,7 +30,8 @@ class Home extends React.Component{
 			<section id="banner">
                 <img src={Logo} alt="" className="img-fluid img-amigotes" />
 				<div className="content">
-					<p>Un juego didactico para probar tus conocimientos de scrum<br />demuestra tu sabiduria!.</p>
+					<p>Un juego didactico para probar tus conocimientos de scrum</p> 
+                    <p>Demuestra tu sabiduria!.</p>
                     
                     <nav class="navbar navbar-expand-lg">
                         <ul class="mx-auto navbar-nav d-flex justify-content-around">
