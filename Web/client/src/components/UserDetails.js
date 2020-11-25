@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import imagen from "../assets/images/pic01.jpg";
+import imagen from "../assets/images/pic02.jpg";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
 import './AdminStyles.css'
