@@ -65,12 +65,12 @@ class Login extends React.Component{
                     <div>
                         <img src={Logo} alt="" className="logo img-fluid col-8" />
                     </div>
-                    <input type="text" name="username" className="input" placeholder="Usuario" id="usuario" />
+                    <input type="text" name="username" className="input" placeholder="*******" id="usuario" />
                     <input type="password" name="password" className="input" placeholder="*******" id="password" />
-                    <button type="submit" className="boton-ingresar  button-amigote" >Ingresar</button>
+                    <button type="submit" className="boton-ingresar  button-amigote" >{this.props.t('Login.sign-in')}</button>
                     
                     <label>{this.state.error0}</label>
-                    <a href="/register">Registrarse</a>
+                    <a href="/register">{this.props.t('Login.accept')}</a>
                 </form>
             
             </div>

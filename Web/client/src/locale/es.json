@@ -2,7 +2,14 @@
     "Home": {
         "admin-users": "Administrar Usuarios",
         "admin-waitingUsers": "Administrar Usuarios en espera",
-        "admin-levels": "Administrar Niveles"
+        "admin-levels": "Administrar Niveles",
+        "middle-text-1": "Un juego didactico para probar tus conocimientos de scrum",
+        "middle-text-2": "Demuestra tu sabiduria!."
+    },
+    "Navbar": {
+        "log-out": "Cerrar Sesion",
+        "admin-users": "Admin. Usuarios",
+        "admin-w-users": "Admin. Usuarios Espera"
     },
     "UserList": {
         "back": "Volver",
@@ -18,7 +25,8 @@
     },
     "Login": {
         "sign-in": "Ingresar",
-        "user": "Usuario"
+        "user": "Usuario",
+        "register": "Registrarse"
     },
     "Progress": {
         "my-levels": "Mis Niveles",
@@ -28,6 +36,8 @@
         "not-started": "No Iniciado"
     },
     "Register": {
+        "status": "Estado",
+        "sub-level": "Sub-nivel",
         "age": "Edad",
         "country": "Pais",
         "gameTasteLevel": "Interes en el Juego",
@@ -44,7 +54,7 @@
         "city": "Ciudad",
         "state": "Provincia",
         "profession": "Profesion",
-        "mail": "Mail",
+        "mail": "Correo",
         "name": "Nombre",
         "request-registration": "Solicitar Registro"
     },
@@ -62,7 +72,13 @@
         "cancel": "Cancelar",
         "delete-user": "Eliminar Usuario",
         "see-progress": "Ver Progreso",
-        "save-changes": "Guardar Cambios"
+        "save-changes": "Guardar Cambios",
+        "edit": "Editar"
+    },
+    "Footer": {
+        "title": "Equipo de trabajo Amigotes",
+        "copyright": "AMIGOTES. Diseño",
+        "copy-images": "Imagenes"
     }
 
 

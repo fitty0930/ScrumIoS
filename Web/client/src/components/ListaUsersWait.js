@@ -113,8 +113,8 @@ class ListaUsersWait extends Component {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Email</th>
+                                        <th>{this.props.t('Register.name')}</th>
+                                        <th>{this.props.t('Register.mail')}</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -125,10 +125,10 @@ class ListaUsersWait extends Component {
                                             <td>{user.name}</td>
                                             <td>{user.mail}</td>
                                             <td>
-                                                <button type="button" className="button small ml-2 button-amigote" onClick={() => this.aceptUser(user.mail)} id={user.mail}>Aceptar</button>
+                                                <button type="button" className="button small ml-2 button-amigote" onClick={() => this.aceptUser(user.mail)} id={user.mail}>{this.props.t('WaitingUsersList.accept')}</button>
                                             </td>
                                             <td>
-                                                <button type="button" className="button small ml-2 button-amigote" onClick={() => this.rejectUser(user.mail)} id={user.mail}>Rechazar</button>
+                                                <button type="button" className="button small ml-2 button-amigote" onClick={() => this.rejectUser(user.mail)} id={user.mail}>{this.props.t('WaitingUsersList.reject')}</button>
                                             </td>
                                         </tr>
                                     ))}

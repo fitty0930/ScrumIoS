@@ -128,7 +128,7 @@ class Progress extends Component {
                 <NavBar/>
                 <div className="col-10 mx-auto overflow-auto" id="listaUser">
                     <div className="row">
-                        <h4>Lista de Niveles:</h4>
+                        <h4>{this.props.t('UserList.user-list')}</h4>
                         <div className="form-group padding-auto ml-auto">
                             <form className="form-inline mx-auto">
                                 <div className="form-group padding-auto mx-5 row">
@@ -139,10 +139,10 @@ class Progress extends Component {
                                     <div class="12u$ col-6">
                                         <div class="select-wrapper">
                                             <select id="inputGroupSelect01" onChange={this.setFiltro} className="form-control">
-                                            <option defaultValue>Filtrar Por</option>
-                                            <option value="level">Nivel</option>
-                                            <option value="EN CURSO">En Curso</option>
-                                            <option value="NO INICIADO">No Iniciado</option>
+                                            <option defaultValue>{this.props.t('Progress.filter-by')}</option>
+                                            <option value="level">{this.props.t('Progress.level')}</option>
+                                            <option value="EN CURSO">{this.props.t('Progress.in-progress')}</option>
+                                            <option value="NO INICIADO">{this.props.t('Progress.not-started')}</option>
                                             </select>
                                         </div>
                                     </div>                                   
@@ -154,16 +154,16 @@ class Progress extends Component {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Estado</th>
-                                    <th>Sub-Nivel</th>
+                                    <th>{this.props.t('Register.name')}</th>
+                                    <th>{this.props.t('Register.status')}</th>
+                                    <th>{this.props.t('Register.sub-level')}</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {
                             this.state.levelsFilter.map((item, index) =>
                                     <tr>
-                                        <td>Nivel {item.levelId}</td>
+                                        <td>{this.props.t('Progress.level')} {item.levelId}</td>
                                         <td>{item.status}</td>
                                         <td>{item.sublevelID}</td>
                                     </tr>    

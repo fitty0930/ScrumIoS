@@ -2,7 +2,14 @@
     "Home": {
         "admin-users": "Manage Users",
         "admin-waitingUsers": "Manage waiting users",
-        "admin-levels": "Manage Levels"
+        "admin-levels": "Manage Levels",
+        "middle-text-1": "An educational game to test your scrum knowledge ",
+        "middle-text-2": "Show your wisdom!."
+    },
+    "Navbar": {
+        "log-out": "Log Out",
+        "admin-users": "Admin. Users",
+        "admin-w-users": "Admin. W. Users"
     },
     "UserList": {
         "back": "Back",
@@ -17,7 +24,9 @@
         "reject": "Reject"
     },
     "Login": {
-        "sign-in": "Sign in"
+        "sign-in": "Sign in",
+        "user": "User",
+        "register": "Register"
     },
     "Progress": {
         "my-levels": "My Levels",
@@ -27,6 +36,8 @@
         "not-started": "Not Started"
     },
     "Register": {
+        "status": "Status",
+        "sub-level": "Sub-level",
         "age": "Age",
         "country": "Country",
         "gameTasteLevel": "Game taste level",
@@ -42,8 +53,8 @@
         "other": "Other",
         "city": "City",
         "state": "State",
-        "profession": "Profesion",
-        "mail": "Mail",
+        "profession": "Profession",
+        "mail": "Email",
         "name": "Name",
         "request-registration": "Request Registration"
     },
@@ -61,7 +72,13 @@
         "cancel": "Cancel",
         "delete-user": "Delete User",
         "see-progress": "See Progress",
-        "save-changes": "Save Changes"
+        "save-changes": "Save Changes",
+        "edit": "Edit"
+    },
+    "Footer": {
+        "title": "Amigotes work group",
+        "copyright": "AMIGOTES. Design",
+        "copy-images": "Images"
     }
 
 

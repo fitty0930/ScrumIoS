@@ -70,7 +70,7 @@ class ListaUser extends Component {
                 <NavBar/>
                 <div className="col-10 mx-auto overflow-auto" id="listaUser">
                     <div className="row">
-                        <h4>Lista de usuarios:</h4>
+                        <h4>{this.props.t('UserList.user-list')}</h4>
                         <div className="form-group padding-auto ml-auto">
                             <input type="text" className="form-control" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange} />
                         </div>
@@ -79,8 +79,8 @@ class ListaUser extends Component {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
+                                    <th>{this.props.t('Register.name')}</th>
+                                    <th>{this.props.t('Register.mail')}</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -93,7 +93,7 @@ class ListaUser extends Component {
                                         <td></td>
                                         <td>
                                             <Link to={"/user/" + user.mail}>
-                                                <button type="button" className="button small ml-2 button-amigote" id={user.mail}>Administrar</button>
+                                                <button type="button" className="button small ml-2 button-amigote" id={user.mail}>{this.props.t('UserList.admin')}</button>
                                             </Link>
                                         </td>
                                     </tr>

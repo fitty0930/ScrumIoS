@@ -48,31 +48,31 @@ class Home extends React.Component{
 				<p className="logo">Scrum</p>
 				<nav className="right">
                     <Link to='/login'> 
-                        <a onClick={this.closeSession} type="submit" className="button small ml-2 button-amigote-gris">Log Out</a>
+                        <a onClick={this.closeSession} type="submit" className="button small ml-2 button-amigote-gris">{this.props.t('Navbar.log-out')}</a>
                     </Link>
 				</nav>
 			</header>
 			<section id="banner">
                 <img src={Logo} alt="" className="img-fluid img-amigotes" />
 				<div className="content">
-					<p>Un juego didactico para probar tus conocimientos de scrum</p> 
-                    <p>Demuestra tu sabiduria!.</p>
+					<p>{this.props.t('Home.middle-text-1')}</p> 
+                    <p>{this.props.t('Home.middle-text-2')}</p>
                     
                     <nav class="navbar navbar-expand-lg">
                         <ul class="mx-auto navbar-nav d-flex justify-content-around">
                             <li class="nav-item active">
                                 <Link to='/adminUsers' className="nav-link"> 
-                                    <button type="submit"   className="button-amigote-home btn btn-sm" >Administrar Usuarios</button>
+                                    <button type="submit" className="button-amigote-home btn btn-sm" >{this.props.t('Home.admin-users')}</button>
                                 </Link>
                             </li>
                             <li class="nav-item active">
                                 <Link to='/adminWaitingUsers' className="nav-link"> 
-                                    <button type="submit" className="button-amigote-home btn btn-sm" >Administrar Usuarios en espera</button>
+                                    <button type="submit" className="button-amigote-home btn btn-sm" >{this.props.t('Home.admin-waitingUsers')}</button>
                                 </Link>
                             </li>
                             <li class="nav-item active">
                                 <Link to='#' className="nav-link"> 
-                                    <button type="submit" className="btn btn-sm button-amigote-home" >Administrar Niveles</button>
+                                    <button type="submit" className="btn btn-sm button-amigote-home" >{this.props.t('Home.admin-levels')}</button>
                                 </Link>
                             </li>
                         </ul>
