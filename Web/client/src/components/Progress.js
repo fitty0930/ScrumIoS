@@ -3,6 +3,8 @@ import firebase from "../firebase" //importamos el archivo firebase que configur
 // ...
 import { Link } from 'react-router-dom'
 
+import  NavBar  from './NavBar';
+import  Footer  from './Footer';
 
 
 
@@ -115,49 +117,57 @@ class Progress extends Component {
     render() {
         return (
             <>
-                <div className="row col-10 mx-auto">
-                    <div>
-                        <h1>Mis Niveles</h1>
-                    </div>
-                    <form className="form-inline mx-auto">
-                        <div className="form-group padding-auto mx-5">
-                            <select className="custom-select rounded-pill" id="inputGroupSelect01" onChange={this.setFiltro} >
-                                <option defaultValue>Filtrar Por</option>
-                                <option value="level">Nivel</option>
-                                <option value="EN CURSO">En Curso</option>
-                                <option value="NO INICIADO">No Iniciado</option>
-                            </select>
-                            {this.state.filtro === "Nivel" ?
-                                <input type="text" onChange={this.getFiltro} className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
-                                : ""
-                            }
+                <div className="mt-2">
+                <NavBar/>
+                <div className="col-10 mx-auto overflow-auto" id="listaUser">
+                    <div className="row">
+                        <h4>Lista de Niveles:</h4>
+                        <div className="form-group padding-auto ml-auto">
+                            <form className="form-inline mx-auto">
+                                <div className="form-group padding-auto mx-5 row">
+                                    {this.state.filtro === "Nivel" ?
+                                        <input type="text" onChange={this.getFiltro} className="form-control col-6" id="formGroupExampleInput" placeholder={this.state.filtro} />
+                                        : ""
+                                    }
+                                    <div class="12u$ col-6">
+                                        <div class="select-wrapper">
+                                            <select id="inputGroupSelect01" onChange={this.setFiltro} className="form-control">
+                                            <option defaultValue>Filtrar Por</option>
+                                            <option value="level">Nivel</option>
+                                            <option value="EN CURSO">En Curso</option>
+                                            <option value="NO INICIADO">No Iniciado</option>
+                                            </select>
+                                        </div>
+                                    </div>                                   
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                    <div>
-                        <h1>Logo</h1>
                     </div>
-                </div>
-                <div className="col-10 mx-auto contenedorListaUser overflow-auto list-levels">
-                    <ul className="list-group">
-                        {
+                    <div class="table-wrapper table-amigote">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Estado</th>
+                                    <th>Sub-Nivel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {
                             this.state.levelsFilter.map((item, index) =>
-                                item.status == "HECHO" ?
-                                    <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                        <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
-                                    </li>
-                                    : item.status == "EN CURSO" ?
-                                        <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
-                                        </li>
-                                        :
-                                        <li className="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
-
-                                        </li>
+                                    <tr>
+                                        <td>Nivel {item.levelId}</td>
+                                        <td>{item.status}</td>
+                                        <td>{item.sublevelID}</td>
+                                    </tr>    
                             )
                         }
-                    </ul>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <Footer/>
+            </div>
             </>
         )
     }

@@ -67,7 +67,7 @@ class ListaUser extends Component {
                             <input type="text" className="form-control" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange} />
                         </div>
                     </div>
-                    <div class="table-wrapper">
+                    <div class="table-wrapper table-amigote">
                         <table>
                             <thead>
                                 <tr>

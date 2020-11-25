@@ -2701,6 +2701,7 @@
 
 			#header nav.left {
 				left: 2em;
+				margin: auto !important;
 			}
 
 			#header nav.right {
@@ -2751,13 +2752,12 @@
 		}
 
 		#header {
-			height: 44px;
+			height: 50px;
 			line-height: 44px;
 		}
 
 			#header .logo {
-				font-size: 1.25em;
-				text-align: center;
+				display: none;
 			}
 
 			#header nav a[href="#menu"] {
@@ -2768,8 +2768,14 @@
 				left: 1em;
 			}
 
-			#header nav.right {
-				display: none;
+			#header nav a {
+				width: 100px  !important;
+				height: 30px !important;
+				font-size: 8px;
+				margin-left: 4px;
+				
+
+			/* 	display: none; */
 			}
 
 	}
@@ -2780,6 +2786,16 @@
 			min-width: 320px;
 		}
 
+		#header nav a {
+			width: 75px  !important;
+			height: 25px !important;
+			font-size: 6px;
+			margin-left: 2px;
+			text-align: inherit;
+			
+
+		/* 	display: none; */
+		}
 	}
 
 /* Menu */
@@ -3144,7 +3160,7 @@
 /* Footer */
 
 	#footer {
-		padding: 6em 0 4em 0;
+		padding: 3em 0 4em 0;
 		background: #25a2c3;
 		text-align: center;
 		color: #c8e7f0;
@@ -3181,12 +3197,13 @@
 		@media screen and (max-width: 980px) {
 
 			#footer {
-				padding: 3em 0 1em 0;
+				padding: 2em 0 1em 0;
+				height: 250px;
 			}
 
 				#footer ul li {
 					display: block;
-					padding: .25em 0;
+					padding: .15em 0;
 				}
 
 		}
@@ -3202,7 +3219,8 @@
 		@media screen and (max-width: 480px) {
 
 			#footer {
-				padding: 2em 0 0.1em 0;
+				padding: 1em 0 0.1em 0;
+				height: 300px;
 			}
 
 				#footer ul li {
@@ -3211,10 +3229,11 @@
 
 					#footer ul li .icon:before {
 						margin-left: -1em;
+						padding: .15em 0;
 					}
 
 				#footer .copyright {
-					padding: 2em 0;
+					padding: 0.5em 0;
 				}
 
 		}

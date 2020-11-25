@@ -287,13 +287,45 @@
     background-color: #c4c4c4 !important;
     font-family: "Montserrat", sans-serif;
 }
+.button-amigote-home{
+    background-color: #01d1ff !important;
+    font-family: "Montserrat", sans-serif;
+}
+
+.button-amigote-gris-home{
+    background-color: #c4c4c4 !important;
+    font-family: "Montserrat", sans-serif;
+}
 
 .nav-amigote{
     background-color: #7f00ff !important;
 }
 
 .img-amigotes{
-    width: 20vw;
+    width: 270px;
+}
+
+.table-amigote{
+    min-height: 60vh !important;
+}
+
+@media screen and (max-width: 980px) {
+
+    .img-amigotes{
+        width: 270px;
+    }
+
+    .button-amigote-home{
+        width: 500px;
+    }
+    
+}
+@media screen and (max-width: 480px) {
+    .button-amigote-home{
+        width: 300px;
+    }
+
+ 
 }
 
 

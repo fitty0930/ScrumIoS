@@ -99,7 +99,7 @@ class ListaUsersWait extends Component {
                         <div className="row">
                             <h4>Lista de usuarios en espera:</h4>
                         </div>
-                        <div class="table-wrapper">
+                        <div class="table-wrapper table-amigote">
                             <table>
                                 <thead>
                                     <tr>

@@ -268,41 +268,44 @@ class UserDetails extends Component {
         {/* --------------------------------------------------------------------------------------------- */}
         <section id="one" class="wrapper">
           <div class="inner flex flex-3">
-            <div class="flex-item left">
-              <div>
+            <div class="flex-item left mb-2">
+              <div className="col-sm-12">
                 <h3>id de Usuario:</h3>
-                <input type="text" name="user-id" value={this.state.user.id} readOnly className="rounded inputUser" />
+                <input type="text" name="user-id" value={this.state.user.id} readOnly className="rounded inputUser col-sm-12" />
               </div>
-              <div>
+              <div className="col-sm-12">
                 <h3>Nombre Completo:</h3>
-                <input type="text" name="user-name" value={this.state.user.name} readOnly className="rounded inputUser" />
+                <input type="text" name="user-name" value={this.state.user.name} readOnly className="rounded inputUser col-sm-12" />
               </div>
             </div>
             <div class="flex-item image fit round">
               <img src={imagen} alt="" />
 
             </div>
-            <div class="flex-item right">
-              <div>
+            <div class="flex-item right ">
+              <div className="col-sm-12">
                 <h3>Correo Electronico:</h3>
-                <input type="text" name="user-mail" value={this.state.user.email} readOnly className="rounded inputUser" />
+                <input type="text" name="user-mail" value={this.state.user.email} readOnly className="rounded inputUser col-sm-12" />
               </div>
-              <div>
+              <div className="col-sm-12">
                 <h3>Niveles Superados:</h3>
-                <input type="text" name="nombre" value={this.state.levels} readOnly className="rounded inputUser" />
+                <input type="text" name="nombre" value={this.state.levels} readOnly className="rounded inputUser col-sm-12" />
               </div>
 
             </div>
           </div>
           <div class="inner flex flex-3">
 
-            <div class="flex-item left">
-              <div class="mx-auto">
-                <Button className="button small ml-2 button-amigote" role="button" onClick={this.abrirmodal}>
+            <div class="flex-item left col">
+              <div class="mx-auto col-sm-8 mb-3">
+                <Button className="button small ml-2 button-amigote col" role="button" onClick={this.abrirmodal}>
                   Eliminar
                   </Button>
-                <Modal isOpen={this.state.formularioEliminar}>
-                  <ModalHeader>
+                <Modal isOpen={this.state.formularioEliminar} >
+                  
+                  <ModalHeader className="mt-50">
+                  <br></br>
+                  <br></br>
                     Ingrese datos administrador para eliminar usuario
                     </ModalHeader>
                   <ModalBody>
@@ -324,20 +327,19 @@ class UserDetails extends Component {
                       </Button>
                   </ModalFooter>
                 </Modal>
-
               </div>
             </div>
-            <div class="flex-item mt-auto">
-              <div className="mx-auto">
-                <a class="button small ml-2 button-amigote" role="button" onClick={this.desplegarFormulario}>
+            <div class="flex-item mt-auto col">
+              <div className="mx-auto col-sm-8 mb-3">
+                <a class="button small ml-2 button-amigote col" role="button" onClick={this.desplegarFormulario}>
                   {this.state.BotonEditar}
                 </a>
               </div>
             </div>
-            <div class="flex-item right">
-              <div class="mx-auto">
+            <div class="flex-item right col">
+              <div class="mx-auto col-sm-8 mb-3">
                 <Link to={{ pathname: "/progress/" + this.state.email, query: this.state.email }}>
-                  <button type="button" className="button small ml-2 button-amigote" >Ver Progreso</button>
+                  <button type="button" className="button small ml-2 button-amigote col" >Ver Progreso</button>
                 </Link>
                 {/*  <Link to='/adminUsers'>
                   <button type="submit" className="btn btn-danger float-right" >Volver</button>
@@ -348,80 +350,9 @@ class UserDetails extends Component {
 
         </section>
         {/* ---------------------------------------------------------------------------------------------------------- */}
-        <div className="container  contenedorListaUser bg-white" id="formulario2">
-          {/* <div className="row ">
-
-            <div className="col-4 ">
-              <h3 className="mt-3">Id de Usuario:</h3>
-              <input type="text" name="user-id" value={this.state.user.id} readOnly className="rounded inputUser" />
-              <h3 className="mt-3">Nombre Completo:</h3>
-              <input type="text" name="user-name" value={this.state.user.name} readOnly className="rounded inputUser" />
-              <h3 className="mt-3">Correo Electronico:</h3>
-              <input type="text" name="user-mail" value={this.state.user.email} readOnly className="rounded inputUser" />
-            </div>
-            <div className="col-4 float-center">
-              <img src={logo} width="210" height="210" />
-            </div>
-            <div className="col-4 float-right">
-
-              <h3 className="mt-3">Pais:</h3>
-              <input type="text" name="nombre" value={this.state.user.country} readOnly className="rounded inputUser" />
-              <h3 className="mt-3">Tiempo jugado:</h3>
-              <input type="text" name="nombre" value={this.state.user.tiempoDedicadAjugar} readOnly className="rounded inputUser" />
-              <h3 className="mt-3">Niveles Superados:</h3>
-              <input type="text" name="nombre" value={this.state.levels} readOnly className="rounded inputUser" />
-            </div>
-
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm my-4">
-                <Button className="button small ml-2 button-amigote" role="button" onClick={this.abrirmodal}>
-                  Eliminar
-                  </Button>
-                <Modal isOpen={this.state.formularioEliminar}>
-                  <ModalHeader>
-                    Ingrese datos administrador para eliminar usuario
-                    </ModalHeader>
-                  <ModalBody>
-                    <FormGroup>
-                      <Label for="admin">administrador</Label>
-                      <Input type="text" id="ModelAdmin" />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Contraseña</Label>
-                      <Input type="password" id="ModelPassword" />
-                    </FormGroup>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button onClick={this.abrirmodal}>
-                      Cancelar
-                      </Button>
-                    <Button color="danger" onClick={this.deleteUser}>
-                      Eliminar Usuario
-                      </Button>
-                  </ModalFooter>
-                </Modal>
-
-              </div>
-              <div class="col-sm my-4">
-                <a class="button small ml-2 button-amigote" role="button" onClick={this.desplegarFormulario}>
-                  {this.state.BotonEditar}
-                </a>
-              </div>
-              <div class="col-sm my-4">
-                <Link to={{ pathname: "/progress/" + this.state.email, query: this.state.email }}>
-                  <button type="button" className="button small ml-2 button-amigote" >Ver Progreso</button>
-                </Link>
-               <Link to='/adminUsers'>
-                  <button type="submit" className="btn btn-danger float-right" >Volver</button>
-                </Link> 
-              </div>
-            </div>
-          </div> */}
-
+        <div className="container bg-white" id="formulario2">
         </div>
-        <div className="container  contenedorListaUser bg-white" id="formulario" hidden>
+        <div className="container bg-white" id="formulario" hidden>
           <div className="form-row">
             <div className="12u$(xsmall) form-group col-md-6">
               <label for="inputEdad">Edad</label>
@@ -433,7 +364,7 @@ class UserDetails extends Component {
             </div>
           </div>
           <div className="form-group row">
-            <div className="select-wrapper col-4">
+            <div className="select-container col-4">
               <label for="inputInteres">Interes en el Juego</label>
               <select value={this.state.interesEnelJuego} className="form-control" onChange={this.CambiarSelec2}>
                 {options.map((option) => (

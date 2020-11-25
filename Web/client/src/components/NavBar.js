@@ -14,18 +14,18 @@ class NavBar extends Component {
 				<p className="logo">Scrum</p>
                 <nav className="left">
                     <Link to='/home'> 
-                        <button type="submit" className="button small ml-2 button-amigote" >Home</button>
+                        <a type="submit" className="button small ml-2 button-amigote" >Home</a>
                     </Link>
                     <Link to='/adminUsers'> 
-                        <button type="submit" className="button small ml-2 button-amigote" >Admin. Users</button>
+                        <a type="submit" className="button small ml-2 button-amigote" >Admin. Users</a>
                     </Link>
                     <Link to='/adminWaitingUsers'> 
-                        <button type="submit" className="button small ml-2 button-amigote" >Admin. W. Users</button>
+                        <a type="submit" className="button small ml-2 button-amigote" >Admin. W. Users</a>
                     </Link>
 				</nav>
 				<nav className="right">
                     <Link to='#'> 
-                        <button type="submit" className="button small ml-2 button-amigote-gris">Log Out</button>
+                        <a type="submit" className="button small ml-2 button-amigote-gris">Log Out</a>
                     </Link>
 				</nav>
 			</header>
