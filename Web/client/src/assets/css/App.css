@@ -1,14 +1,12 @@
 .formulario {
-    width: 434px;
+    width: 40vw;
     margin: auto;
-    height: 677px;
+    height: 32vw;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
     /* position: absolute;
     top: 50%;
     left: 50%;
@@ -16,7 +14,6 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-   
 }
 
 .consola {
@@ -47,30 +44,24 @@
 
 .sombreado {
     /* background-color: #a34cee; */
-    
-   /*  background-image: url('../images/wallpaper-login2.jpg');  */
-    
+    /*  background-image: url('../images/wallpaper-login2.jpg');  */
     margin: 0;
     padding: 0;
     width: 100% !important;
     height: 100% !important;
-    
     /* background-color: chocolate; */
     /* background: linear-gradient(180deg, rgba(21, 20, 20, 0.192) -4.54%, rgba(67, 65, 65, 0.559333) 35.75%, rgba(3, 0, 0, 0.8) 100%); */
 }
-.sombreado:before{
+
+.sombreado:before {
     content: "";
     width: 100%;
     min-height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
-
     background: linear-gradient(180deg, #a34cee 0%, #4dcde4 100%)!important;
-    
     z-index: -1;
-
-
 }
 
 .boton-ingresar {
@@ -86,7 +77,6 @@
     font-style: normal;
     font-weight: normal;
     /* font-size: 24px; */
-    
 }
 
 .boton-ingresar:hover {
@@ -95,10 +85,7 @@
 
 .input {
     position: relative;
-    width: 342.03px !important;
-    height: 53.41px;
-    left: 45.09px;
-    top: 368.52px;
+    width: 25vw !important;
     margin-top: 10px;
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -278,55 +265,49 @@
     width: 20px;
 }
 
-.button-amigote{
+.button-amigote {
     background-color: #01d1ff !important;
     font-family: "Montserrat", sans-serif;
 }
 
-.button-amigote-gris{
+.button-amigote-gris {
     background-color: #c4c4c4 !important;
     font-family: "Montserrat", sans-serif;
 }
-.button-amigote-home{
+
+.button-amigote-home {
     background-color: #01d1ff !important;
     font-family: "Montserrat", sans-serif;
 }
 
-.button-amigote-gris-home{
+.button-amigote-gris-home {
     background-color: #c4c4c4 !important;
     font-family: "Montserrat", sans-serif;
 }
 
-.nav-amigote{
+.nav-amigote {
     background-color: #7f00ff !important;
 }
 
-.img-amigotes{
+.img-amigotes {
     width: 270px;
 }
 
-.table-amigote{
+.table-amigote {
     min-height: 60vh !important;
 }
 
 @media screen and (max-width: 980px) {
-
-    .img-amigotes{
+    .img-amigotes {
         width: 270px;
     }
-
-    .button-amigote-home{
+    .button-amigote-home {
         width: 500px;
     }
-    
 }
+
 @media screen and (max-width: 480px) {
-    .button-amigote-home{
+    .button-amigote-home {
         width: 300px;
     }
-
- 
 }
-
-
-

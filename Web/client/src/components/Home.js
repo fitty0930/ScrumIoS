@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom' 
-import Logo from '../assets/images/Scrumgame.JPG'
+import Logo from '../assets/images/ScrumgamePNG.png'
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import  '../assets/css/main.css';
@@ -17,7 +17,19 @@ class Home extends React.Component{
             return this.props.history.push('/login');
         } */
 
-        
+    }
+    componentDidMount(){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }
+    }
+    closeSession(){
+        if(localStorage.getItem('session')){
+            localStorage.removeItem('session');
+        }
     }
     traducirIngles(){
         i18next.changeLanguage('en', (err) => {
@@ -35,8 +47,8 @@ class Home extends React.Component{
             <header id="header" className="nav-amigote">	
 				<p className="logo">Scrum</p>
 				<nav className="right">
-                    <Link to='#'> 
-                        <a type="submit" className="button small ml-2 button-amigote-gris">Log Out</a>
+                    <Link to='/login'> 
+                        <a onClick={this.closeSession} type="submit" className="button small ml-2 button-amigote-gris">Log Out</a>
                     </Link>
 				</nav>
 			</header>
@@ -67,6 +79,11 @@ class Home extends React.Component{
                     </nav>
 				</div>
 			</section>
+
+			
+
+
+
 
             <Footer />
 </>

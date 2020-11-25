@@ -6,6 +6,11 @@ import './AdminStyles.css';
  
 class NavBar extends Component {
 
+    closeSession(){
+        if(localStorage.getItem('session')){
+            localStorage.removeItem('session');
+        }
+    }
 
     render() {
         return (
@@ -24,8 +29,8 @@ class NavBar extends Component {
                     </Link>
 				</nav>
 				<nav className="right">
-                    <Link to='#'> 
-                        <a type="submit" className="button small ml-2 button-amigote-gris">Log Out</a>
+                    <Link to='/login'> 
+                        <a onClick={this.closeSession} type="submit" className="button small ml-2 button-amigote-gris">Log Out</a>
                     </Link>
 				</nav>
 			</header>
