@@ -12,9 +12,9 @@ const instance_axios = axios.create({ baseURL: 'http://localhost:5000/' })
 
 export const register = user => {
     return instance_axios.post(
-        '/pendingUsers', user )
+        '/pendingUsers', user)
         .then(res => {
             return res.data
-         }).catch(err => err)
+        }).catch(err => err)
 }
 

@@ -3,11 +3,13 @@ import firebase from "../firebase" //importamos el archivo firebase que configur
 // ...
 import {Link} from 'react-router-dom'
 import { withTranslation } from 'react-i18next';
+import  NavBar  from './NavBar';
+import  Footer  from './Footer';
 
 
 
 class Progress extends Component {
-    
+
     constructor(props) {
         super();
         this.state = {
@@ -21,7 +23,7 @@ class Progress extends Component {
         // this.getUsers();
     }
     //componentDidMount se ejecuta despues de que se monto el componente en el browsser
-    componentDidMount (){
+    componentDidMount() {
         this.loadLevels();
     }
     //setFiltro su funcion es cambiar el tipo de filtrado que se va a realizar
@@ -87,76 +89,85 @@ class Progress extends Component {
     //esta funcion se ejecuta cuando el componente se monto en el browsser
     loadLevels = () => {
         // if(this.state.mail != ""){
-            let mail = "";
-            if (this.props.location.query != undefined) {
+        let mail = "";
+        if (this.props.location.query != undefined) {
             mail = this.props.location.query;
-            } else {
+        } else {
             let valueUrl = window.location.pathname.split("/");
             mail = valueUrl[2];
-            }
+        }
+        this.setState({
+            mail: mail
+        });
+
+
+        let db = firebase.firestore();
+        let array = [];
+        db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
+            querySnapshot.forEach((docu) => {
+                array.push(docu.data());
+            });
             this.setState({
-                mail:mail
+                levelsFilter: array,
+                levels: array
             });
-
-
-            let db = firebase.firestore();
-            let array = [];
-            db.collection('users').doc(mail).collection('levels').get().then((querySnapshot) => { // consulta de colecciones anidada, con el mail busco el progreso de niveles
-                querySnapshot.forEach((docu) => {
-                    array.push(docu.data());
-                });
-                this.setState({
-                    levelsFilter: array,
-                    levels: array
-                });
-            });
+        });
         // }
     };
     render() {
         return (
             <>
-                <div className="row col-10 mx-auto">
-                    <div>
-                        <h1>{this.props.t('Progress.my-levels')}</h1>
-                    </div>
-                    <form className="form-inline mx-auto">
-                        <div className="form-group padding-auto mx-5">
-                            <select className="custom-select rounded-pill" id="inputGroupSelect01" onChange={this.setFiltro} >
-                                <option defaultValue>{this.props.t('Progress.filter-by')}</option>
-                                <option value="level">{this.props.t('Progress.level')}</option>
-                                <option value="EN CURSO">{this.props.t('Progress.in-progress')}</option>
-                                <option value="NO INICIADO">{this.props.t('Progress.not-started')}</option>
-                            </select>
-                            {   this.state.filtro === "Nivel" ? 
-                                <input type="text"  onChange={this.getFiltro} className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
-                            : ""
-                            }
+                <div className="mt-2">
+                <NavBar/>
+                <div className="col-10 mx-auto overflow-auto" id="listaUser">
+                    <div className="row">
+                        <h4>Lista de Niveles:</h4>
+                        <div className="form-group padding-auto ml-auto">
+                            <form className="form-inline mx-auto">
+                                <div className="form-group padding-auto mx-5 row">
+                                    {this.state.filtro === "Nivel" ?
+                                        <input type="text" onChange={this.getFiltro} className="form-control col-6" id="formGroupExampleInput" placeholder={this.state.filtro} />
+                                        : ""
+                                    }
+                                    <div class="12u$ col-6">
+                                        <div class="select-wrapper">
+                                            <select id="inputGroupSelect01" onChange={this.setFiltro} className="form-control">
+                                            <option defaultValue>Filtrar Por</option>
+                                            <option value="level">Nivel</option>
+                                            <option value="EN CURSO">En Curso</option>
+                                            <option value="NO INICIADO">No Iniciado</option>
+                                            </select>
+                                        </div>
+                                    </div>                                   
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                    <div>
-                        <h1>Logo</h1>
                     </div>
-                </div>
-                <div className="col-10 mx-auto contenedorListaUser overflow-auto list-levels">
-                    <ul className="list-group">
-                        {
+                    <div class="table-wrapper table-amigote">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Estado</th>
+                                    <th>Sub-Nivel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {
                             this.state.levelsFilter.map((item, index) =>
-                                item.status == "HECHO" ?
-                                    <li className="list-group-item list-group-item-success d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                        <p>{"nivel: " + item.levelId + " " + item.status }</p> <p>SubLevelID: {item.sublevelID}</p>
-                                    </li>
-                                    : item.status == "EN CURSO" ?
-                                        <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{this.props.t('Progress.level')}: {item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
-                                        </li>
-                                        :
-                                        <li className="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{this.props.t('Progress.level')}: {item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>      
-                                        </li>
+                                    <tr>
+                                        <td>Nivel {item.levelId}</td>
+                                        <td>{item.status}</td>
+                                        <td>{item.sublevelID}</td>
+                                    </tr>    
                             )
                         }
-                    </ul>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <Footer/>
+            </div>
             </>
         )
     }
