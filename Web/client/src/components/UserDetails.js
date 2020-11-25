@@ -254,6 +254,16 @@ class UserDetails extends Component {
     )
     //funcion que permite visualizar el modal para eliminar usuarios
   }
+
+  componentDidMount(){
+    if(!localStorage.getItem('session')){
+      this.props.history.push({
+        pathname:"/login",
+        state: {errormessage: true}
+      });
+    }
+  }
+
   render() {
     return (
       <>

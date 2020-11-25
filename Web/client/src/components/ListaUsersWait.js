@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import emailjs from 'emailjs-com';
-import { getUsers, deleteUser } from './Userslistfunctions'
+import {Link, useHistory } from 'react-router-dom'
+import {getUsers, deleteUser} from './Userslistfunctions'
 import firebase from '../firebase'
 import './AdminStyles.css';
 import { withTranslation } from 'react-i18next';
@@ -16,7 +17,8 @@ class ListaUsersWait extends Component {
         this.getWaitingUsers = this.getWaitingUsers.bind(this)
     }
 
-    getWaitingUsers() {
+
+    getWaitingUsers(){
         getUsers().then(res => {
             this.setState({
                 waitingUsers: res
@@ -87,8 +89,15 @@ class ListaUsersWait extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getWaitingUsers()
+    componentDidMount(){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }else{
+            this.getWaitingUsers()
+        }
     }
 
     render() {

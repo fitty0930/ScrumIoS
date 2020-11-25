@@ -23,8 +23,15 @@ class Progress extends Component {
         // this.getUsers();
     }
     //componentDidMount se ejecuta despues de que se monto el componente en el browsser
-    componentDidMount() {
-        this.loadLevels();
+    componentDidMount (){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname: "/login",
+                state: {errorMessege : true},
+            });
+        }else{
+            this.loadLevels();
+        }
     }
     //setFiltro su funcion es cambiar el tipo de filtrado que se va a realizar
     setFiltro = (e) => {

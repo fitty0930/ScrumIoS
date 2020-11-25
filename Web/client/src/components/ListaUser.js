@@ -43,8 +43,15 @@ class ListaUser extends Component {
         }, 5);
     }
 
-    componentDidMount() {
-        this.cargarUsuarios();
+    componentDidMount(){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }else{
+            this.cargarUsuarios();
+        }
     }
     //conexion con firebase para traer usuarios
     cargarUsuarios() {

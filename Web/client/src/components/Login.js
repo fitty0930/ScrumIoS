@@ -6,11 +6,12 @@ class Login extends React.Component{
 
     constructor(props) {
         super(props)
-        this.state = {                        //el state se utiliza para mostrar errores a la hora de logearse
-            error0: "",
-            error1: "*Por favor, rellene todos los campos*",
-            verificando: "",
-            ups: "*Usuario no encontrado*"
+        this.state={                        //el state se utiliza para mostrar errores a la hora de logearse
+            error0:"",
+            error1:"*Por favor, rellene todos los campos*",
+            verificando:"",
+            ups:"*Usuario no encontrado*",
+            errorMessege: false
         }
     }
     verificar = (e) => {
@@ -44,28 +45,35 @@ class Login extends React.Component{
                 console.log(err)
             })
         }
-
-    }
-
-    camposVacios = () => {
-        let usuario = document.getElementById('usuario').value;
-        let password = document.getElementById('password').value;
-
-        if ((usuario === "") || (password === "")) {
-            return true
+        
+      }
+      
+       camposVacios=()=>{
+            let usuario=document.getElementById('usuario').value;
+            let password=document.getElementById('password').value;
+            
+            if((usuario==="")||(password==="")){
+                return true
+            }
+            return false
         }
-        return false
-    }
 
     render() {
         return (
             
             <div className="sombreado sombreado2">
                 <form action="" method="" className="formulario" onSubmit={this.verificar}>
+                { this.props.location.state != undefined ?
+
+                    <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>¡Porfavor Inicie Session!</strong> para poder acceder.
+                </div>
+                : ""
+                }
                     <div>
                         <img src={Logo} alt="" className="logo" />
                     </div>
-
                     <input type="text" name="username" className="input" placeholder="Usuario" id="usuario" />
                     <input type="password" name="password" className="input" placeholder="*******" id="password" />
                     <button type="submit" className="boton-ingresar  button-amigote" >Ingresar</button>
@@ -74,10 +82,7 @@ class Login extends React.Component{
                     <a href="/register">registrase</a>
                 </form>
             </div>
-        );
-    }
-
-
+        )
 }
 export default withTranslation()(Login);
 
