@@ -2,6 +2,7 @@ import React, { Suspense, Component} from 'react'
 import {Link} from 'react-router-dom'
 import firebase from '../firebase'
 import './AdminStyles.css';
+import { withTranslation } from 'react-i18next';
 
 class ListaUser extends Component {
 
@@ -59,7 +60,7 @@ class ListaUser extends Component {
                 <header className="row col-10 mx-auto">
                     <div>
                     <Link to='/home'>
-                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
+                            <button type="submit" className="boton-administrar-maschico" >{this.props.t('UserList.back')}</button>
                     </Link>
                     </div>
                     <form className="form-inline mx-auto">
@@ -70,7 +71,7 @@ class ListaUser extends Component {
                 </header>
                 <div className="col-10 mx-auto contenedorListaUser overflow-auto" id="listaUser">
                     <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
-                        <h1 className="text-black p-1">Lista de Usuarios:</h1>
+                        <h1 className="text-black p-1">{this.props.t('UserList.user-list')}</h1>
                     </div>
                     <ul className="list-group" id="lista-usuarios">
                         {this.state.filteredUsers.map((user) => (
@@ -83,7 +84,7 @@ class ListaUser extends Component {
                                         {user.mail}  
                                     </div>
                                     <Link to={"/user/"+user.mail}>
-                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.mail}>Administrar</button>
+                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" id={user.mail}>{this.props.t('UserList.admin')}</button>
                                     </Link>
                                 </li>
                             </div>
@@ -94,6 +95,4 @@ class ListaUser extends Component {
         );
     }
 }   
-export default ListaUser;
-    
-        
+export default withTranslation()(ListaUser);

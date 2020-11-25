@@ -1,0 +1,68 @@
+{
+    "Home": {
+        "admin-users": "Manage Users",
+        "admin-waitingUsers": "Manage waiting users",
+        "admin-levels": "Manage Levels"
+    },
+    "UserList": {
+        "back": "Back",
+        "user-list": "User List:",
+        "admin": "Manage"
+    },
+    "WaitingUsersList": {
+        "back": "Back",
+        "user-list": "User List",
+        "on-hold": "waiting",
+        "accept": "Accept",
+        "reject": "Reject"
+    },
+    "Login": {
+        "sign-in": "Sign in"
+    },
+    "Progress": {
+        "my-levels": "My Levels",
+        "filter-by": "Filter by",
+        "level": "Level",
+        "in-progress": "In Progress",
+        "not-started": "Not Started"
+    },
+    "Register": {
+        "age": "Age",
+        "country": "Country",
+        "gameTasteLevel": "Game taste level",
+        "nothing": "Nothing",
+        "litle-bit": "little bit",
+        "same": "He doesn't care",
+        "a-lot": "A Lot",
+        "fantastic": "Fantastic",
+        "gameTimeLevel": "Game time level",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "city": "City",
+        "state": "State",
+        "profession": "Profesion",
+        "mail": "Mail",
+        "name": "Name",
+        "request-registration": "Request Registration"
+    },
+    "UserDetails": {
+        "user-id": "User ID:",
+        "complete-name": "Full Name:",
+        "e-mail": "E-Mail:",
+        "country": "Country:",
+        "time-played": "Time Played:",
+        "levels-passed": "Levels Passed:",
+        "delete": "Delete",
+        "admin-data": "Re-enter the administrator data to delete the user ",
+        "admin": "Administrator",
+        "password": "Password",
+        "cancel": "Cancel",
+        "delete-user": "Delete User",
+        "see-progress": "See Progress",
+        "save-changes": "Save Changes"
+    }
+
+
+}

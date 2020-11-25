@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import firebase from "../firebase" //importamos el archivo firebase que configuro el db, para conectarnos a la misma
 // ...
 import {Link} from 'react-router-dom'
-
+import { withTranslation } from 'react-i18next';
 
 
 
@@ -117,15 +117,15 @@ class Progress extends Component {
             <>
                 <div className="row col-10 mx-auto">
                     <div>
-                        <h1>Mis Niveles</h1>
+                        <h1>{this.props.t('Progress.my-levels')}</h1>
                     </div>
                     <form className="form-inline mx-auto">
                         <div className="form-group padding-auto mx-5">
                             <select className="custom-select rounded-pill" id="inputGroupSelect01" onChange={this.setFiltro} >
-                                <option defaultValue>Filtrar Por</option>
-                                <option value="level">Nivel</option>
-                                <option value="EN CURSO">En Curso</option>
-                                <option value="NO INICIADO">No Iniciado</option>
+                                <option defaultValue>{this.props.t('Progress.filter-by')}</option>
+                                <option value="level">{this.props.t('Progress.level')}</option>
+                                <option value="EN CURSO">{this.props.t('Progress.in-progress')}</option>
+                                <option value="NO INICIADO">{this.props.t('Progress.not-started')}</option>
                             </select>
                             {   this.state.filtro === "Nivel" ? 
                                 <input type="text"  onChange={this.getFiltro} className="form-control input-color rounded-pill" id="formGroupExampleInput" placeholder={this.state.filtro} />
@@ -147,12 +147,11 @@ class Progress extends Component {
                                     </li>
                                     : item.status == "EN CURSO" ?
                                         <li className="list-group-item list-group-item-warning d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
+                                            <p>{this.props.t('Progress.level')}: {item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
                                         </li>
                                         :
                                         <li className="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                            <p>{"nivel: " + item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>
-                                            
+                                            <p>{this.props.t('Progress.level')}: {item.levelId + " " + item.status}</p> <p>SubLevelID: {item.sublevelID}</p>      
                                         </li>
                             )
                         }
@@ -162,4 +161,4 @@ class Progress extends Component {
         )
     }
 }
-export default Progress;
+export default withTranslation()(Progress);

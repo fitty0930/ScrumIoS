@@ -2,8 +2,9 @@ import React, { Component, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import {register} from "./Users_WaitFunctions";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from 'react-i18next';
 const Register =(props)=> {
-
+  const { t } = useTranslation();
     const notification = () => toast("Tu solicitud será procesada en brevedad");
     const [edad, setEdad] = useState("");
     const [pais, setPais] = useState("");
@@ -81,11 +82,11 @@ const Register =(props)=> {
            */}{" "}
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label for="inputEdad">Edad</label>
+              <label for="inputEdad">{this.props.t('Register.age')}:</label>
               <input type="number" onChange={handleInputChange} name="edad" className="form-control" id="inputEdad" />
             </div>
             <div className="form-group col-md-6">
-              <label for="inputCountry">País</label>
+              <label for="inputCountry">{this.props.t('Register.country')}</label>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -97,43 +98,43 @@ const Register =(props)=> {
           </div>
           <div className="form-group row">
             <div className="col-4">
-              <label for="inputInteres">Interes en el Juego</label>
+              <label for="inputInteres">{t('Register.gameTasteLevel')}</label>
               <select id="inputInteres"onChange={handleInputChange} name="interes" className="form-control">
-                <option  value="nada">Nada</option>
-                <option value="poco">Poco</option>
+                <option  value="nada">{t('Register.nothing')}</option>
+                <option value="poco">{t('Register.little-bit')}</option>
                 <option value="le-da-igual" defaultValue>
-                  Le da igual
+                {t('Register.same')}
                 </option>
-                <option value="mucho">Mucho</option>
-                <option value="fantástico">Fantástico</option>
+                <option value="mucho">{('Register.a-lot')}</option>
+                <option value="fantástico">{t('Register.fantastic')}</option>
               </select>
             </div>
             <div className="col-4">
-              <label for="inputInteres">Tiempo dedicado a Jugar</label>
+              <label for="inputInteres">{t('Register.gameTimeLevel')}</label>
               <select id="inputTiempo" onChange={handleInputChange} name="tiempo" className="form-control">
-                <option value="nada">Nada</option>
-                <option value="poco">Poco</option>
+                <option value="nada">{t('Register.nothing')}</option>
+                <option value="poco">{t('Register.little-bit')}</option>
                 <option value="le-da-igual" defaultValue>
-                  Le da igual
+                {t('Register.same')}
                 </option>
-                <option value="mucho">Mucho</option>
-                <option value="fantástico">Fantástico</option>
+                <option value="mucho">{t('Register.a-lot')}</option>
+                <option value="fantástico">{t('Register.fantastic')}</option>
               </select>
             </div>
             <div className="col-4">
-              <label for="inputGenero">Género</label>
+              <label for="inputGenero">{t('Register.gender')}</label>
               <select id="inputTiempo" onChange={handleInputChange} name="genero" className="form-control">
                 <option value="masculino" defaultValue>
-                  Masculino
+                {this.props.t('Register.male')}
                 </option>
-                <option value="otro">Otro</option>
-                <option value="femenino">Femenino</option>
+                <option value="otro">{t('Register.other')}</option>
+                <option value="femenino">{t('Register.female')}</option>
               </select>
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label for="inputCity">Ciudad</label>
+              <label for="inputCity">{t('Register.country')}</label>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -143,7 +144,7 @@ const Register =(props)=> {
               />
             </div>
             <div className="form-group col-md-6">
-              <label for="inputProvince">Provincia</label>
+              <label for="inputProvince">{t('Register.state')}</label>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -153,7 +154,7 @@ const Register =(props)=> {
               />
             </div>
             <div className="form-group col-md-6">
-              <label for="inputProvince">Profesion</label>
+              <label for="inputProvince">{t('Register.profession')}</label>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -163,7 +164,7 @@ const Register =(props)=> {
               />
             </div>
             <div className="form-group col-md-6">
-              <label for="inputMail">Mail</label>
+              <label for="inputMail">{t('Register.mail')}</label>
               <input
                 onChange={handleInputChange}
                 type="mail"
@@ -173,7 +174,7 @@ const Register =(props)=> {
               />
             </div>
             <div className="form-group col-md-6">
-              <label for="inputName">Nombre</label>
+              <label for="inputName">{t('Register.name')}</label>
               <input
                 onChange={handleInputChange}
                 type="username"
@@ -187,7 +188,7 @@ const Register =(props)=> {
             className="btn btn-primary float-right"
             onClick={handleSubmit}
           >
-            Solicitar Registro
+            {t('Register.request-registration')}
           </button>
           <ToastContainer
             autoClose={5000}
