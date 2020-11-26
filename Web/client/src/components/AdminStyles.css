@@ -1,4 +1,18 @@
-.btn-color {
+
+body{
+   
+    background: rgb(165,246,247);
+    background: linear-gradient(0deg, rgb(204, 237, 238) 0%, rrgb(233, 211, 241)100%);
+}
+
+
+
+
+
+
+
+
+/* .btn-color {
     background-color: #00D1FF !important;
 }
 
@@ -44,4 +58,4 @@
 
 .normal-clase {
     border-radius: 0% !important;
-}
+} */

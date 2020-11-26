@@ -3,7 +3,7 @@ import emailjs from 'emailjs-com';
 import {Link, useHistory } from 'react-router-dom'
 import {getUsers, deleteUser} from './Userslistfunctions'
 import firebase from '../firebase'
-import './AdminStyles.css';
+
 import { withTranslation } from 'react-i18next';
 import  NavBar  from './NavBar';
 import  Footer  from './Footer';
@@ -105,7 +105,7 @@ class ListaUsersWait extends Component {
             <div className="mt-2">
                 <NavBar />
                 <div>
-                    <div className="col-10 mx-auto my-2 overflow-auto" id="listaUserEspera">
+                    <div className="col-10 mx-auto my-2 overflow-auto cualquiera" id="listaUserEspera">
                         <div className="row">
                             <h4>Lista de usuarios en espera:</h4>
                         </div>

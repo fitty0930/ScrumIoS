@@ -77,7 +77,7 @@ const Register = (props) => {
   };
   return (
     <>
-      <div className="sombreado sombreado2">
+      <div className="sombreado sombreado2 cualquiera">
         <div className="col-8 m-auto h-100 bg-light rounded">
           <h3>Registro</h3>
           <div className="form-row">

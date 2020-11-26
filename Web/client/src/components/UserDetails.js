@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import imagen from "../assets/images/pic02.jpg";
 import profilePicture from "../assets/images/user-example.jpg";
 import firebase from "../firebase"
-import './AdminStyles.css'
+
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label } from 'reactstrap';
 import { login } from './Adminfunctions'
 import { Link } from 'react-router-dom'
@@ -267,7 +267,7 @@ class UserDetails extends Component {
     return (
       <>
         <NavBar />
-        <section id="one" class="wrapper">
+        <section id="one" class="wrapper cualquiera">
           <div class="inner flex flex-3">
             <div class="flex-item left mb-2">
               <div className="col-sm-12">

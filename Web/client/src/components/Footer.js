@@ -2,7 +2,7 @@ import React, { Component,useState } from 'react';
 import  '../assets/css/main.css';
 import  '../assets/fonts/fontawesome-webfont.eot';
 import {Link} from 'react-router-dom';
-import './AdminStyles.css';
+
 import { withTranslation } from 'react-i18next';
 class Footer extends Component {
 

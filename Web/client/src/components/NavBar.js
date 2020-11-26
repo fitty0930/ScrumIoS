@@ -2,7 +2,7 @@ import React, { Component,useState } from 'react';
 import  '../assets/css/main.css';
 import  '../assets/fonts/fontawesome-webfont.eot';
 import {Link} from 'react-router-dom';
-import './AdminStyles.css';
+
 import { withTranslation } from 'react-i18next';
  
 class NavBar extends Component {
@@ -33,6 +33,8 @@ class NavBar extends Component {
                     <Link to='/login'> 
                         <a onClick={this.closeSession} type="submit" className="button small ml-2 button-amigote-gris">{this.props.t('Navbar.log-out')}</a>
                     </Link>
+                    <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013911.svg" onClick={this.traducirIngles}type="submit" className="button small ml-2 button-amigote-gris-home"/>
+                        <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013899.svg" onClick={this.traducirEspañol}type="submit" className="button small ml-2 button-amigote-gris-home"/> 
 				</nav>
 			</header>
             </>

@@ -126,7 +126,7 @@ class Progress extends Component {
             <>
                 <div className="mt-2">
                 <NavBar/>
-                <div className="col-10 mx-auto overflow-auto" id="listaUser">
+                <div className="col-10 mx-auto overflow-auto cualquiera" id="listaUser">
                     <div className="row">
                         <h4>{this.props.t('UserList.user-list')}</h4>
                         <div className="form-group padding-auto ml-auto">

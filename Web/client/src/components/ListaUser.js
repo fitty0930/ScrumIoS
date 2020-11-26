@@ -1,7 +1,7 @@
 import React, { Suspense, Component } from 'react'
 import { Link } from 'react-router-dom'
 import firebase from '../firebase'
-import './AdminStyles.css';
+
 import { withTranslation } from 'react-i18next';
 
 import  NavBar  from './NavBar';
@@ -67,8 +67,10 @@ class ListaUser extends Component {
     render() {
         return (
             <div className="mt-2">
+           
                 <NavBar/>
-                <div className="col-10 mx-auto overflow-auto" id="listaUser">
+                
+                <div className="col-10 mx-auto overflow-auto cualquiera" id="listaUser">
                     <div className="row">
                         <h4>{this.props.t('UserList.user-list')}</h4>
                         <div className="form-group padding-auto ml-auto">

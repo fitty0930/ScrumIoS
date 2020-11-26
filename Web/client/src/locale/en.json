@@ -26,7 +26,8 @@
     "Login": {
         "sign-in": "Sign in",
         "user": "User",
-        "register": "Register"
+        "register": "Register",
+        "accept":"Registrarse"
     },
     "Progress": {
         "my-levels": "My Levels",
