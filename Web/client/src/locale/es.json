@@ -42,7 +42,7 @@
         "country": "Pais",
         "gameTasteLevel": "Interes en el Juego",
         "nothing": "Nada",
-        "litle-bit": "Poco",
+        "little-bit": "Poco",
         "same": "Le da igual",
         "a-lot": "Mucho",
         "fantastic": "Fantástico",
@@ -56,7 +56,10 @@
         "profession": "Profesion",
         "mail": "Correo",
         "name": "Nombre",
-        "request-registration": "Solicitar Registro"
+        "request-registration": "Solicitar Registro",
+        "register": "Registro",
+        "alert-register-else": "Ya envio una solicitud de registro",
+        "alert-register-correct": "Verificaremos tu solicitud a la brevedad, por favor revise su direccion de correo"
     },
     "UserDetails": {
         "user-ID": "ID de Usuario:",

@@ -3,9 +3,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from 'react-i18next';
 import { register } from "./Users_WaitFunctions";
 import "react-toastify/dist/ReactToastify.css";
+import i18next from 'i18next';
 const Register = (props) => {
   const { t } = useTranslation();
-  const notification = () => toast("Verificaremos tu solicitud a la brevedad, por favor revise su direccion de correo");
+  const notification = () => toast(t('Register.alert-register-correct'));
   const [seEnvio, setseEnvio] = useState(false);
   const [edad, setEdad] = useState("");
   const [pais, setPais] = useState("");
@@ -40,9 +41,19 @@ const Register = (props) => {
       )
       .catch(err => console.log(err))
       }else
-        alert("Ya envio una solicitud de registro")
+        alert(t('Register.alert-register-else'))
 
   };
+ const traducirIngles =  () => {
+    i18next.changeLanguage('en', (err) => {
+        if (err) return console.log('something went wrong loading', err);
+      });
+  }
+const traducirEspañol = () =>{
+    i18next.changeLanguage('es', (err) => {
+        if (err) return console.log('something went wrong loading', err);
+      });
+}
   const handleInputChange = (event) => {
     if (event.target.name === "edad") {
       setEdad(event.target.value);
@@ -77,9 +88,16 @@ const Register = (props) => {
   };
   return (
     <>
+      <header id="header" className="nav-amigote">	
+        <p className="logo">Scrum</p>
+        <nav className="right">
+                        <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013911.svg" onClick={traducirIngles}type="submit" className="button small ml-2 button-amigote-gris-home"/>
+                        <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013899.svg" onClick={traducirEspañol}type="submit" className="button small ml-2 button-amigote-gris-home"/> 
+        </nav>
+    </header>
       <div className="sombreado sombreado2 cualquiera">
         <div className="col-8 m-auto h-100 bg-light rounded">
-          <h3>Registro</h3>
+          <h3>{t('Register.register')}</h3>
           <div className="form-row">
             <div className="form-group col-md-6">
               <label for="inputEdad">{t('Register.age')}</label>
