@@ -1,23 +1,27 @@
 .formulario {
-    width: 434px;
+   /*  width: 30vw;
     margin: auto;
-    height: 677px;
+    height: 15;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+     */
+    /* justify-content: center; */
     /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%); */
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    background: #01d1ff;
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px; */
 }
-
+body{
+      /* background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%); */
+    /*   background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%) !important; */
+    
+}
 .consola {
     box-sizing: border-box;
     width: 800px;
@@ -44,22 +48,37 @@
     justify-content: space-around;
 }
 
+
 .sombreado {
-    margin: 0;
+    /* background-color: #a34cee; */
+    /*  background-image: url('../images/wallpaper-login2.jpg');  */
+    margin-top: 0% !important;
+    background-position: top !important;
+    margin: 0 !important;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #a34cee 0%, #4dcde4 100%)!important;
+    display: flex;
+    align-items:center;
     /* background-color: chocolate; */
     /* background: linear-gradient(180deg, rgba(21, 20, 20, 0.192) -4.54%, rgba(67, 65, 65, 0.559333) 35.75%, rgba(3, 0, 0, 0.8) 100%); */
 }
 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    background-size: 100vw 100vh;
-    background-image: url("../images/wallpaper-login2.jpg");
-    background-attachment: fixed;
+.sombreado:before {
+   /*  background-size: cover !important;
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #a34cee 0%, #4dcde4 100%)!important;
+    z-index: -1; */
 }
 
 .boton-ingresar {
@@ -74,7 +93,7 @@ html {
     font-family: Ropa Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 
 .boton-ingresar:hover {
@@ -83,10 +102,7 @@ html {
 
 .input {
     position: relative;
-    width: 342.03px;
-    height: 53.41px;
-    left: 45.09px;
-    top: 368.52px;
+    width: 25vw !important;
     margin-top: 10px;
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -106,8 +122,8 @@ html {
 
 .logo {
     position: relative;
-    width: 100%;
-    margin-bottom: -90%;
+    /* width: 100%;
+    margin-bottom: -90%; */
 }
 
 .logoConsola {
@@ -264,4 +280,63 @@ html {
 .img-profile {
     height: 20px;
     width: 20px;
+}
+
+.button-amigote {
+    background-color: #01d1ff !important;
+    font-family: "Montserrat", sans-serif;
+}
+
+.button-amigote-gris {
+    background-color: #c4c4c4 !important;
+    font-family: "Montserrat", sans-serif;
+}
+
+.button-amigote-home {
+    background-color: #01d1ff !important;
+    font-family: "Montserrat", sans-serif;
+}
+
+.button-amigote-gris-home {
+    background-color: #7f00ff !important;
+    font-family: "Montserrat", sans-serif;
+}
+
+.nav-amigote {
+    background-color: #7f00ff !important;
+}
+
+.img-amigotes {
+    width: 270px;
+}
+
+.table-amigote {
+    min-height: 60vh !important;
+}
+
+.cualquiera{
+    padding-top: 6em;
+}
+.cualquiera2{
+    position: absolute;
+}
+
+
+
+@media screen and (max-width: 980px) {
+    .img-amigotes {
+        width: 270px;
+    }
+    .button-amigote-home {
+        width: 500px;
+    }
+    .cualquiera{
+        padding-top: 44px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .button-amigote-home {
+        width: 300px;
+    }
 }

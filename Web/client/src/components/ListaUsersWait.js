@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import emailjs from 'emailjs-com';
-import { Link } from 'react-router-dom'
-import { getUsers, deleteUser } from './Userslistfunctions'
+import {Link, useHistory } from 'react-router-dom'
+import {getUsers, deleteUser} from './Userslistfunctions'
 import firebase from '../firebase'
-import './AdminStyles.css';
+
+import { withTranslation } from 'react-i18next';
+import  NavBar  from './NavBar';
+import  Footer  from './Footer';
 
 class ListaUsersWait extends Component {
     constructor() {
@@ -14,7 +17,8 @@ class ListaUsersWait extends Component {
         this.getWaitingUsers = this.getWaitingUsers.bind(this)
     }
 
-    getWaitingUsers() {
+
+    getWaitingUsers(){
         getUsers().then(res => {
             this.setState({
                 waitingUsers: res
@@ -85,45 +89,57 @@ class ListaUsersWait extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getWaitingUsers()
+    componentDidMount(){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }else{
+            this.getWaitingUsers()
+        }
     }
 
     render() {
         return (
-            <div>
-                <header className="row col-10 mx-auto">
-                    <div>
-                        <Link to='/home'>
-                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
-                        </Link>
-                    </div>
-                </header>
+            <div className="mt-2">
+                <NavBar />
                 <div>
-                    <div className="col-10 mx-auto my-2 contenedorListaUser overflow-auto" id="listaUserEspera">
-                        <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
-                            <h1 className="text-black p-1">Lista de Usuarios <span className="font-weight-bold">en espera</span>:</h1>
+                    <div className="col-10 mx-auto my-2 overflow-auto cualquiera" id="listaUserEspera">
+                        <div className="row">
+                            <h4>{this.props.t('WaitingUsersList.user-list')}</h4>
                         </div>
-                        <ul className="list-group" id="lista-usuarios">
-                            {this.state.waitingUsers.map((user) => (
-                                <div key={user._id}>
-                                    <li className="list-group-item d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                        <div className="col-8">
-                                            {user.name}
-                                        </div>
-                                        <div className="position-left align-items-left">
-                                            {user.mail}
-                                        </div>
-                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.aceptUser(user.mail)} id={user.mail}>Aceptar</button>
-                                        <button type="button" className="btn btn-color rounded-pill btn-admin-user" onClick={() => this.rejectUser(user.mail)} id={user.mail}>Rechazar</button>
-                                    </li>
-                                </div>
-                            ))}
-                        </ul>
+                        <div class="table-wrapper table-amigote">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>{this.props.t('Register.name')}</th>
+                                        <th>{this.props.t('Register.mail')}</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.waitingUsers.map((user) => (
+                                        <tr>
+                                            <td>{user.name}</td>
+                                            <td>{user.mail}</td>
+                                            <td>
+                                                <button type="button" className="button small ml-2 button-amigote" onClick={() => this.aceptUser(user.mail)} id={user.mail}>{this.props.t('WaitingUsersList.accept')}</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" className="button small ml-2 button-amigote" onClick={() => this.rejectUser(user.mail)} id={user.mail}>{this.props.t('WaitingUsersList.reject')}</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
 }
-export default ListaUsersWait;
+export default withTranslation()(ListaUsersWait);

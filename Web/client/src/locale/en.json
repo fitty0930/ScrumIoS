@@ -1,0 +1,87 @@
+{
+    "Home": {
+        "admin-users": "Manage Users",
+        "admin-waitingUsers": "Manage waiting users",
+        "admin-levels": "Manage Levels",
+        "middle-text-1": "An educational game to test your scrum knowledge ",
+        "middle-text-2": "Show your wisdom!."
+    },
+    "Navbar": {
+        "log-out": "Log Out",
+        "admin-users": "Admin. Users",
+        "admin-w-users": "Admin. W. Users"
+    },
+    "UserList": {
+        "back": "Back",
+        "user-list": "User List:",
+        "admin": "Manage",
+        "filter-user": "Filter users"
+    },
+    "WaitingUsersList": {
+        "back": "Back",
+        "user-list": "Waiting User List:",
+        "on-hold": "waiting",
+        "accept": "Accept",
+        "reject": "Reject"
+    },
+    "Login": {
+        "sign-in": "Sign in",
+        "user": "User",
+        "register": "Register",
+        "accept": "Registrarse"
+    },
+    "Progress": {
+        "my-levels": "My Levels",
+        "filter-by": "Filter by",
+        "level": "Level",
+        "in-progress": "In Progress",
+        "not-started": "Not Started"
+    },
+    "Register": {
+        "status": "Status",
+        "sub-level": "Sub-level",
+        "age": "Age",
+        "country": "Country",
+        "gameTasteLevel": "Game taste level",
+        "nothing": "Nothing",
+        "litle-bit": "little bit",
+        "same": "He doesn't care",
+        "a-lot": "A Lot",
+        "fantastic": "Fantastic",
+        "gameTimeLevel": "Game time level",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "city": "City",
+        "state": "State",
+        "profession": "Profession",
+        "mail": "Email",
+        "name": "Name",
+        "request-registration": "Request Registration"
+    },
+    "UserDetails": {
+        "user-ID": "User ID:",
+        "complete-name": "Full Name:",
+        "e-mail": "E-Mail:",
+        "country": "Country:",
+        "time-played": "Time Played:",
+        "levels-passed": "Levels Passed:",
+        "delete": "Delete",
+        "admin-data": "Re-enter the administrator data to delete the user ",
+        "admin": "Administrator",
+        "password": "Password",
+        "cancel": "Cancel",
+        "delete-user": "Delete User",
+        "see-progress": "See Progress",
+        "save-changes": "Save Changes",
+        "edit": "Edit"
+    },
+    "Footer": {
+        "title": "Amigotes work group",
+        "copyright": "AMIGOTES. Design",
+        "copy-images": "Images"
+    }
+
+
+}

@@ -1,7 +1,11 @@
 import React, { Suspense, Component } from 'react'
 import { Link } from 'react-router-dom'
 import firebase from '../firebase'
-import './AdminStyles.css';
+
+import { withTranslation } from 'react-i18next';
+
+import  NavBar  from './NavBar';
+import  Footer  from './Footer';
 
 class ListaUser extends Component {
 
@@ -39,8 +43,15 @@ class ListaUser extends Component {
         }, 5);
     }
 
-    componentDidMount() {
-        this.cargarUsuarios();
+    componentDidMount(){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }else{
+            this.cargarUsuarios();
+        }
     }
     //conexion con firebase para traer usuarios
     cargarUsuarios() {
@@ -55,44 +66,47 @@ class ListaUser extends Component {
 
     render() {
         return (
-            <div>
-                <header className="row col-10 mx-auto">
-                    <div>
-                        <Link to='/home'>
-                            <button type="submit" className="boton-administrar-maschico" >Volver</button>
-                        </Link>
-                    </div>
-                    <form className="form-inline mx-auto">
-                        <div className="form-group padding-auto mx-5">
-                            <input type="text" className="form-control input-color rounded-pill" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange} />
+            <div className="mt-2">
+           
+                <NavBar/>
+                
+                <div className="col-10 mx-auto overflow-auto cualquiera" id="listaUser">
+                    <div className="row">
+                        <h4>{this.props.t('UserList.user-list')}</h4>
+                        <div className="form-group padding-auto ml-auto">
+                            <input type="text" className="form-control" id="inputFilterUser" placeholder={this.props.t('UserList.filter-user')} value={this.state.filterValue} onChange={this.handleChange} />
                         </div>
-                    </form>
-                </header>
-                <div className="col-10 mx-auto contenedorListaUser overflow-auto" id="listaUser">
-                    <div className="sticky-top rounded-pill m-1 h-50 d-inline-block">
-                        <h1 className=" jumbotron jumbotron-fluid rounded-pill text-black p-1 ">Lista de Usuarios:</h1>
                     </div>
-                    <ul className="list-group" id="lista-usuarios">
-                        {this.state.filteredUsers.map((user) => (
-                            <div key={user.uid}>
-                                <li className="list-group-item d-flex justify-content-between align-items-center input-color m-1 rounded-pill">
-                                    <div className="col-8">
-                                        {user.name}
-                                    </div>
-                                    <div className="position-left align-items-right">
-                                        {user.mail}
-                                    </div>
-                                        <Link to={"/user/" + user.mail}>
-                                            <button type="button" className="btn btn-color rounded-pill btn-admin-user ml-1" id={user.mail}>Administrar</button>
-                                        </Link>
-                                </li>
-                            </div>
-                        ))}
-                    </ul>
+                    <div class="table-wrapper table-amigote">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>{this.props.t('Register.name')}</th>
+                                    <th>{this.props.t('Register.mail')}</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.filteredUsers.map((user) => (
+                                    <tr>
+                                        <td>{user.name}</td>
+                                        <td>{user.mail}</td>
+                                        <td></td>
+                                        <td>
+                                            <Link to={"/user/" + user.mail}>
+                                                <button type="button" className="button small ml-2 button-amigote" id={user.mail}>{this.props.t('UserList.admin')}</button>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
-}
-export default ListaUser;
-
+}   
+export default withTranslation()(ListaUser);
