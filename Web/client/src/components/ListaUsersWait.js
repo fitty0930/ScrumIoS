@@ -107,7 +107,7 @@ class ListaUsersWait extends Component {
                 <div>
                     <div className="col-10 mx-auto my-2 overflow-auto cualquiera" id="listaUserEspera">
                         <div className="row">
-                            <h4>Lista de usuarios en espera:</h4>
+                            <h4>{this.props.t('WaitingUsersList.user-list')}</h4>
                         </div>
                         <div class="table-wrapper table-amigote">
                             <table>

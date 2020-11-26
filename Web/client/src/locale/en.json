@@ -14,11 +14,12 @@
     "UserList": {
         "back": "Back",
         "user-list": "User List:",
-        "admin": "Manage"
+        "admin": "Manage",
+        "filter-user": "Filter users"
     },
     "WaitingUsersList": {
         "back": "Back",
-        "user-list": "User List",
+        "user-list": "Waiting User List:",
         "on-hold": "waiting",
         "accept": "Accept",
         "reject": "Reject"
@@ -27,7 +28,7 @@
         "sign-in": "Sign in",
         "user": "User",
         "register": "Register",
-        "accept":"Registrarse"
+        "accept": "Registrarse"
     },
     "Progress": {
         "my-levels": "My Levels",
@@ -60,7 +61,7 @@
         "request-registration": "Request Registration"
     },
     "UserDetails": {
-        "user-id": "User ID:",
+        "user-ID": "User ID:",
         "complete-name": "Full Name:",
         "e-mail": "E-Mail:",
         "country": "Country:",

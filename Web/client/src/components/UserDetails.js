@@ -340,7 +340,7 @@ class UserDetails extends Component {
             <div class="flex-item right col">
               <div class="mx-auto col-sm-8 mb-3">
                 <Link to={{ pathname: "/progress/" + this.state.email, query: this.state.email }}>
-                  <button type="button" className="button small ml-2 button-amigote col" >Ver Progreso</button>
+                  <button type="button" className="button small ml-2 button-amigote col" >{this.props.t('UserDetails.see-progress')}</button>
                 </Link>
               </div>
             </div>

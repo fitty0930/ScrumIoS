@@ -2,7 +2,7 @@ import React, { Component,useState } from 'react';
 import  '../assets/css/main.css';
 import  '../assets/fonts/fontawesome-webfont.eot';
 import {Link} from 'react-router-dom';
-
+import i18next from 'i18next';
 import { withTranslation } from 'react-i18next';
  
 class NavBar extends Component {
@@ -12,7 +12,16 @@ class NavBar extends Component {
             localStorage.removeItem('session');
         }
     }
-
+    traducirIngles(){
+        i18next.changeLanguage('en', (err) => {
+            if (err) return console.log('something went wrong loading', err);
+          });
+    }
+    traducirEspañol(){
+        i18next.changeLanguage('es', (err) => {
+            if (err) return console.log('something went wrong loading', err);
+          });
+    }
     render() {
         return (
             <>
