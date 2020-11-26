@@ -2706,6 +2706,15 @@
 
 			#header nav.right {
 				right: 2em;
+				height: 4em !important;
+			}
+			.banderita {
+				float: right;
+			}
+			.banderita img {
+				height: 60%;
+				width: 60%;
+				/* si llegaste hasta aca,si. nosotros tambien odiamos esta pagina de mierd#! */
 			}
 
 			#header nav .button {
@@ -2781,6 +2790,7 @@
 	}
 
 	@media screen and (max-width: 480px) {
+		
 
 		#header {
 			min-width: 320px;

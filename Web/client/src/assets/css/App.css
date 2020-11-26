@@ -334,9 +334,36 @@ body{
         padding-top: 44px;
     }
 }
+@media screen and (max-width: 720px) {
+    .right{
+        display: none;
+    }
+    /* .button-amigote {
+        width: 700px;
+    } */
+}
 
 @media screen and (max-width: 480px) {
     .button-amigote-home {
         width: 300px;
     }
+    .sombreado{
+        background: #FFFFFF !important;
+    }
+    .cualquiera2{
+        width: 100%;
+    }
+    .cualquiera2 img{
+        width: 100%;
+    }
+    .cualquiera2 form{
+        width: 300%;
+        height: 35%;
+    }
+}
+@media screen and (max-width: 380px) {
+    .button-amigote-home {
+        width: 250px;
+    }
+    
 }

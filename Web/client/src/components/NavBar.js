@@ -38,12 +38,16 @@ class NavBar extends Component {
                         <a type="submit" className="button small ml-2 button-amigote" >{this.props.t('Navbar.admin-w-users')}</a>
                     </Link>
 				</nav>
-				<nav className="right">
+				<nav className="right ">
                     <Link to='/login'> 
                         <a onClick={this.closeSession} type="submit" className="button small ml-2 button-amigote-gris">{this.props.t('Navbar.log-out')}</a>
                     </Link>
                     <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013911.svg" onClick={this.traducirIngles}type="submit" className="button small ml-2 button-amigote-gris-home"/>
-                        <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013899.svg" onClick={this.traducirEspañol}type="submit" className="button small ml-2 button-amigote-gris-home"/> 
+                    <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013899.svg" onClick={this.traducirEspañol}type="submit" className="button small ml-2 button-amigote-gris-home"/>
+
+                  {/*   <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013911.svg" onClick={this.traducirIngles} className="img-fluid col-sm-2"/>
+                    <img src="https://www.flaticon.es/svg/static/icons/svg/3013/3013899.svg" onClick={this.traducirEspañol} className="img-fluid col-sm-2 "/>  */}
+                    
 				</nav>
 			</header>
             </>

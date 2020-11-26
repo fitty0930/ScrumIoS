@@ -63,7 +63,7 @@ class Login extends React.Component{
         return (
 
             <div className="sombreado ">
-                <div className="bg-white col-4 mx-auto rounded  cualquiera2">
+                <div className="bg-white col-sm-12 col-md-6 col-lg-4 mx-auto rounded responsive cualquiera2">
                     <img src={Logo} alt="" className="logo img-fluid " />
                     <form action="" method=""  onSubmit={this.verificar} className="col-10 mx-auto " >
                         <input type="text" name="username"  placeholder={this.props.t('Login.user')} id="usuario" />
