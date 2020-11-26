@@ -167,7 +167,7 @@ const traducirEspañol = () =>{
             </div>
             <button className="button small  m-auto button-amigote" onClick={handleSubmit}>{t('Register.request-registration')}</button>
           </div>
-          <ToastContainer autoClose={10000} pauseOnHover draggable closeOnClick />
+          <ToastContainer position="bottom-right" autoClose={10000} pauseOnHover draggable closeOnClick />
         </div>
         </div>
       </div>
