@@ -74,7 +74,7 @@ class ListaUser extends Component {
                     <div className="row">
                         <h4>{this.props.t('UserList.user-list')}</h4>
                         <div className="form-group padding-auto ml-auto">
-                            <input type="text" className="form-control" id="inputFilterUser" placeholder="Filtrar por Usuario" value={this.state.filterValue} onChange={this.handleChange} />
+                            <input type="text" className="form-control" id="inputFilterUser" placeholder={this.props.t('UserList.filter-user')} value={this.state.filterValue} onChange={this.handleChange} />
                         </div>
                     </div>
                     <div class="table-wrapper table-amigote">

@@ -133,7 +133,7 @@ class Progress extends Component {
                             <form className="form-inline mx-auto">
                                 <div className="form-group padding-auto mx-5 row">
                                     {this.state.filtro === "Nivel" ?
-                                        <input type="text" onChange={this.getFiltro} className="form-control col-6" id="formGroupExampleInput" placeholder={this.state.filtro} />
+                                        <input type="text" onChange={this.getFiltro} className="form-control col-6" id="formGroupExampleInput" placeholder={this.props.t('Progress.level')} />
                                         : ""
                                     }
                                     <div class="12u$ col-6">

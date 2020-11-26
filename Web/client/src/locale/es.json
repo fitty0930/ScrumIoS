@@ -14,12 +14,12 @@
     "UserList": {
         "back": "Volver",
         "user-list": "Lista de Usuarios:",
-        "admin": "Administrar"
+        "admin": "Administrar",
+        "filter-user": "Filtrar Usuarios"
     },
     "WaitingUsersList": {
         "back": "Volver",
-        "user-list": "Lista de Usuarios",
-        "on-hold": "en espera",
+        "user-list": "Lista de Usuarios en espera:",
         "accept": "Aceptar",
         "reject": "Rechazar"
     },
@@ -59,7 +59,7 @@
         "request-registration": "Solicitar Registro"
     },
     "UserDetails": {
-        "user-id": "ID de Usuario:",
+        "user-ID": "ID de Usuario:",
         "complete-name": "Nombre Completo:",
         "e-mail": "Correo Electronico:",
         "country": "Pais:",

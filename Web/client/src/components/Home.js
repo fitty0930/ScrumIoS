@@ -18,14 +18,6 @@ class Home extends React.Component{
         } */
 
     }
-    componentDidMount(){
-        if(!localStorage.getItem('session')){
-            this.props.history.push({
-                pathname:"/login",
-                state: {errormessage: true}
-              });
-        }
-    }
     closeSession(){
         if(localStorage.getItem('session')){
             localStorage.removeItem('session');
@@ -41,6 +33,15 @@ class Home extends React.Component{
             if (err) return console.log('something went wrong loading', err);
           });
     }
+    componentDidMount(){
+        if(!localStorage.getItem('session')){
+            this.props.history.push({
+                pathname:"/login",
+                state: {errormessage: true}
+              });
+        }
+    }
+    
     render(){
         return(
             <>
