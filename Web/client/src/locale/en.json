@@ -44,7 +44,7 @@
         "country": "Country",
         "gameTasteLevel": "Game taste level",
         "nothing": "Nothing",
-        "litle-bit": "little bit",
+        "little-bit": "A little bit",
         "same": "He doesn't care",
         "a-lot": "A Lot",
         "fantastic": "Fantastic",
@@ -58,7 +58,10 @@
         "profession": "Profession",
         "mail": "Email",
         "name": "Name",
-        "request-registration": "Request Registration"
+        "request-registration": "Request Registration",
+        "register": "Register",
+        "alert-register-else": "You already send a registration request",
+        "alert-register-correct": "We will verify your request as soon as possible, please check your email address"
     },
     "UserDetails": {
         "user-ID": "User ID:",
