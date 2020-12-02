@@ -62,7 +62,6 @@ public class SubLevelModel {
             return doneSoFar * 100 / total;
         }
     }
-
     public int getIntCode() {
         return Integer.parseInt(code.split("\\.")[1]);
     }
