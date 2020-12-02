@@ -1,0 +1,88 @@
+{
+    "Home": {
+        "admin-users": "Administrar Usuarios",
+        "admin-waitingUsers": "Administrar Usuarios en espera",
+        "admin-levels": "Administrar Niveles",
+        "middle-text-1": "Un juego didactico para probar tus conocimientos de scrum",
+        "middle-text-2": "Demuestra tu sabiduria!."
+    },
+    "Navbar": {
+        "log-out": "Cerrar Sesion",
+        "admin-users": "Admin. Usuarios",
+        "admin-w-users": "Admin. Usuarios Espera"
+    },
+    "UserList": {
+        "back": "Volver",
+        "user-list": "Lista de Usuarios:",
+        "admin": "Administrar",
+        "filter-user": "Filtrar Usuarios"
+    },
+    "WaitingUsersList": {
+        "back": "Volver",
+        "user-list": "Lista de Usuarios en espera:",
+        "accept": "Aceptar",
+        "reject": "Rechazar"
+    },
+    "Login": {
+        "sign-in": "Ingresar",
+        "user": "Usuario",
+        "register": "Registrarse"
+    },
+    "Progress": {
+        "my-levels": "Mis Niveles",
+        "filter-by": "Filtar Por",
+        "level": "Nivel",
+        "in-progress": " En Curso",
+        "not-started": "No Iniciado"
+    },
+    "Register": {
+        "status": "Estado",
+        "sub-level": "Sub-nivel",
+        "age": "Edad",
+        "country": "Pais",
+        "gameTasteLevel": "Interes en el Juego",
+        "nothing": "Nada",
+        "little-bit": "Poco",
+        "same": "Le da igual",
+        "a-lot": "Mucho",
+        "fantastic": "Fantástico",
+        "gameTimeLevel": "Tiempo dedicado a Jugar",
+        "gender": "Género",
+        "male": "Masculino",
+        "female": "Femenino",
+        "other": "Otro",
+        "city": "Ciudad",
+        "state": "Provincia",
+        "profession": "Profesion",
+        "mail": "Correo",
+        "name": "Nombre",
+        "request-registration": "Solicitar Registro",
+        "register": "Registro",
+        "alert-register-else": "Ya envio una solicitud de registro",
+        "alert-register-correct": "Verificaremos tu solicitud a la brevedad, por favor revise su direccion de correo"
+    },
+    "UserDetails": {
+        "user-ID": "ID de Usuario:",
+        "complete-name": "Nombre Completo:",
+        "e-mail": "Correo Electronico:",
+        "country": "Pais:",
+        "time-played": "Tiempo Jugado:",
+        "levels-passed": "Niveles Superados:",
+        "delete": "Eliminar",
+        "admin-data": "Re ingrese los datos del administrador para eliminar el usuario",
+        "admin": "Administrador",
+        "password": "Contraseña",
+        "cancel": "Cancelar",
+        "delete-user": "Eliminar Usuario",
+        "see-progress": "Ver Progreso",
+        "save-changes": "Guardar Cambios",
+        "edit": "Editar"
+    },
+    "Footer": {
+        "title": "Equipo de trabajo Amigotes",
+        "copyright": "AMIGOTES. Diseño",
+        "copy-images": "Imagenes"
+    }
+
+
+}

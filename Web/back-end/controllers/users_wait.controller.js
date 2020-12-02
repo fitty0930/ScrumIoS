@@ -25,14 +25,15 @@ exports.Register_user = (req, res) => {
         name: req.body.name,
         profession: req.body.profession,
         state: req.body.state,
-        password: req.body.password,
+        password: req.body.name+ req.body.age,
     }
+    console.log(userData);
     User_wait.findOne({
             mail: req.body.mail
         })
         .then(user => {
             if (!user) {
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                bcrypt.hash(userData.password, 10, (err, hash) => {
                     userData.password = hash;
                     User_wait.create(userData)
                         .then(user => {
@@ -51,11 +52,11 @@ exports.Register_user = (req, res) => {
         })
 }
 exports.darAlta = (req, res) => {
-
+    console.log(req.body)
     User_wait.findOneAndDelete({
         mail: req.body.mail
     }).then(response => {
-        res.send(response.mail + ": Se borro con exito");
+        res.send(response);
     }).catch(err => {
         res.status(404).json({ error: err });
     })

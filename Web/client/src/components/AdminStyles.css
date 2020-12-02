@@ -1,43 +1,61 @@
-.btn-color {
-    background-color: #00D1FF;
+
+body{
+   
+    background: rgb(165,246,247);
+    background: linear-gradient(0deg, rgb(204, 237, 238) 0%, rrgb(233, 211, 241)100%);
+}
+
+
+
+
+
+
+
+
+/* .btn-color {
+    background-color: #00D1FF !important;
 }
 
 .input-color {
-    background-color: #AD5AFF;
+    background-color: #AD5AFF !important;
 }
 
 .contenedorListaUser {
-    background-color: #E5E5E5;
-    min-height: 10px;
-    max-height: 90vh;
-    border-radius: 25px;
-    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
-    scrollbar-width: thin;
+    background-color: #E5E5E5 !important;
+    min-height: 10px !important;
+    max-height: 90vh !important;
+    border-radius: 25px !important;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0) !important;
+    scrollbar-width: thin !important;
 }
 
 .contenedorListaUser::-webkit-scrollbar {
-    -webkit-appearance: none;
+    -webkit-appearance: none !important;
 }
 
 .contenedorListaUser::-webkit-scrollbar:vertical {
-    width: 10px;
+    width: 10px !important;
 }
 
 .contenedorListaUser::-webkit-scrollbar-button:increment,
 .contenedorListaUser::-webkit-scrollbar-button {
-    display: none;
+    display: none !important;
 }
 
 .contenedorListaUser::-webkit-scrollbar:horizontal {
-    height: 10px;
+    height: 10px !important;
 }
 
 .contenedorListaUser::-webkit-scrollbar-thumb {
-    background-color: #797979;
-    border-radius: 20px;
-    border: 2px solid #f1f2f3;
+    background-color: #797979 !important;
+    border-radius: 20px !important;
+    border: 2px solid #f1f2f3 !important;
 }
 
 .contenedorListaUser::-webkit-scrollbar-track {
-    border-radius: 10px;
+    border-radius: 10px !important;
 }
+
+.normal-clase {
+    border-radius: 0% !important;
+} */
